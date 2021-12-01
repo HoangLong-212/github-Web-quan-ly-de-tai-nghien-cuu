@@ -1,10 +1,20 @@
-import { takeLatest, call } from "redux-saga/effects";
+import { takeLatest, call, put } from "redux-saga/effects";
 import * as actions from "../actions";
 import * as api from "../../api";
 
-function* fetchUserSaga(action) {
-    const users = yield call(api.fetchUser);
-    console.log('[users]',users); 
+function* loginSaga(action) {
+  try {
+    //console.log('saga',action.payload);
+    const Logins = yield call(api.login, action.payload);
+    console.log('[Logins]',Logins);
+    yield put(actions.login.loginSuccess(Logins.data)); 
+  } catch (error) {
+    if(error.response.data)
+    {
+      console.log('error',error.response.data);
+      yield put(actions.login.loginFailure(error.response.data)); 
+    }
+  }
 }
 
 //#region TaiKhoan
@@ -21,9 +31,7 @@ function* fetchUserSaga(action) {
 //   // #endregion
 
 function* mySaga() {
-  yield takeLatest(actions.getUsers.getUsersRequest, fetchUserSaga);
-//   yield takeLatest(actions.createPost.createPostRequest, fetchUserSaga);
-//   yield takeLatest(actions.updatePost.updatePostRequest, updatePostSaga);
+  yield takeLatest(actions.login.loginRequest, loginSaga);
 }
 
 // generator function ES6
