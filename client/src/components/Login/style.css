@@ -1,0 +1,15 @@
+@import "~antd/dist/antd.css";
+
+.login {
+  min-width: 300px;
+}
+.login-form-button {
+  width: 100%;
+}
+.text{
+    text-align: center;
+    padding-bottom: 30px;
+    color: #0BA5FC;
+    font-size: 40px;
+}
+

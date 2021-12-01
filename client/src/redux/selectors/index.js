@@ -1,0 +1,1 @@
+export const LoginsState$ =(state) => state.Logins.user;

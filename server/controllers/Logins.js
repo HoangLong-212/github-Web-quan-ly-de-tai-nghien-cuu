@@ -1,16 +1,26 @@
 import { UserModel } from "../models/UserModel.js";
 //import agron2, { argon2d } from "argon2";
 
-export const getUser = async (req, res) => {
+export const login = async (req, res) => {
   try {
-    // const user = new UserModel({
-    //   username: "admin",
-    //   password: "123"
-    // })
-    // await user.save();
-    const users = await UserModel.find();
-    console.log("users", users);
-    res.status(200).json(users);
+    console.log('username', req.body);
+    const { username, password} = req.body;
+    
+    const users = await UserModel.findOne({username:username});
+    console.log(users);
+    if(users){     
+      if(users.password === password)
+      {
+        res.status(200).json(users);
+      }
+      else{
+        res.status(400).send("Sai tài khoản hoặc mật khẩu");
+      }
+    }
+    else{
+      res.status(400).send("Không tồn tại tài khoản");
+    }
+    
   } catch (err) {
     res.status(500).json({ error: err });
   }
@@ -24,7 +34,7 @@ export const createUser = async (req, res) => {
   }
   try {
     // Check for existing user
-    const user = await UserModel.findOne({ username });
+    const user = await UserModel.findOne({ username:newUsername });
     if (user) {
       return res.status(400).send("Đã tồn tài tài khoản. Mời bạn nhập tài khoản khác");
     }
