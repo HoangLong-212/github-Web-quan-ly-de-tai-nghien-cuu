@@ -10,6 +10,7 @@ export const login = createActions({
   loginRequest: (payload) => payload,
   loginSuccess: (payload) => payload,
   loginFailure: (err) => err,
+  logoutRequest: undefined,
 });
 
 //#endregion 

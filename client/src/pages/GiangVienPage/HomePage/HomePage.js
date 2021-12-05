@@ -1,11 +1,11 @@
 import React from "react";
-import { Layout, Row, Col } from "antd";
+import { Layout } from "antd";
 
 
 const { Content } = Layout;
 
 export default function HomePage() {
   return (
-    <h1>HomePage</h1>
+    <h1>HomePage Giang Vien</h1>
   );
 }

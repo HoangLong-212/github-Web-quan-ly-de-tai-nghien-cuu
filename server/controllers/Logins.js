@@ -3,11 +3,11 @@ import { UserModel } from "../models/UserModel.js";
 
 export const login = async (req, res) => {
   try {
-    console.log('username', req.body);
+    //console.log('username', req.body);
     const { username, password} = req.body;
     
     const users = await UserModel.findOne({username:username});
-    console.log(users);
+    //console.log(users);
     if(users){     
       if(users.password === password)
       {
@@ -25,43 +25,16 @@ export const login = async (req, res) => {
     res.status(500).json({ error: err });
   }
 };
-
-export const createUser = async (req, res) => {
-  const { newUsername, newPassword, newRole } = req.body;
-
-  if (!newUsername || !newPassword) {
-    return res.status(400).send("Chưa có tài khoản hoặc mật khẩu");
-  }
+export const verify = async (req, res) =>{
   try {
-    // Check for existing user
-    const user = await UserModel.findOne({ username:newUsername });
-    if (user) {
-      return res.status(400).send("Đã tồn tài tài khoản. Mời bạn nhập tài khoản khác");
-    }
-    /* Mã hóa password
-        const hashedPassword = await argon2.hashed(newPassword), */
-
-    const User = new UserModel(newUsername, newPassword, newRole);
-    await User.save();
-
-    res.status(200).json(User);
-  } catch (error) {
-    res.status(500).json({ error: err });
-    next();
-  }
-};
-
-export const updateUser = async (req, res) => {
-  try {
-    const updateUser = req.body;
-
-    const User = await UserModel.findOneAndUpdate(
-      { _id: updateUser._id },
-      updateUser,
-      { new: true }
-    );
-    res.status(200).json(User);
-  } catch (err) {
-    res.status(500).json({ error: err });
-  }
-};
+    const { username, password} = req.body;
+    
+		const user = await UserModel.findOne({username:username});
+		if (!user)
+			return res.status(400).json({ success: false, message: 'User not found' })
+		res.json({ success: true, user })
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ success: false, message: 'Internal server error' })
+	}
+}

@@ -4,9 +4,11 @@ import * as api from "../../api";
 
 function* loginSaga(action) {
   try {
-    //console.log('saga',action.payload);
+    console.log('saga',action.payload);
     const Logins = yield call(api.login, action.payload);
+
     console.log('[Logins]',Logins);
+
     yield put(actions.login.loginSuccess(Logins.data)); 
   } catch (error) {
     if(error.response.data)
@@ -31,6 +33,7 @@ function* loginSaga(action) {
 //   // #endregion
 
 function* mySaga() {
+  console.log("mySaga")
   yield takeLatest(actions.login.loginRequest, loginSaga);
 }
 
