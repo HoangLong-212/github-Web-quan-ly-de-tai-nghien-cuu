@@ -1,25 +1,84 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Form, Input, Button, Checkbox, Layout } from "antd";
+import { Form, Input, Button, Layout } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./style.css";
 import { login } from "../../redux/actions";
-import { LoginsState$ } from "../../redux/selectors";
+import { LoginsState$ } from "../../redux/selectors/index";
+import { useHistory, Redirect } from "react-router-dom";
 
 export default function Login() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
 
   const [data, setData] = useState({
     username: "",
     password: "",
   });
   const dispatch = useDispatch();
-  const users=useSelector(LoginsState$);
-  //console.log(users);
+
+  const history = useHistory();
+
+  const users = useSelector(LoginsState$);
+
+  const isLoggedIn = Boolean(localStorage.getItem('access_token'));
+
   const onFinish = React.useCallback(() => {
     dispatch(login.loginRequest(data));
   }, [data, dispatch]);
+
+
+  React.useEffect(() => {
+    try {
+      console.log("users",users);
+      if(!isLoggedIn){
+        if (users) {
+          localStorage.setItem("access_token", users.username)
+          if(users.role==="GiangVien"){
+            history.push("/Home_GiangVien");
+          }
+          else
+          {
+            if(users.role==="Admin"){
+              history.push("/Home_Admin");
+            }
+            else
+            {
+              history.push("/Home_Khoa");
+            }         
+          }
+        }
+      }
+      else
+      {
+        
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+  // React.useEffect(() => {
+  //   try {
+  //     if (users) {
+  //       localStorage.setItem("access_token", users._id)
+  //       if(users.role==="GiangVien"){
+  //         history.push("/Home_GiangVien");
+  //       }
+  //       else
+  //       {
+  //         if(users.role==="Admin"){
+  //           history.push("/Home_Admin");
+  //         }
+  //         else
+  //         {
+  //           history.push("/Home_Khoa");
+  //         }         
+  //       }
+  //     }
+      
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // });
 
   const { Content } = Layout;
   return (

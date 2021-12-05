@@ -5,7 +5,12 @@ import "./style.css";
 
 const { Content } = Layout;
 
+
 export default function LoginPage() {
+  React.useEffect(()=>{
+    
+  })
+  
   return (
     <Row
       type="flex"

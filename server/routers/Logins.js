@@ -1,10 +1,12 @@
 import express from "express";
 import { login } from "../controllers/Logins.js";
+import { verify } from "../controllers/Logins.js";
 
 const router = express.Router();
-//http://localhost:5000/Users
+//http://localhost:5000/Login
 
-// router.get("/", getUser);
-router.post("/Login", login);
+
+router.post("/", login);
+router.get("/", verify)
 
 export default router;

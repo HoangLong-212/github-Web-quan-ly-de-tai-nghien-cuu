@@ -4,6 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import posts from "./routers/posts.js";
 import Logins from './routers/Logins.js'
+import Users from './routers/Users.js'
 
 const app = express();
 const PORT = process.env.port || 5000;
@@ -16,7 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/posts", posts);
-app.use("/", Logins); 
+app.use("/Login", Logins); 
+app.use("/Users", Users);
 
 mongoose
   .connect(URI, {
