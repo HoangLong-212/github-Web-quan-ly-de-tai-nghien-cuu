@@ -13,8 +13,8 @@ const URI =
   "mongodb+srv://admin:RyFdDUBNStbPjKAN@cluster0.1l1mg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: "30mb"}));
+app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 
 app.use("/posts", posts);
 app.use("/Login", Logins); 
