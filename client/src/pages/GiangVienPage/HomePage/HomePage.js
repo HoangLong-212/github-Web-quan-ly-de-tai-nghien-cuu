@@ -1,11 +1,22 @@
 import React from "react";
-import { Layout } from "antd";
+import {  Layout } from "antd";
+import HeaderBar from "../../../components/Header/HeaderBar/HeaderBar";
+import PostList from "../../../components/PostList/PostList";
 
 
-const { Content } = Layout;
+
+const { Content, Header } = Layout;
 
 export default function HomePage() {
+
   return (
-    <h1>HomePage Giang Vien</h1>
+    <Layout>
+      <Header>
+        <HeaderBar />
+      </Header>
+      <Content>
+        <PostList />
+      </Content>   
+    </Layout>
   );
 }
