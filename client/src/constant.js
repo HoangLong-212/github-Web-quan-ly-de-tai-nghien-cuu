@@ -6,5 +6,14 @@ export const INIT_STATE = {
         isLoading: false,
         isAuthenticated: false,
 		user: null,
-    }
+    },
+    //region Info
+    Info:{
+        isLoading: false,
+        data: [],
+    },
+    InfoModal: {
+        isShow: false,
+    },
+    
 }

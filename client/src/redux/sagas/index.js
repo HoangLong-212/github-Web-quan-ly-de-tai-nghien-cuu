@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import * as actions from "../actions";
-import * as api from "../../api";
+import * as api from "../../api"
 
 function* loginSaga(action) {
   try {
@@ -19,6 +19,40 @@ function* loginSaga(action) {
   }
 }
 
+//#region Info
+function* fetchInfoSaga(action) {
+  try {
+    const Info = yield call(api.fetchInfo);
+    console.log("[Infos]", Info);
+    yield put(actions.getInfo.getInfoSuccess(Info.data));
+  } catch (err) {
+    yield put(actions.getInfo.getInfoFailure(err));
+  }
+}
+
+function* createInfoSaga(action) {
+  try {
+    const Info = yield call(api.createInfo, action.payload);
+    yield put(actions.createInfo.createInfoSuccess(Info.data));
+  } catch (error) {
+    yield put(
+      actions.createInfo.createInfoFailure(error.response.data)
+    );
+  }
+}
+
+function* updateInfoSaga(action) {
+  try {
+    const Info = yield call(api.updateInfo, action.payload);
+    yield put(actions.updateInfo.updateInfoSuccess(Info.data));
+  } catch (error) {
+    yield put(
+      actions.updateInfo.updateInfoFailure(error.response.data)
+    );
+  }
+}
+
+
 //#region TaiKhoan
 // function* fetchTaiKhoansSaga(action) {
 //     try {
@@ -35,7 +69,24 @@ function* loginSaga(action) {
 function* mySaga() {
   console.log("mySaga")
   yield takeLatest(actions.login.loginRequest, loginSaga);
+
+  //region Info
+  yield takeLatest(
+    actions.getInfo.getInfoRequest,
+    fetchInfoSaga
+  );
+
+  yield takeLatest(
+    actions.createInfo.createInfoRequest,
+    createInfoSaga
+  );
+
+  yield takeLatest(
+    actions.updateInfo.updateInfoRequest,
+    updateInfoSaga
+  );
 }
+
 
 // generator function ES6
 
