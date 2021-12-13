@@ -1,7 +1,15 @@
 .account {
-  display: flex;
+  float: right;
+  display:flex;
   flex-wrap: wrap;
   flex-direction: row-reverse;
-  margin-left: 450px;
+  
+}
+.Menu{
+  display: flex;
+  float: left;
+}
 
+.logo {
+  float: left;
 }

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Form, Input, Button, Layout } from "antd";
+import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./style.css";
 import { login } from "../../redux/actions";
 import { LoginsState$ } from "../../redux/selectors/index";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
 
@@ -23,6 +23,7 @@ export default function Login() {
 
   const onFinish = React.useCallback(() => {
     dispatch(login.loginRequest(data));
+    console.log("------")
   }, [data, dispatch]);
 
 
@@ -47,40 +48,12 @@ export default function Login() {
           }
         }
       }
-      else
-      {
-        
-      }
+      
     } catch (error) {
       console.log(error);
     }
   });
 
-  // React.useEffect(() => {
-  //   try {
-  //     if (users) {
-  //       localStorage.setItem("access_token", users._id)
-  //       if(users.role==="GiangVien"){
-  //         history.push("/Home_GiangVien");
-  //       }
-  //       else
-  //       {
-  //         if(users.role==="Admin"){
-  //           history.push("/Home_Admin");
-  //         }
-  //         else
-  //         {
-  //           history.push("/Home_Khoa");
-  //         }         
-  //       }
-  //     }
-      
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // });
-
-  const { Content } = Layout;
   return (
     <div className="login">
       <h1 className="text">ĐĂNG NHẬP</h1>

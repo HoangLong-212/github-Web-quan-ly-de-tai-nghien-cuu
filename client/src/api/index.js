@@ -1,13 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
 const URL = "http://localhost:5000";
 
-//#region User
+//Login
 export const login = (payload) => axios.post(`${URL}/Login`, payload);
 
-// export const createUser = (payload) =>
-//   axios.post(`${URL}/Users`, payload);
+//Posts
+export const fetchPosts = () => axios.get(`${URL}/posts`);
+export const findPosts = (payload) => axios.post(`${URL}/posts`, payload);
+export const createPosts = (payload) => axios.post(`${URL}/posts`, payload);
 
-// export const updateUser = (payload) =>
-//   axios.patch(`${URL}/Users/${payload._id}`, payload);
-//#endregion

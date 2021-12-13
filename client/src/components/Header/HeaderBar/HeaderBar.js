@@ -13,8 +13,10 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import MenuItem from "antd/lib/menu/MenuItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LoginsState$ } from "../../../redux/selectors";
+import { Header } from "antd/lib/layout/layout";
+import * as actions from "../../../redux/actions"
 
 const { SubMenu } = Menu;
 
@@ -23,89 +25,124 @@ function Headerbar() {
 
   const history = useHistory();
 
+  const dispatch = useDispatch();
+
   const handleHome = () => {
     history.push("/Home_Admin");
   };
+
+  // const users = useSelector(LoginsState$);
+
+  // const isAuthenticated = useSelector(LoginsState_isAuthenticated$);
+
+  const onClick = React.useCallback(() => {   
+    dispatch(actions.login.logoutRequest());
+
+    localStorage.removeItem("access_token");
+    history.push("/");
+  });
+
   return (
-    <div>
-      <Row>
-        <Col span={2}>
-          <div className="logo">
-            <img src={Logo} alt="Website Logo" onClick={handleHome}></img>
-          </div>
-        </Col>
-        <Col>
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1000"]}>
-            <SubMenu
-              key="ThongBao"
-              icon={<BellOutlined />}
-              title="Thông báo"
-              onTitleClick={{}}
-            ></SubMenu>
+    <div className="Header">
+      <Header>
+        <div className="logo">
+          <img src={Logo} alt="Website Logo" onClick={handleHome}></img>
+        </div>
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["2"]}
+          className="Menu"
+        >
+          <SubMenu
+            key="ThongBao"
+            icon={<BellOutlined />}
+            title="Thông báo"
+            onTitleClick={handleHome}
+          ></SubMenu>
 
-            <SubMenu
-              key="DeTai"
-              icon={<DatabaseOutlined />}
-              title="Đề tài"
-              onTitleClick={{}}
-            ></SubMenu>
-            <SubMenu
-              key="Don"
-              icon={<SwapOutlined />}
-              title="Đơn"
-              onTitleClick={{}}
-            >
-              <Menu.Item key="GiaHanDeTai" onClick={{}}>
-                Gia hạn đề tài
-              </Menu.Item>
-              <Menu.Item key="DungDeTai" onClick={{}}>
-                Dừng đề tài
-              </Menu.Item>
-            </SubMenu>
+          <SubMenu
+            key="DeTai"
+            icon={<DatabaseOutlined />}
+            title="Đề tài"
+            onTitleClick={{}}
+          ></SubMenu>
+          <SubMenu
+            key="Don"
+            icon={<SwapOutlined />}
+            title="Đơn"
+            onTitleClick={{}}
+          >
+            <Menu.Item key="GiaHanDeTai" onClick={{}}>
+              Gia hạn đề tài
+            </Menu.Item>
+            <Menu.Item key="DungDeTai" onClick={{}}>
+              Dừng đề tài
+            </Menu.Item>
+          </SubMenu>
 
-            <SubMenu
-              key="TraCuu"
-              icon={<EyeOutlined />}
-              title="TraCuu"
-              onTitleClick={{}}
-            ></SubMenu>
-            <SubMenu
-              key="NghiemThu"
-              icon={<CalendarOutlined />}
-              title="Nghiệm thu"
-              onTitleClick={{}}
-            >
-              <Menu.Item key="HoiDongNghiemThu" onClick={{}}>
-                Hội đồng nghiệm thu
-              </Menu.Item>
-              <Menu.Item key="BaoCaoNghiemThu" onClick={{}}>
-                Báo cáo nghiệm thu
-              </Menu.Item>
-            </SubMenu>
-            {users.role === "GiangVien" ? null : (
+          <SubMenu
+            key="TraCuu"
+            icon={<EyeOutlined />}
+            title="Tra Cứu"
+            onTitleClick={{}}
+          ></SubMenu>
+          <SubMenu
+            key="NghiemThu"
+            icon={<CalendarOutlined />}
+            title="Nghiệm thu"
+            onTitleClick={{}}
+          >
+            <Menu.Item key="HoiDongNghiemThu" onClick={{}}>
+              Hội đồng nghiệm thu
+            </Menu.Item>
+            <Menu.Item key="BaoCaoNghiemThu" onClick={{}}>
+              Báo cáo nghiệm thu
+            </Menu.Item>
+          </SubMenu>
+
+          {/* Cmt lại để code không bug */}
+          {/* {users.role !== "GiangVien" ? null : (
               <SubMenu
                 key="TaiKhoan"
                 icon={<TeamOutlined />}
                 title="Tài khoản"
                 onTitleClick={{}}
               ></SubMenu>
-            )}
-            <SubMenu
+            )} */}
+
+          <SubMenu
+            key="TaiKhoan"
+            icon={<TeamOutlined />}
+            title="Tài khoản"
+            onTitleClick={{}}
+          ></SubMenu>
+
+          {/* <SubMenu
               key="Account"
               title="0585502434"
               icon={<UserOutlined />}
-              className="account"             
+              className="account"
             >
               <Menu.Item key="subitem1">Tài khoản</Menu.Item>
               <Menu.Item key="subitem2">Đăng xuất</Menu.Item>
-            </SubMenu>
-          </Menu>
-        </Col>
-      </Row>
+            </SubMenu> */}
+        </Menu>
+
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={["2"]}
+          className="account"
+        >
+          <SubMenu key="account" title="0585502434" icon={<UserOutlined />}>
+            <Menu.Item key="subitem1">Tài khoản</Menu.Item>
+            <Menu.Item key="subitem2" onClick={onClick}>Đăng xuất</Menu.Item>
+          </SubMenu>
+        </Menu>
+      </Header>
     </div>
   );
 }
 
 export default Headerbar;
-
-

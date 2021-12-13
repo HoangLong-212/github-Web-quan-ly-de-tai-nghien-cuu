@@ -13,13 +13,9 @@ const schema = new mongoose.Schema(
     author: {
       type: String,
       require: true,
-      default: "Anonymous",
+      
     },
     attachment: String,
-    likeCount: {
-      type: Number,
-      default: 0,
-    },
   },
   { timestamps: true }
 );
