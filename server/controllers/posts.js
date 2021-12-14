@@ -30,7 +30,7 @@ export const updatePost = async (req, res) => {
     const post = await PostModel.findOneAndUpdate(
       { _id: updatePost._id },
       updatePost,
-      { new: true }
+      { new: true } 
     );
 
     res.status(200).json(post);

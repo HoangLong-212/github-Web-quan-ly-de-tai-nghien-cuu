@@ -5,7 +5,7 @@ const schema = new mongoose.Schema(
     /* MaTK: {
             type: String,
             required: true,
-            unique: true,
+            unique: true, 
         }, */
     username: {
       type: String,

@@ -1,0 +1,56 @@
+/* @import "~antd/dist/antd.css";
+
+.info_GiangVien{
+    width: 50%;
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    ;
+}
+.form1{
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.formButton{
+    margin-top: 10px;
+}
+.btnHuy{
+    position: absolute;
+    margin-left: 450px;
+    height: 30px;
+    width: 60px;
+    box-sizing: content-box;
+    background-color: #F5F5F5;
+    stroke-width: 2px;
+    stroke: #0C92DE;
+    border-radius: 5px;
+}
+.btnLuu{
+    position: absolute;
+    margin-left: 550px;
+    height: 30px;
+    width: 60px;
+    box-sizing: content-box;
+    background-color: #0C92DE;
+    stroke-dasharray: 2px;
+    stroke-width: 2px;
+    border-radius: 5px;
+    color: #F5F5F5;
+}
+.Title{
+    margin-left: 40px;
+}
+.Line1{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.btnEdit{
+    margin-left: 259px;
+    background-color: #0C92DE;
+    color: #F5F5F5;
+    font-weight: 500px;
+    border-radius: 5px;
+} */
