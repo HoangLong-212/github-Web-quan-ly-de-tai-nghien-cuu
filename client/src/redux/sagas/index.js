@@ -41,7 +41,6 @@ function* createPostSaga(action) {
 
 function* deletePostSaga(action) {
   try {
-    
     const Posts = yield call(api.deletePosts, action.payload);
     yield put(actions.deletePosts.deletePostsSuccess(Posts.data._id));
   } catch (error) {
@@ -55,9 +54,7 @@ function* updatePostSaga(action) {
     const Posts = yield call(api.updatePosts, action.payload);
     yield put(actions.updatePosts.updatePostsSuccess(Posts.data));
   } catch (err) {
-    yield put(
-      actions.updatePosts.updatePostsFailure(err.response.data)
-    );
+    yield put(actions.updatePosts.updatePostsFailure(err.response.data));
   }
 }
 //Project
@@ -70,6 +67,49 @@ function* fetchProjectSaga(action) {
     yield put(actions.getProjects.getProjectsFailure(error.response.data));
   }
 }
+//Posts
+
+//#region Info
+function* fetchInfoSaga(action) {
+  try {
+    const Info = yield call(api.fetchInfo);
+    console.log("[Infos]", Info);
+    yield put(actions.getInfo.getInfoSuccess(Info.data));
+  } catch (err) {
+    yield put(actions.getInfo.getInfoFailure(err));
+  }
+}
+
+function* createInfoSaga(action) {
+  try {
+    const Info = yield call(api.createInfo, action.payload);
+    yield put(actions.createInfo.createInfoSuccess(Info.data));
+  } catch (error) {
+    yield put(actions.createInfo.createInfoFailure(error.response.data));
+  }
+}
+
+function* updateInfoSaga(action) {
+  try {
+    const Info = yield call(api.updateInfo, action.payload);
+    yield put(actions.updateInfo.updateInfoSuccess(Info.data));
+  } catch (error) {
+    yield put(actions.updateInfo.updateInfoFailure(error.response.data));
+  }
+}
+
+//#region TaiKhoan
+// function* fetchTaiKhoansSaga(action) {
+//     try {
+//       const TaiKhoans = yield call(api.fetchTaiKhoans);
+//       console.log("[TaiKhoans]", TaiKhoans);
+//       yield put(actions.getTaiKhoans.getTaiKhoansSuccess(TaiKhoans.data));
+//     } catch (err) {
+//       console.err(err);
+//       yield put(actions.getTaiKhoans.getTaiKhoansFailure(err));
+//     }
+//   }
+//   // #endregion
 
 function* mySaga() {
   //Login
@@ -83,6 +123,15 @@ function* mySaga() {
 
   //Projects
   yield takeLatest(actions.getProjects.getProjectsRequest, fetchProjectSaga);
+
+  //Posts
+
+  //region Info
+  yield takeLatest(actions.getInfo.getInfoRequest, fetchInfoSaga);
+
+  yield takeLatest(actions.createInfo.createInfoRequest, createInfoSaga);
+
+  yield takeLatest(actions.updateInfo.updateInfoRequest, updateInfoSaga);
 }
 
 // generator function ES6

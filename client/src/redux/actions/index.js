@@ -13,6 +13,27 @@ export const login = createActions({
   logoutRequest: undefined,
 });
 
+//region info GiangVien
+export const getInfo = createActions({
+  getInfoRequest: undefined,
+  getInfoSuccess: (payload) => payload,
+  getInfoFailure: (err) => err,
+});
+
+export const createInfo = createActions({
+  createInfoRequest: (payload) => payload,
+  createInfoSuccess: (payload) => payload,
+  createInfoFailure: (err) => err,
+});
+
+export const updateInfo = createActions({
+  updateInfoRequest: undefined,
+  updateInfoSuccess: (payload) => payload,
+  updateInfoFailure: (err) => err,
+});
+
+export const showInfoModal = createAction("SHOW_INFO_MODAL");
+export const hideInfoModal = createAction("HIDE_INFO_MODAL");
 //#endregion 
 export const getPosts = createActions({
   getPostsRequest: undefined,
