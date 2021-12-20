@@ -1,7 +1,8 @@
 import React from "react";
 import {  Layout } from "antd";
 import HeaderBar from "../../../components/Header/HeaderBar/HeaderBar";
-import PostList from "../../../components/PostList/PostList";
+import PostList from "../../../components/Lists/PostList/PostList";
+
 
 
 
@@ -15,7 +16,7 @@ export default function HomePage() {
         <HeaderBar />
       </Header>
       <Content>
-        <PostList />
+        <PostList/>
       </Content>   
     </Layout>
   );

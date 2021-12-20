@@ -2,6 +2,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage_Admin from "./pages/AdminPage/HomePage/HomePage";
 import HomePage_GiangVien from "./pages/GiangVienPage/HomePage/HomePage";
 import HomePage_Khoa from "./pages/KhoaPage/HomePage/HomePage";
+import ProjectPage_GV from "./pages/GiangVienPage/ProjectPage/ProjectPage"
 import { PrivateRoute } from "./components/PrivateRoute";
 import Notfound from "./components/Notfound";
 import "./App.css";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/Home_Admin" exact component={HomePage_Admin} />
           <Route path="/Home_GiangVien" exact component={HomePage_GiangVien} />
           <Route path="/Home_Khoa" exact component={HomePage_Khoa} />
+          <Route path="/Project_GV" exact component={ProjectPage_GV} />
           <Route path="/Home_Admin/:id"  exact component={PostPage} />
           <Route>
             <Notfound/>

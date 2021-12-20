@@ -23,7 +23,7 @@ export const createPost = async (req, res) => {
   }
 };
 
-export const updatePost = async (req, res) => {
+export const updatePost = async (req, res,next) => {
   try {
     const updatePost = req.body;
 
@@ -36,20 +36,19 @@ export const updatePost = async (req, res) => {
     res.status(200).json(post);
   } catch (err) {
     res.status(500).json({ error: err });
+    next();
   }
 };
 
-export const findPost = async (req, res) => {
+export const deletePost = async (req, res) => {
   try {
-    //console.log('username', req.body);
-    const _id = req.body;
-    console.log("[_id]",_id);
-    
-    const post = await PostModel.findOne({_id:_id});
-    //console.log(users);
+   const {id} = req.params;
+
+    const post = await PostModel.findByIdAndRemove(id);
     res.status(200).json(post);
-    
   } catch (err) {
     res.status(500).json({ error: err });
   }
 };
+
+

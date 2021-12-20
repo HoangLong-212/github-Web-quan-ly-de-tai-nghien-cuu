@@ -16,4 +16,9 @@ export const INIT_STATE = {
   modal: {
     isShow: false,
   },
+
+  Projects:{
+    isLoading: false,
+    data: [],
+  }
 };

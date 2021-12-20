@@ -23,7 +23,6 @@ export default function Login() {
 
   const onFinish = React.useCallback(() => {
     dispatch(login.loginRequest(data));
-    console.log("------")
   }, [data, dispatch]);
 
 

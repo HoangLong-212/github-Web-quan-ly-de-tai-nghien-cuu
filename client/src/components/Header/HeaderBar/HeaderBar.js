@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Logo from "../../../assets/Logo.png";
-import { Menu, Col, Row } from "antd";
+import { Menu } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import "./style.css";
 import {
@@ -30,6 +30,9 @@ function Headerbar() {
   const handleHome = () => {
     history.push("/Home_Admin");
   };
+  const handleProject =()=>{
+    history.push("/Project_GV");
+  }
 
   // const users = useSelector(LoginsState$);
 
@@ -65,7 +68,7 @@ function Headerbar() {
             key="DeTai"
             icon={<DatabaseOutlined />}
             title="Đề tài"
-            onTitleClick={{}}
+            onTitleClick={handleProject}
           ></SubMenu>
           <SubMenu
             key="Don"

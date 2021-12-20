@@ -9,25 +9,28 @@
 }
 .div_Title{
     overflow: hidden;
-    max-height: 30px;
+    max-height: 32px;
 }
 .Title{
-
     font-weight: normal;
-    font-size: 20px;
+    font-size: 22px;
     color: #00649C;
 }
 
 .TimeAndAuthor{
-    margin-top: 10px;
+    margin-top: 5px;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 13px;
     font-style: italic;
 }
 .Content{
+    margin-top: 10px;
     font-weight: normal;
-    font-size: 13px;
+    font-size: 14px;
     color: black;
     overflow: hidden;
-    max-height: 60px;   
+    max-height: 65px;   
+}
+.Delete{
+    color: #ff0000;
 }

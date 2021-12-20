@@ -25,18 +25,7 @@ function* fetchPostSaga(action) {
     yield put(actions.getPosts.getPostsSuccess(posts.data));
   } catch (error) {
     console.log("error", error.response.data);
-      yield put(actions.getPosts.getPostsFailure(error.response.data));
-  }
-}
-
-function* findPostSaga(action) {
-  try {
-    console.log('[SAGA]',action.payload);
-    const Posts = yield call(api.findPosts, action.payload);
-    yield put(actions.findPosts.findPostsSuccess(Posts.data));
-  } catch (error) {
-    console.log("error", error.response.data);
-      yield put(actions.findPosts.findPostsFailure(error.response.data));
+    yield put(actions.getPosts.getPostsFailure(error.response.data));
   }
 }
 
@@ -46,10 +35,41 @@ function* createPostSaga(action) {
     yield put(actions.createPosts.createPostsSuccess(post.data));
   } catch (error) {
     console.log("error", error.response.data);
-      yield put(actions.createPosts.createPostsFailure(error.response.data));
+    yield put(actions.createPosts.createPostsFailure(error.response.data));
   }
 }
-//Posts
+
+function* deletePostSaga(action) {
+  try {
+    
+    const Posts = yield call(api.deletePosts, action.payload);
+    yield put(actions.deletePosts.deletePostsSuccess(Posts.data._id));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.deletePosts.deletePostsFailure(error.response.data));
+  }
+}
+
+function* updatePostSaga(action) {
+  try {
+    const Posts = yield call(api.updatePosts, action.payload);
+    yield put(actions.updatePosts.updatePostsSuccess(Posts.data));
+  } catch (err) {
+    yield put(
+      actions.updatePosts.updatePostsFailure(err.response.data)
+    );
+  }
+}
+//Project
+function* fetchProjectSaga(action) {
+  try {
+    const projects = yield call(api.fetchProjects);
+    yield put(actions.getProjects.getProjectsSuccess(projects.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.getProjects.getProjectsFailure(error.response.data));
+  }
+}
 
 function* mySaga() {
   //Login
@@ -58,8 +78,11 @@ function* mySaga() {
   //Posts
   yield takeLatest(actions.getPosts.getPostsRequest, fetchPostSaga);
   yield takeLatest(actions.createPosts.createPostsRequest, createPostSaga);
-  yield takeLatest(actions.findPosts.findPostsRequest, findPostSaga);
-  //Posts
+  yield takeLatest(actions.deletePosts.deletePostsRequest, deletePostSaga);
+  yield takeLatest(actions.updatePosts.updatePostsRequest, updatePostSaga);
+
+  //Projects
+  yield takeLatest(actions.getProjects.getProjectsRequest, fetchProjectSaga);
 }
 
 // generator function ES6
