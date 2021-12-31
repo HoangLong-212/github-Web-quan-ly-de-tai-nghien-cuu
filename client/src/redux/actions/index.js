@@ -70,6 +70,24 @@ export const getProjects = createActions({
   getProjectsSuccess: (payload)=>payload,
   getProjectsFailure: (err)=>err,
 })
+export const createProjects = createActions({
+  createProjectsRequest: (payload)=>payload,
+  createProjectsSuccess: (payload)=>payload,
+  createProjectsFailure: (err)=>err,
+})
+
 // Đăng ký đề tài
 export const showProjectModal = createAction("SHOW_CREATE_PROJECT_MODAL");
 export const hideProjectModal = createAction("HIDE_CREATE_PROJECT_MODAL");
+
+// Team
+export const getTeams = createActions({
+  getTeamsRequest: undefined,
+  getTeamsSuccess: (payload)=>payload,
+  getTeamsFailure: (err)=>err,
+})
+export const createTeams = createActions({
+  createTeamsRequest: (payload)=>payload,
+  createTeamsSuccess: (payload)=>payload,
+  createTeamsFailure: (err)=>err,
+})

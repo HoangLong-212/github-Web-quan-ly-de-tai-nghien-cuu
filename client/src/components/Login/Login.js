@@ -34,20 +34,8 @@ export default function Login() {
       if(!isLoggedIn){
         if (users) {
           localStorage.setItem("access_token", users.username)
-          if(users.role==="GiangVien"){
-            // history.push("/Home_GiangVien");
-            history.push("/Info_GiangVien");
-          }
-          else
-          {
-            if(users.role==="Admin"){
-              history.push("/Home_Admin");
-            }
-            else
-            {
-              history.push("/Home_Khoa");
-            }         
-          }
+          history.push("/Home");
+          
         }
       }
       

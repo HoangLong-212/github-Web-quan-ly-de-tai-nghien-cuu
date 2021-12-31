@@ -18,7 +18,7 @@ export const getInfo = async (req, res) => {
         //     infoa.save();
 
         const info = await InfoModel.find();
-        console.log("Info", info);
+       
         res.status(200).json(info);
     }
     catch (err){

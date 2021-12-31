@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { PostState$ } from "../../redux/selectors";
-import * as actions from "../../redux/actions";
 import { Layout } from "antd";
 import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
 import "./style.css";
@@ -13,9 +12,9 @@ export default function PostPage() {
   const url = window.location.pathname;
   const path = url.split("/").filter((x) => x);
 
+
   const posts = useSelector(PostState$);
-  console.log("[POSTS]", posts);
-  // console.log("[POSTS 1 ]", posts.title);
+
 
   const post = posts.find(function (post) {
     return post._id === path[1];

@@ -22,7 +22,7 @@ export default function ProjectPage() {
       <Content>
         <ProjectList />
         <DangKyModal/>
-        <Button type="primary" className="button" onClick={openProjectModal}>Đăng ký đề tài mới</Button>
+        <Button type="primary" className="DangKy" onClick={openProjectModal}>Đăng ký đề tài mới</Button>
       </Content>
     </Layout>
   );

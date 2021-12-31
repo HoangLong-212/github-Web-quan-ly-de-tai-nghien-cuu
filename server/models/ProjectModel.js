@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+const Schema = mongoose.Schema
 const schema = new mongoose.Schema(
   {
     MaDeTai:{
@@ -25,6 +25,7 @@ const schema = new mongoose.Schema(
       type: String,
       require: true,
       enum: ["Khoa", "Trường"],
+      default: "Khoa",
     },
     TinhTrang: {
       type: String,
@@ -38,10 +39,11 @@ const schema = new mongoose.Schema(
         "Đã hủy",
         "Đã nghiệm thu",
       ],
+      default: "Chờ Khoa duyệt",
     },
     Diem: {
-      type: String,
-      require: true,
+      type: Number,
+      // require: true,
     },
     Mota: {
       type: String,
@@ -49,12 +51,17 @@ const schema = new mongoose.Schema(
     },
     NgayBD: {
       type: Date,
-      //required: true,
+      required: true,
     },
     NgayKT: {
       type: Date,
-      //required: true,
+      required: true,
     },
+    idTeam:{
+      type: Schema.Types.ObjectId,
+      ref: 'Team',
+      required: true,
+    }
     
   },
   { timestamps: true }

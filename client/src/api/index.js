@@ -15,7 +15,10 @@ export const updatePosts = (payload) =>  axios.patch(`${URL}/posts/${payload._id
 
 //Project
 export const fetchProjects = () => axios.get(`${URL}/Projects`);
-
+export const createProjects = (payload) => axios.post(`${URL}/Projects`, payload);
+//Teams
+export const fetchTeams = () => axios.get(`${URL}/Teams`);
+export const createTeams = (payload) => axios.post(`${URL}/Teams`, payload);
 // export const createUser = (payload) =>
 //   axios.post(`${URL}/Users`, payload);
 

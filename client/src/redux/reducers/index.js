@@ -6,6 +6,7 @@ import modal from './modal';
 import Projects from './Projects';
 import Info from './Info';
 import InfoModal from './InfoModal'
+import Teams from './Teams'
 
 export default combineReducers({
     Logins,
@@ -14,6 +15,7 @@ export default combineReducers({
     Projects,
     InfoModal,
     Info,
+    Teams,
 })
 
 

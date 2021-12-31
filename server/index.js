@@ -7,6 +7,7 @@ import Logins from './routers/Logins.js'
 import Users from './routers/Users.js'
 import Projects from './routers/Projects.js'
 import Info from './routers/Info.js'
+import Teams from './routers/Teams.js'
 
 const app = express();
 const PORT = process.env.port || 5000;
@@ -23,6 +24,7 @@ app.use("/Login", Logins);
 app.use("/Users", Users);
 app.use("/Projects", Projects);
 app.use("/Info", Info);
+app.use("/Teams", Teams);
 
 mongoose
   .connect(URI, {

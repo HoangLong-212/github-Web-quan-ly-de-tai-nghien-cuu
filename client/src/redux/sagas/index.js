@@ -67,8 +67,36 @@ function* fetchProjectSaga(action) {
     yield put(actions.getProjects.getProjectsFailure(error.response.data));
   }
 }
-//Posts
 
+function* createProjectSaga(action) {
+  try {
+    console.log("SAGA",action.payload)
+    const projects = yield call(api.createProjects, action.payload);
+    yield put(actions.createProjects.createProjectsSuccess(projects.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.createProjects.createProjectsFailure(error.response.data));
+  }
+}
+//Team
+function* fetchTeamSaga(action) {
+  try {
+    const team = yield call(api.fetchTeams);
+    yield put(actions.getTeams.getTeamsSuccess(team.data));
+  } catch (err) {
+    yield put(actions.getTeams.getTeamsFailure(err));
+  }
+}
+
+function* createTeamSaga(action) {
+  try {
+    const team = yield call(api.createTeams, action.payload);
+    yield put(actions.createTeams.createTeamsSuccess(team.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.createTeams.createTeamsFailure(error.response.data));
+  }
+}
 //#region Info
 function* fetchInfoSaga(action) {
   try {
@@ -123,6 +151,11 @@ function* mySaga() {
 
   //Projects
   yield takeLatest(actions.getProjects.getProjectsRequest, fetchProjectSaga);
+  yield takeLatest(actions.createProjects.createProjectsRequest, createProjectSaga);
+
+  //Teams
+  yield takeLatest(actions.getTeams.getTeamsRequest, fetchTeamSaga);
+  yield takeLatest(actions.createTeams.createTeamsRequest, createTeamSaga);
 
   //Posts
 

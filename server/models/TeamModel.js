@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+const Schema = mongoose.Schema;
 const schema = new mongoose.Schema(
   {
     MaTeam: {
@@ -11,10 +11,44 @@ const schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    ChuNhiem:{
-        type: Object
-    }
-
+    idChuNhiem: {
+      type: Schema.Types.ObjectId,
+      ref: "Info",
+      required: true,
+    },
+    // ChuNhiem: {
+    //   type: Object (
+    //     {
+    //       idGV: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: "Info",
+    //         required: true,
+    //       },
+    //       // username: {
+    //       //   type: String,
+    //       //   required: true,
+    //       // },
+    //       // name: {
+    //       //   type: String,
+    //       //   required: true,
+    //       // },
+    //     }
+    //   )},
+    ThanhVien: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Info",
+        // required: true,
+        // username: {
+        //   type: String,
+        //   // required: true,
+        // },
+        // name: {
+        //   type: String,
+        //   // required: true,
+        // },
+      },
+    ],
   },
   { timestamps: true }
 );

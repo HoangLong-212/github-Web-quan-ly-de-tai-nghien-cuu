@@ -29,4 +29,8 @@ export const INIT_STATE = {
   InfoModal: {
     isShow: false,
   },
+  Teams:{
+    isLoading: false,
+    data: [],
+  }
 };

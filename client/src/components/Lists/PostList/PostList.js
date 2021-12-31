@@ -36,13 +36,13 @@ export default function PostList() {
         dataSource={new_posts}
         renderItem={(item) => (
           <List.Item
-            // actions={users.role === "GiangVien" ? null : ([             
-            //   <a key="list-loadmore-edit">edit</a>,
-            //   <a key="list-loadmore-more">delete</a>
-            // ])}
-             actions={[             
+            actions={users.role === "GiangVien" ? null : ([             
+              
               <a key="list-loadmore-more" onClick={()=>deletePost(item._id)} className="Delete" >Xóa</a>
-            ]}
+            ])}
+            //  actions={[             
+            //   <a key="list-loadmore-more" onClick={()=>deletePost(item._id)} className="Delete" >Xóa</a>
+            // ]}
           > 
             <List.Item.Meta
               key={item._id}
@@ -51,7 +51,7 @@ export default function PostList() {
                   <div className="div_Title">
                     <a
                       className="Title"
-                      onClick={()=> {history.push("/Home_Admin/"+ item._id)}}
+                      onClick={()=> {history.push("/Home/"+ item._id)}}
                     >
                       {item.title}
                     </a>

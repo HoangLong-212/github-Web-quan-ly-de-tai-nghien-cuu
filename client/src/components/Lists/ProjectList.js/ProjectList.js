@@ -36,6 +36,7 @@ export default function ProjectList() {
           bordered
           dataSource={new_projects}
           renderItem={(item) => (
+            
             <List.Item
               // actions={users.role === "GiangVien" ? null : ([             
               //   <a key="list-loadmore-edit">edit</a>,
@@ -52,11 +53,16 @@ export default function ProjectList() {
                     <div className="div_Title">
                       <a
                         className="Title"
-                        onClick={()=> {history.push("/Home_Admin/"+ item._id)}}
+                        onClick={()=> {history.push("/Project_GV/"+ item._id)}}
                       >
                         {item.TenDeTai}
                       </a>
                     </div>
+                    <div className="ChuNhiem">
+                      Chủ nhiệm: {item.idTeam.idChuNhiem.name}
+                    </div>
+                    <div>Lĩnh vực: {item.LinhVuc}</div>
+                    <div>Cấp độ: {item.Capdo}</div>
                     <d className="TimeAndAuthor">
                       {moment(item.NgayBD).format("HH:MM MMM DD, YYYY")} - {" "}
                       
