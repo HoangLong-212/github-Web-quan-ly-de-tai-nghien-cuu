@@ -30,7 +30,7 @@ export default function HomePage() {
       <Content>
         <PostList />
         <PostModal />
-        {user.role === "GiangVien" ? null : (
+        {user.role === "Giang Vien" ? null : (
           <Fab color="primary" className={classes.fab} onClick={openPostModal}>
             <AddIcon />
           </Fab>

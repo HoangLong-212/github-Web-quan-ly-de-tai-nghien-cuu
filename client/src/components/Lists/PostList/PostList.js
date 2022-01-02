@@ -36,7 +36,7 @@ export default function PostList() {
         dataSource={new_posts}
         renderItem={(item) => (
           <List.Item
-            actions={users.role === "GiangVien" ? null : ([             
+            actions={users.role === "Giang Vien" ? null : ([             
               
               <a key="list-loadmore-more" onClick={()=>deletePost(item._id)} className="Delete" >Xóa</a>
             ])}

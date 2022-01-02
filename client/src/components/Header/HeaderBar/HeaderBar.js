@@ -105,21 +105,21 @@ function Headerbar() {
           </SubMenu>
 
           {/* Cmt lại để code không bug */}
-          {/* {users.role !== "GiangVien" ? null : (
+          {users.role === "Giang Vien" ? null : (
               <SubMenu
                 key="TaiKhoan"
                 icon={<TeamOutlined />}
                 title="Tài khoản"
                 onTitleClick={{}}
               ></SubMenu>
-            )} */}
+            )}
 
-          <SubMenu
+          {/* <SubMenu
             key="TaiKhoan"
             icon={<TeamOutlined />}
             title="Tài khoản"
             onTitleClick={{}}
-          ></SubMenu>
+          ></SubMenu> */}
 
           {/* <SubMenu
               key="Account"

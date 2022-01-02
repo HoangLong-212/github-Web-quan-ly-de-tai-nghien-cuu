@@ -19,7 +19,7 @@ const schema = new mongoose.Schema(
     role: {
       type: String,
       required: true,
-      default: "GiangVien"
+      default: "Giang Vien"
     },
   },
   { timestamps: true }
