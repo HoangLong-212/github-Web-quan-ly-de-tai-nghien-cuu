@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Layout, Row, Col, Space, Button, Descriptions, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { showInfoModal } from "../../../redux/actions";
-import { InfoModalState$, InfoState$, LoginsState$} from "../../../redux/selectors";
+import { FacultyState$, InfoModalState$, InfoState$, LoginsState$} from "../../../redux/selectors";
 import* as actions from "../../../redux/actions";
 import InfoModal from "../../../components/InfoModal/InfoModal"
 import moment from "moment";
@@ -24,11 +24,17 @@ export default function InfoPage() {
 
   const info = useSelector(InfoState$);
 
+  const faculty = useSelector(FacultyState$);
+
   const users = useSelector(LoginsState$);
 
   const _info = info.find(function (info) {
     return info.username === users.username;  
   });
+
+  const _faculty = faculty.find(function(faculty){
+    return faculty.username === _info.facultyId;
+  })
 
   console.log("_info", _info)
 
@@ -51,8 +57,8 @@ export default function InfoPage() {
       <Descriptions.Item label="Trình độ">
          {_info.level}
        </Descriptions.Item>
-      <Descriptions.Item label="Mã khoa">  
-      {_info.facultyId}
+      <Descriptions.Item label="Khoa">  
+      {_faculty.name}
        </Descriptions.Item>
       <Descriptions.Item label="Diện hợp đồng"> 
       {_info.contract}
