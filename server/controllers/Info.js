@@ -3,29 +3,6 @@ import { InfoModel } from "../models/InfoModel.js";
 import { UserModel } from "../models/UserModel.js";
 
 export const getInfo = async (req, res) => {
-    // try {
-    //     //     const infoa = new InfoModel({
-    //     //     username: "GV05",
-    //     //     name: "Hoang",
-    //     //     faculty: "Công nghệ Phần mềm",
-    //     //     email: "19511538@gmailm",
-    //     //     contract: "Hợp đồng",
-    //     //     phoneNumber: "12346782112",
-    //     //     level: "Thạc sĩ",
-    //     //     dateOfBirth: new Date(),
-    //     //     facultyId: "",
-    //     // });
-    //     //     infoa.save();
-
-        
-
-    //     const info = await InfoModel.find();
-    //     console.log("Info", info);
-    //     res.status(200).json(info);
-    // }
-    // catch (err){
-    //     res.status(500).json({error: err});
-    // }
     try {
         await InfoModel.find()
           .populate({

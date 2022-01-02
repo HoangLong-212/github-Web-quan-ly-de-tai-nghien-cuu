@@ -25,16 +25,23 @@ export const INIT_STATE = {
     isShow: false,
   },
 
-    //region Info
+  Projects: {
+    isLoading: false,
+    data: [],
+  },
+  //region Info
+  
   Info:{
     isLoading: false,
     data: [],
   },
   InfoModal: {
-      isShow: false,
+    isShow: false,
   },
-
-    //region Info
+  Teams:{
+    isLoading: false,
+    data: [],
+  },
   Faculty:{
     isLoading: false,
     data: [],
@@ -47,4 +54,6 @@ export const INIT_STATE = {
     isShow: false,
   }
 };
+      
+
 

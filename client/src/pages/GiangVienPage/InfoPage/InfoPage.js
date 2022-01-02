@@ -23,6 +23,7 @@ export default function InfoPage() {
   //region Data Info
 
   const info = useSelector(InfoState$);
+  console.log("AAAA",info);
 
   const faculty = useSelector(FacultyState$);
 

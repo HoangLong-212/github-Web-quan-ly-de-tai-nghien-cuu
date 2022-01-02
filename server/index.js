@@ -5,7 +5,9 @@ import mongoose from "mongoose";
 import posts from "./routers/posts.js";
 import Logins from './routers/Logins.js'
 import Users from './routers/Users.js'
+import Projects from './routers/Projects.js'
 import Info from './routers/Info.js'
+import Teams from './routers/Teams.js'
 import Faculty from './routers/Faculty.js'
 
 const app = express();
@@ -20,7 +22,9 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 app.use("/posts", posts);
 app.use("/Login", Logins); 
 app.use("/Users", Users);
+app.use("/Projects", Projects);
 app.use("/Info", Info);
+app.use("/Teams", Teams);
 app.use("/Faculty", Faculty);
 
 mongoose

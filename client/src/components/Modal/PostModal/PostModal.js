@@ -3,7 +3,6 @@ import { Modal, TextField, Button, TextareaAutosize } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { ModalState$ } from "../../../redux/selectors";
 import useStyles from "./style";
-import TextArea from "antd/lib/input/TextArea";
 import FileBase64 from "react-file-base64";
 import { createPosts, hideModal } from "../../../redux/actions";
 

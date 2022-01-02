@@ -1,0 +1,74 @@
+body {
+  background-color: #f0f2f5;
+}
+.InfoProject {
+  width: 60%;
+  height: 75%;
+  position: relative;
+  background-color: #ffffff;
+  margin-left: 20%;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+.DangKy {
+  position: absolute;
+  left: 7%;
+  top: 30%;
+}
+.h3 {
+  margin: 0px 0px 0px 25px;
+}
+.LinhVuc {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 3px 0px 0px 25px;
+}
+.status {
+  font-size: 13px;
+  font-style: italic;
+  font-weight: bold;
+  color: #1abc00;
+}
+.timeandstatus {
+  margin: 3px 0px 10px 0px;
+}
+.time {
+  margin: 5px 0px 0px 25px;
+  font-weight: normal;
+  font-size: 13px;
+  font-style: italic;
+}
+.Mota {
+  margin: 0px 25px 20px 25px;
+  font-weight: normal;
+  font-size: 14px;
+  color: black;
+}
+.h4 {
+  margin: 20px 0px 0px 0px;
+}
+.NgayKT {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #ff8282;
+}
+.ButtonDuyet {
+  position: absolute;
+  /* margin-left: 75%;
+  margin-bottom: 5%; */
+  right: 2%;
+}
+.ButtonHuy {
+  position: relative;
+  margin-left: 76%;
+  /* margin-right: auto; */
+  margin-bottom: 1.5%;
+  /* left: 100%; */
+}
+.TenDeTai {
+  position: relative;
+  margin: 10px 25px 0px 25px;
+  font-weight: normal;
+  font-size: 22px;
+  color: #00649c;
+}
