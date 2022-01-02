@@ -47,7 +47,6 @@ export default function InfoPage() {
         </Descriptions.Item>
       <Descriptions.Item label="Ngày sinh" >
         {moment(_info.dateOfBirth).format("DD/MM/YYYY")}
-        {/* {_info.dateOfBirth} */}
       </Descriptions.Item>
       <Descriptions.Item label="Số điện thoại">
          {_info.phoneNumber} 

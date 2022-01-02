@@ -10,7 +10,7 @@ import PostList from "../../components/Lists/PostList/PostList";
 import PostModal from "../../components/Modal/PostModal/PostModal";
 import { showModal } from "../../redux/actions";
 import { InfoState$, LoginsState$ } from "../../redux/selectors";
-import* as actions from "../../../redux/actions";
+import *as actions from "../../redux/actions"
 
 const { Content, Header } = Layout;
 export default function HomePage() {

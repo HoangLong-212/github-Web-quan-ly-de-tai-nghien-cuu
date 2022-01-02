@@ -15,6 +15,8 @@ import PostPage from "./pages/PostPage/PostPage";
 
 import React from "react";
 import InfoProjectPage from "./pages/GiangVienPage/ProjectPage/InfoProjectPage";
+import User_Page from "./pages/UserPage/UserPage";
+import UserPage from "./pages/UserPage/UserPage";
 
 function App() {
 
@@ -28,6 +30,7 @@ function App() {
           <Route path="/Home/:id"  exact component={PostPage} />
           <Route path="/Info_GiangVien" exact component={Info_GiangVien} />
           <Route path="/Project_GV/:id"  exact component={InfoProjectPage} />
+          <Route path="/User_Page"  exact component={UserPage} />
           <Route>
             <Notfound/>
           </Route>
