@@ -33,23 +33,6 @@ function App() {
           </Route>
         </Switch>
       </Router>
-      {/* <Router>
-        <Switch>
-          <Route path="/" exact component={LoginPage} />
-          <Layout>
-            <Header>
-              <HeaderBar />
-            </Header>
-          </Layout>
-          <PrivateRoute path="/Home_Admin" exact component={HomePage_Admin} />
-          <PrivateRoute
-            path="/Home_GiangVien"
-            exact
-            component={HomePage_GiangVien}
-          />
-          <PrivateRoute path="/Home_Khoa" exact component={HomePage_Khoa} />
-        </Switch>
-      </Router> */}
     </div>
   );
 }

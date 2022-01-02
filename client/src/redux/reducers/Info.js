@@ -12,42 +12,46 @@ export default function InfoReducers(state = INIT_STATE.Info, action) {
         isLoading: true,
       };
     case getType(getInfo.getInfoSuccess):
+
+      // messageSuccess("Lấy info thành công")
       return {
         ...state,
         isLoading: false,
         data: action.payload,  
       };
     case getType(getInfo.getInfoFailure):
+
+      messageError("Lấy info thất bại")
       return {
         ...state,
         isLoading: false,
       };
 
       case getType(createInfo.createInfoSuccess):
-        messageSuccess("Thêm mới thành công");
+        // messageSuccess("Thêm mới thông tin thành công");
         return {
           ...state,
-          // isLoading: false,
+          isLoading: false,
           data: [...state.data, action.payload],
         };
       case getType(createInfo.createInfoFailure):
-        messageError(action.payload);
+        messageError("Thêm mới thông tin thất bại");
         return {
           ...state,
           isLoading: false,
         };
 
     case getType(updateInfo.updateInfoSuccess):
-      messageSuccess("Chỉnh sửa thành công");
+      messageSuccess("Chỉnh sửa thông tin thành công");
       return {
         ...state,
-        // isLoading: false,
+        isLoading: false,
         data: state.data.map((info) =>
           info._id === action.payload._id ? action.payload : info
         ),
       };
       case getType(updateInfo.updateInfoFailure):
-        messageError(action.payload);
+        messageError("Chỉnh sửa thông tin thất bại");
         return {
           ...state,
           isLoading: false,
