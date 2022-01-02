@@ -10,6 +10,7 @@ export const getInfo = async (req, res) => {
           })
           .exec()
           .then((info) => {
+              console.log("Info", info);
             res.status(200).json(info);
           });
         // const info = await InfoModel.find();

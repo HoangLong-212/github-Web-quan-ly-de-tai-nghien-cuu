@@ -53,7 +53,7 @@ export default function InfoPage() {
          {_info.level}
        </Descriptions.Item>
       <Descriptions.Item label="Mã khoa">  
-      {_info.facultyId}
+      {/* {_info.facultyId} */}
        </Descriptions.Item>
       <Descriptions.Item label="Diện hợp đồng"> 
       {_info.contract}

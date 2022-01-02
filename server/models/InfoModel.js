@@ -46,9 +46,9 @@ const schema = new mongoose.Schema(
             // default: "Cử nhân"
         },
         facultyId: {
-            // type: Schema.Types.ObjectId,
-            // ref: "Faculty",
-            type: String,
+            type: Schema.Types.ObjectId,
+            // type: String,
+            ref: "Faculty",  
         }
         // Image: String
     }

@@ -12,7 +12,7 @@ export const getFaculty = async (req, res) => {
         //     infoa.save();
 
         const faculty = await FacultyModel.find();
-        console.log("Faculty", faculty);
+        // console.log("Faculty", faculty);
         res.status(200).json(faculty);
     }
     catch (err){
@@ -23,7 +23,7 @@ export const getFaculty = async (req, res) => {
 export const createFaculty = async (req, res) => {
     try{
         const newFaculty = req.body;
-        console.log("[faculty]", newFaculty);
+        // console.log("[faculty]", newFaculty);
         const Faculty = new FacultyModel(newFaculty);
         await Faculty.save();
         res.status(200).json(Faculty);

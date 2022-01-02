@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 
 import ProjectPage_GV from "./pages/GiangVienPage/ProjectPage/ProjectPage"
 import Info_GiangVien  from "./pages/GiangVienPage/InfoPage/InfoPage"
-
+import UserPage from "./pages/UserPage/UserPage";
 import { PrivateRoute } from "./components/PrivateRoute";
 import Notfound from "./components/Notfound";
 import "./App.css";
@@ -28,6 +28,7 @@ function App() {
           <Route path="/Home/:id"  exact component={PostPage} />
           <Route path="/Info_GiangVien" exact component={Info_GiangVien} />
           <Route path="/Project_GV/:id"  exact component={InfoProjectPage} />
+          <Route path="/User_Page" exact component={UserPage} />
           <Route>
             <Notfound/>
           </Route>

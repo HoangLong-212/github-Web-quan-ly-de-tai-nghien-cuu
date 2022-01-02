@@ -112,13 +112,14 @@ function Headerbar() {
           </SubMenu>
 
           {/* Cmt lại để code không bug */}
-          {/* {users.role !== "GiangVien" ? null : (
+          {/* {users.role === "Giang Vien" ? null : (
               <SubMenu
                 key="TaiKhoan"
                 icon={<TeamOutlined />}
                 title="Tài khoản"
-                onTitleClick={{}}
-              ></SubMenu>
+                onTitleClick={handleUser}
+                ></SubMenu>
+      
             )} */}
 
           <SubMenu
@@ -127,7 +128,7 @@ function Headerbar() {
             title="Tài khoản"
             onTitleClick={handleUser}
           ></SubMenu>
-
+            
           {/* <SubMenu
               key="Account"
               title="0585502434"

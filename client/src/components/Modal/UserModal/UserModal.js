@@ -52,7 +52,7 @@ export default function UserModal({currentId, setCurrentId}) {
     // console.log("...", _faculty)
     const Options = Faculty.map((data) => {
       var o = Object.assign({});
-      o.value = data.username;
+      o.value = data._id;
       o.label = `${data.name + " - " + data.username}`;
       return o;
     });
