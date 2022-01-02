@@ -7,6 +7,14 @@ export const INIT_STATE = {
     isAuthenticated: false,
     user: null,
   },
+  //Region User
+  User:{
+    isLoading: false,
+    data: [],
+},
+  UserModal: {
+      isShow: false,
+  },
 
   Posts: {
     isLoading: false,
@@ -22,7 +30,8 @@ export const INIT_STATE = {
     data: [],
   },
   //region Info
-  Info: {
+  
+  Info:{
     isLoading: false,
     data: [],
   },
@@ -32,5 +41,19 @@ export const INIT_STATE = {
   Teams:{
     isLoading: false,
     data: [],
+  },
+  Faculty:{
+    isLoading: false,
+    data: [],
+  },
+  FacultyModal: {
+      isShow: false,
+  },
+
+  UpdateUserModal: {
+    isShow: false,
   }
 };
+      
+
+

@@ -34,9 +34,16 @@ function Headerbar() {
     history.push("/Project_GV");
   }
 
+  const handleUser = React.useCallback(()=>{
+    history.push("/User_Page");
+  })
   // const users = useSelector(LoginsState$);
 
   // const isAuthenticated = useSelector(LoginsState_isAuthenticated$);
+
+  const TKclick = React.useCallback(()=>{
+    history.push("/Info_GiangVien");
+  })
 
   const onClick = React.useCallback(() => {   
     dispatch(actions.login.logoutRequest());
@@ -105,22 +112,23 @@ function Headerbar() {
           </SubMenu>
 
           {/* Cmt lại để code không bug */}
-          {users.role === "Giang Vien" ? null : (
+          {/* {users.role === "Giang Vien" ? null : (
               <SubMenu
                 key="TaiKhoan"
                 icon={<TeamOutlined />}
                 title="Tài khoản"
-                onTitleClick={{}}
-              ></SubMenu>
-            )}
+                onTitleClick={handleUser}
+                ></SubMenu>
+      
+            )} */}
 
-          {/* <SubMenu
+          <SubMenu
             key="TaiKhoan"
             icon={<TeamOutlined />}
             title="Tài khoản"
-            onTitleClick={{}}
-          ></SubMenu> */}
-
+            onTitleClick={handleUser}
+          ></SubMenu>
+            
           {/* <SubMenu
               key="Account"
               title="0585502434"
@@ -139,7 +147,7 @@ function Headerbar() {
           className="account"
         >
           <SubMenu key="account" title="0585502434" icon={<UserOutlined />}>
-            <Menu.Item key="subitem1">Tài khoản</Menu.Item>
+            <Menu.Item key="subitem1" onClick={TKclick}>Tài khoản</Menu.Item>
             <Menu.Item key="subitem2" onClick={onClick}>Đăng xuất</Menu.Item>
           </SubMenu>
         </Menu>

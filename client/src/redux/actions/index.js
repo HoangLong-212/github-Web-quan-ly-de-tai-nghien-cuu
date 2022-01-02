@@ -13,6 +13,32 @@ export const login = createActions({
   logoutRequest: undefined,
 });
 
+//region User
+
+export const getUser = createActions({
+  getUserRequest: undefined,
+  getUserSuccess: (payload) => payload,
+  getUserFailure: (err) => err,
+});
+
+export const createUser = createActions({
+  createUserRequest: (payload) => payload,
+  createUserSuccess: (payload) => payload,
+  createUserFailure: (err) => err,
+});
+
+export const updateUser = createActions({
+  updateUserRequest: undefined,
+  updateUserSuccess: (payload) => payload,
+  updateUserFailure: (err) => err,
+});
+
+export const showUserModal = createAction("SHOW_USER_MODAL");
+export const hideUserModal = createAction("HIDE_USER_MODAL");
+
+export const showUpdateUserModal = createAction("SHOW_UPDATE_USER_MODAL");
+export const hideUpdateUserModal = createAction("HIDE_UPDATE_USER_MODAL");
+
 //region info GiangVien
 export const getInfo = createActions({
   getInfoRequest: undefined,
@@ -34,6 +60,30 @@ export const updateInfo = createActions({
 
 export const showInfoModal = createAction("SHOW_INFO_MODAL");
 export const hideInfoModal = createAction("HIDE_INFO_MODAL");
+
+//region Khoa
+export const getFaculty = createActions({
+  getFacultyRequest: undefined,
+  getFacultySuccess: (payload) => payload,
+  getFacultyFailure: (err) => err,
+});
+
+export const createFaculty = createActions({
+  createFacultyRequest: (payload) => payload,
+  createFacultySuccess: (payload) => payload,
+  createFacultyFailure: (err) => err,
+});
+
+export const updateFaculty = createActions({
+  updateFacultyRequest: undefined,
+  updateFacultySuccess: (payload) => payload,
+  updateFacultyFailure: (err) => err,
+});
+
+export const showFacultyModal = createAction("SHOW_FACULTY_MODAL");
+export const hideFacultyModal = createAction("HIDE_FACULTY_MODAL");
+
+
 //#endregion 
 export const getPosts = createActions({
   getPostsRequest: undefined,

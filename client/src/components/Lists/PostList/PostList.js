@@ -9,9 +9,11 @@ import { useHistory } from "react-router-dom";
 
 export default function PostList() {
   const dispatch = useDispatch();
+
   const posts = useSelector(PostState$);
   
   let new_posts = posts.slice().reverse();
+
 
   const users = useSelector(LoginsState$);
 
@@ -24,8 +26,6 @@ export default function PostList() {
     dispatch(actions.deletePosts.deletePostsRequest(id)) 
     // console .log("[ID]",id);
   }
-
-
 
 
   return (

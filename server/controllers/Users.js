@@ -2,12 +2,32 @@ import { UserModel } from "../models/UserModel.js";
 
 export const getUser = async (req, res) => {
   try {
-    // const user = new UserModel({
-    //   username: "Hon",
+    // const user1 = new UserModel({
+    //   username: "admin",
     //   password: "123",
-    //   role: "Khoa",
+    //   role: "Admin",
     // });
-    // user.save();
+    // user1.save();
+    // const user2 = new UserModel({
+    //   username: "GV03",
+    //   password: "123",
+    //   role: "Giang Vien",
+    // });
+    // user2.save();
+    // const user3 = new UserModel({
+    //   username: "GV04",
+    //   password: "123",
+    //   role: "Giang Vien",
+    // });
+    // user3.save();
+    // const user4 = new UserModel({
+    //   username: "GV05",
+    //   password: "123",
+    //   role: "Giang Vien",
+    // });
+    // user4.save();
+    
+
     const Users = await UserModel.find();
 
     res.status(200).json(Users);
@@ -17,14 +37,14 @@ export const getUser = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
-  const { newUsername, newPassword, newRole } = req.body;
-
-  if (!newUsername || !newPassword) {
-    return res.status(400).send("Chưa có tài khoản hoặc mật khẩu");
-  }
   try {
+    // const { newUsername, newPassword, newRole } = req.body;
+    const newUser = req.body;
+  //     if (!newUsername || !newPassword) {
+  //   return res.status(400).send("Chưa có tài khoản hoặc mật khẩu");
+  // }
     // Check for existing user
-    const user = await UserModel.findOne({ username: newUsername });
+    const user = await UserModel.findOne({ username: newUser.username });
     if (user) {
       return res
         .status(400)
@@ -32,14 +52,17 @@ export const createUser = async (req, res) => {
     }
     /* Mã hóa password
           const hashedPassword = await argon2.hashed(newPassword), */
-
-    const User = new UserModel(newUsername, newPassword, newRole);
+    const User = new UserModel({
+      username: newUser.username, 
+      password: newUser.password, 
+      role: newUser.role,
+    });
     await User.save();
 
-    res.status(200).json(User);
+    res.status(200).json({success: true, message: "Created"});
   } catch (error) {
-    res.status(500).json({ error: err });
-    next();
+    res.status(500).json({ error: error });
+    // next();
   }
 };
 

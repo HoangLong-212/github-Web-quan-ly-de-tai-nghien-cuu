@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 
 import ProjectPage_GV from "./pages/GiangVienPage/ProjectPage/ProjectPage"
 import Info_GiangVien  from "./pages/GiangVienPage/InfoPage/InfoPage"
-
+import UserPage from "./pages/UserPage/UserPage";
 import { PrivateRoute } from "./components/PrivateRoute";
 import Notfound from "./components/Notfound";
 import "./App.css";
@@ -28,28 +28,12 @@ function App() {
           <Route path="/Home/:id"  exact component={PostPage} />
           <Route path="/Info_GiangVien" exact component={Info_GiangVien} />
           <Route path="/Project_GV/:id"  exact component={InfoProjectPage} />
+          <Route path="/User_Page" exact component={UserPage} />
           <Route>
             <Notfound/>
           </Route>
         </Switch>
       </Router>
-      {/* <Router>
-        <Switch>
-          <Route path="/" exact component={LoginPage} />
-          <Layout>
-            <Header>
-              <HeaderBar />
-            </Header>
-          </Layout>
-          <PrivateRoute path="/Home_Admin" exact component={HomePage_Admin} />
-          <PrivateRoute
-            path="/Home_GiangVien"
-            exact
-            component={HomePage_GiangVien}
-          />
-          <PrivateRoute path="/Home_Khoa" exact component={HomePage_Khoa} />
-        </Switch>
-      </Router> */}
     </div>
   );
 }

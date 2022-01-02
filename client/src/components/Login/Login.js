@@ -19,12 +19,13 @@ export default function Login() {
 
   const users = useSelector(LoginsState$);
 
-  console.log("aaaa", users);
+
 
   const isLoggedIn = Boolean(localStorage.getItem('access_token'));
 
   const onFinish = React.useCallback(() => {
     dispatch(login.loginRequest(data));
+   
   }, [data, dispatch]);
 
 

@@ -19,7 +19,7 @@ const schema = new mongoose.Schema(
     role: {
       type: String,
       required: true,
-      default: "Giang Vien"
+      enum: ['Khoa', 'Giang Vien','Admin'],
     },
   },
   { timestamps: true }
