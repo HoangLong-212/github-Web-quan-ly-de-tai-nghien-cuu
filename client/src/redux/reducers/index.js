@@ -1,21 +1,22 @@
 import { combineReducers } from "redux";
 import Logins from './Logins';
-<<<<<<< HEAD
-import Posts from './Posts'
-import modal from './modal'
+
+import Posts from './Posts';
+import modal from './modal';
+import Projects from './Projects';
+import Info from './Info';
+import InfoModal from './InfoModal'
+import Teams from './Teams'
 
 export default combineReducers({
     Logins,
     Posts,
     modal,
-})
-=======
-import Info from './Info';
-import InfoModal from './InfoModal'
-
-export default combineReducers({
-    Logins, 
+    Projects,
     InfoModal,
     Info,
-});
->>>>>>> origin/Hon
+    Teams,
+})
+
+
+

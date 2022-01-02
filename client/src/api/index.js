@@ -4,14 +4,21 @@ const URL = "http://localhost:5000";
 
 //Login
 export const login = (payload) => axios.post(`${URL}/Login`, payload);
-<<<<<<< HEAD
+
 
 //Posts
 export const fetchPosts = () => axios.get(`${URL}/posts`);
 export const findPosts = (payload) => axios.post(`${URL}/posts`, payload);
 export const createPosts = (payload) => axios.post(`${URL}/posts`, payload);
+export const deletePosts = (id) => axios.delete(`${URL}/posts/${id}`);
+export const updatePosts = (payload) =>  axios.patch(`${URL}/posts/${payload._id}`, payload);
 
-=======
+//Project
+export const fetchProjects = () => axios.get(`${URL}/Projects`);
+export const createProjects = (payload) => axios.post(`${URL}/Projects`, payload);
+//Teams
+export const fetchTeams = () => axios.get(`${URL}/Teams`);
+export const createTeams = (payload) => axios.post(`${URL}/Teams`, payload);
 // export const createUser = (payload) =>
 //   axios.post(`${URL}/Users`, payload);
 
@@ -22,4 +29,4 @@ export const fetchInfo = () => axios.get(`${URL}/Info`);
 export const createInfo = (payload) => axios.post(`${URL}/Info`, payload);
 export const updateInfo = (payload) => axios.patch(`${URL}/Info/${payload._id}`, payload);
 //#endregion
->>>>>>> origin/Hon
+

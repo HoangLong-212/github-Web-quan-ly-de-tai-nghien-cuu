@@ -10,23 +10,21 @@
 }
 
 .title{
-    margin: 10px 15px 0px 15px;
+    margin: 10px 25px 0px 25px;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 22px;
     color: #00649C;
 }
 .timeAndAuthor{
-    margin: 5px 15px 0px 15px;
+    margin: 5px 25px 0px 25px;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 13px;
     font-style: italic;
 }
 
 .content{
-    margin: 15px 15px 0px 15px;
+    margin: 15px 25px 0px 25px;
     font-weight: normal;
-    font-size: 13px;
+    font-size: 14px;
     color: black;
-    overflow: hidden;
-    max-height: 60px;   
 }

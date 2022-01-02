@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import * as actions from "../actions";
-import * as api from "../../api"
+import * as api from "../../api";
 
 //Login
 function* loginSaga(action) {
@@ -16,7 +16,6 @@ function* loginSaga(action) {
   }
 }
 
-<<<<<<< HEAD
 //Login
 
 //Posts
@@ -26,18 +25,7 @@ function* fetchPostSaga(action) {
     yield put(actions.getPosts.getPostsSuccess(posts.data));
   } catch (error) {
     console.log("error", error.response.data);
-      yield put(actions.getPosts.getPostsFailure(error.response.data));
-  }
-}
-
-function* findPostSaga(action) {
-  try {
-    console.log('[SAGA]',action.payload);
-    const Posts = yield call(api.findPosts, action.payload);
-    yield put(actions.findPosts.findPostsSuccess(Posts.data));
-  } catch (error) {
-    console.log("error", error.response.data);
-      yield put(actions.findPosts.findPostsFailure(error.response.data));
+    yield put(actions.getPosts.getPostsFailure(error.response.data));
   }
 }
 
@@ -47,11 +35,68 @@ function* createPostSaga(action) {
     yield put(actions.createPosts.createPostsSuccess(post.data));
   } catch (error) {
     console.log("error", error.response.data);
-      yield put(actions.createPosts.createPostsFailure(error.response.data));
+    yield put(actions.createPosts.createPostsFailure(error.response.data));
   }
 }
-//Posts
-=======
+
+function* deletePostSaga(action) {
+  try {
+    const Posts = yield call(api.deletePosts, action.payload);
+    yield put(actions.deletePosts.deletePostsSuccess(Posts.data._id));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.deletePosts.deletePostsFailure(error.response.data));
+  }
+}
+
+function* updatePostSaga(action) {
+  try {
+    const Posts = yield call(api.updatePosts, action.payload);
+    yield put(actions.updatePosts.updatePostsSuccess(Posts.data));
+  } catch (err) {
+    yield put(actions.updatePosts.updatePostsFailure(err.response.data));
+  }
+}
+//Project
+function* fetchProjectSaga(action) {
+  try {
+    const projects = yield call(api.fetchProjects);
+    yield put(actions.getProjects.getProjectsSuccess(projects.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.getProjects.getProjectsFailure(error.response.data));
+  }
+}
+
+function* createProjectSaga(action) {
+  try {
+    console.log("SAGA",action.payload)
+    const projects = yield call(api.createProjects, action.payload);
+    yield put(actions.createProjects.createProjectsSuccess(projects.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.createProjects.createProjectsFailure(error.response.data));
+  }
+}
+//Team
+function* fetchTeamSaga(action) {
+  try {
+    const team = yield call(api.fetchTeams);
+    yield put(actions.getTeams.getTeamsSuccess(team.data));
+  } catch (err) {
+    yield put(actions.getTeams.getTeamsFailure(err));
+  }
+}
+
+function* createTeamSaga(action) {
+  try {
+    const team = yield call(api.createTeams, action.payload);
+    yield put(actions.createTeams.createTeamsSuccess(team.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.createTeams.createTeamsFailure(error.response.data));
+  }
+}
 //#region Info
 function* fetchInfoSaga(action) {
   try {
@@ -68,9 +113,7 @@ function* createInfoSaga(action) {
     const Info = yield call(api.createInfo, action.payload);
     yield put(actions.createInfo.createInfoSuccess(Info.data));
   } catch (error) {
-    yield put(
-      actions.createInfo.createInfoFailure(error.response.data)
-    );
+    yield put(actions.createInfo.createInfoFailure(error.response.data));
   }
 }
 
@@ -79,12 +122,9 @@ function* updateInfoSaga(action) {
     const Info = yield call(api.updateInfo, action.payload);
     yield put(actions.updateInfo.updateInfoSuccess(Info.data));
   } catch (error) {
-    yield put(
-      actions.updateInfo.updateInfoFailure(error.response.data)
-    );
+    yield put(actions.updateInfo.updateInfoFailure(error.response.data));
   }
 }
-
 
 //#region TaiKhoan
 // function* fetchTaiKhoansSaga(action) {
@@ -98,37 +138,34 @@ function* updateInfoSaga(action) {
 //     }
 //   }
 //   // #endregion
->>>>>>> origin/Hon
 
 function* mySaga() {
   //Login
   yield takeLatest(actions.login.loginRequest, loginSaga);
 
-<<<<<<< HEAD
   //Posts
   yield takeLatest(actions.getPosts.getPostsRequest, fetchPostSaga);
   yield takeLatest(actions.createPosts.createPostsRequest, createPostSaga);
-  yield takeLatest(actions.findPosts.findPostsRequest, findPostSaga);
+  yield takeLatest(actions.deletePosts.deletePostsRequest, deletePostSaga);
+  yield takeLatest(actions.updatePosts.updatePostsRequest, updatePostSaga);
+
+  //Projects
+  yield takeLatest(actions.getProjects.getProjectsRequest, fetchProjectSaga);
+  yield takeLatest(actions.createProjects.createProjectsRequest, createProjectSaga);
+
+  //Teams
+  yield takeLatest(actions.getTeams.getTeamsRequest, fetchTeamSaga);
+  yield takeLatest(actions.createTeams.createTeamsRequest, createTeamSaga);
+
   //Posts
-=======
+
   //region Info
-  yield takeLatest(
-    actions.getInfo.getInfoRequest,
-    fetchInfoSaga
-  );
+  yield takeLatest(actions.getInfo.getInfoRequest, fetchInfoSaga);
 
-  yield takeLatest(
-    actions.createInfo.createInfoRequest,
-    createInfoSaga
-  );
+  yield takeLatest(actions.createInfo.createInfoRequest, createInfoSaga);
 
-  yield takeLatest(
-    actions.updateInfo.updateInfoRequest,
-    updateInfoSaga
-  );
->>>>>>> origin/Hon
+  yield takeLatest(actions.updateInfo.updateInfoRequest, updateInfoSaga);
 }
-
 
 // generator function ES6
 
