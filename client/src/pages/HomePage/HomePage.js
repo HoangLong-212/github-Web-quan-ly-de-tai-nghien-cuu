@@ -9,17 +9,22 @@ import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
 import PostList from "../../components/Lists/PostList/PostList";
 import PostModal from "../../components/Modal/PostModal/PostModal";
 import { showModal } from "../../redux/actions";
-import { LoginsState$ } from "../../redux/selectors";
+import { InfoState$, LoginsState$ } from "../../redux/selectors";
+import* as actions from "../../../redux/actions";
 
 const { Content, Header } = Layout;
 export default function HomePage() {
   const classes = useStyles();
 
   const user = useSelector(LoginsState$);
+  const info = useSelector(InfoState$);
 
   const dispatch = useDispatch();
   const openPostModal = React.useCallback(() => {
     dispatch(showModal());
+  }, [dispatch]);
+  React.useEffect(() => {
+    dispatch(actions.getInfo.getInfoRequest());
   }, [dispatch]);
 
   return (
@@ -30,7 +35,7 @@ export default function HomePage() {
       <Content>
         <PostList />
         <PostModal />
-        {user.role === "GiangVien" ? null : (
+        {user.role === "Giang Vien" ? null : (
           <Fab color="primary" className={classes.fab} onClick={openPostModal}>
             <AddIcon />
           </Fab>

@@ -9,9 +9,11 @@ import { useHistory } from "react-router-dom";
 
 export default function PostList() {
   const dispatch = useDispatch();
+
   const posts = useSelector(PostState$);
   
   let new_posts = posts.slice().reverse();
+
 
   const users = useSelector(LoginsState$);
 
@@ -26,8 +28,6 @@ export default function PostList() {
   }
 
 
-
-
   return (
     <div className="List">
       <List
@@ -36,7 +36,7 @@ export default function PostList() {
         dataSource={new_posts}
         renderItem={(item) => (
           <List.Item
-            actions={users.role === "GiangVien" ? null : ([             
+            actions={users.role === "Giang Vien" ? null : ([             
               
               <a key="list-loadmore-more" onClick={()=>deletePost(item._id)} className="Delete" >Xóa</a>
             ])}

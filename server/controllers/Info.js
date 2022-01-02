@@ -4,45 +4,38 @@ import { UserModel } from "../models/UserModel.js";
 
 export const getInfo = async (req, res) => {
     try {
-        //     const infoa = new InfoModel({
-        //     username: "long",
-        //     name: "Hoang",
-        //     faculty: "Công nghệ Phần mềm",
-        //     email: "19511538@gmail.com",
-        //     contract: "Hợp đồng",
-        //     phoneNumber: "12345678",
-        //     level: "Thạc sĩ",
-        //     dateOfBirth: new Date(),
-        //     facultyId: "",
-        // });
-        //     infoa.save();
-
-        const info = await InfoModel.find();
-       
-        res.status(200).json(info);
-    }
-    catch (err){
-        res.status(500).json({error: err});
-    }
+        await InfoModel.find()
+          .populate({
+            path: "facultyId",
+          })
+          .exec()
+          .then((info) => {
+            res.status(200).json(info);
+          });
+        // const info = await InfoModel.find();
+        // console.log("Info", info);
+        // res.status(200).json(info);
+      } catch (err) {
+        res.status(500).json({ error: err });
+      }
 };
 
 export const createInfo = async (req, res) => {
     try{
         const newInfo = req.body;
-        const Info = new InfoModel(newInfo);
+        console.log("[INFO]", newInfo);
+        const Info = new InfoModel (newInfo);
+        // const Info = new InfoModel (newInfo);
         await Info.save();
-        
         res.status(200).json(Info);
     }
     catch (err) {
         res.status(500).json({error: err});
-        next();
+        // next();
     }
 };
 
 export const updateInfo = async (req, res) => {
-
-    res.send("Update");
     try{
         const updateInfo = req.body;
         const info = await InfoModel.findOneAndUpdate(

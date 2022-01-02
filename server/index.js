@@ -8,6 +8,7 @@ import Users from './routers/Users.js'
 import Projects from './routers/Projects.js'
 import Info from './routers/Info.js'
 import Teams from './routers/Teams.js'
+import Faculty from './routers/Faculty.js'
 
 const app = express();
 const PORT = process.env.port || 5000;
@@ -18,13 +19,13 @@ app.use(cors());
 app.use(bodyParser.json({limit: "30mb"}));
 app.use(bodyParser.urlencoded({ extended: true, limit: "30mb" }));
 
-
 app.use("/posts", posts);
 app.use("/Login", Logins); 
 app.use("/Users", Users);
 app.use("/Projects", Projects);
 app.use("/Info", Info);
 app.use("/Teams", Teams);
+app.use("/Faculty", Faculty);
 
 mongoose
   .connect(URI, {
