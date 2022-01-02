@@ -24,7 +24,7 @@ export default function PostModal() {
     dispatch(hideModal());
     setData({
       title: '',
-      content: '',
+      content: '',  
       attachment: '',
     })
   }, [dispatch]);

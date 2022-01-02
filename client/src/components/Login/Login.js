@@ -19,13 +19,13 @@ export default function Login() {
 
   const users = useSelector(LoginsState$);
 
-  console.log("aaaa", users);
+
 
   const isLoggedIn = Boolean(localStorage.getItem('access_token'));
 
   const onFinish = React.useCallback(() => {
     dispatch(login.loginRequest(data));
-    console.log("------")
+   
   }, [data, dispatch]);
 
 
@@ -35,9 +35,9 @@ export default function Login() {
       if(!isLoggedIn){
         if (users) {
           localStorage.setItem("access_token", users.username)
-          if(users.role==="GiangVien"){
+          if(users.role==="Giang Vien"){
             // history.push("/Home_GiangVien");
-            history.push("/Info_GiangVien");
+            history.push("/Home_GiangVien");
           }
           else
           {

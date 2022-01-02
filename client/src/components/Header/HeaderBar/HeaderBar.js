@@ -31,9 +31,16 @@ function Headerbar() {
     history.push("/Home_Admin");
   };
 
+  const handleUser = React.useCallback(()=>{
+    history.push("/User_Page");
+  })
   // const users = useSelector(LoginsState$);
 
   // const isAuthenticated = useSelector(LoginsState_isAuthenticated$);
+
+  const TKclick = React.useCallback(()=>{
+    history.push("/Info_GiangVien");
+  })
 
   const onClick = React.useCallback(() => {   
     dispatch(actions.login.logoutRequest());
@@ -115,7 +122,7 @@ function Headerbar() {
             key="TaiKhoan"
             icon={<TeamOutlined />}
             title="Tài khoản"
-            onTitleClick={{}}
+            onTitleClick={handleUser}
           ></SubMenu>
 
           {/* <SubMenu
@@ -136,7 +143,7 @@ function Headerbar() {
           className="account"
         >
           <SubMenu key="account" title="0585502434" icon={<UserOutlined />}>
-            <Menu.Item key="subitem1">Tài khoản</Menu.Item>
+            <Menu.Item key="subitem1" onClick={TKclick}>Tài khoản</Menu.Item>
             <Menu.Item key="subitem2" onClick={onClick}>Đăng xuất</Menu.Item>
           </SubMenu>
         </Menu>

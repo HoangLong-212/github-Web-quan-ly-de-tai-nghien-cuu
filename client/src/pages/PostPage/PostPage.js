@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PostState$ } from "../../redux/selectors";
-import * as actions from "../../redux/actions";
+import { PostState$, UserState$ } from "../../redux/selectors";
 import { Layout } from "antd";
 import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
 import "./style.css";

@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import {
   LoginsState$,
   LoginsState_isAuthenticated$,
+  UserState$,
 } from "../../../redux/selectors";
 import { useSelector, useDispatch } from "react-redux";
 import { login, showModal } from "../../../redux/actions";
@@ -13,6 +14,7 @@ import {Fab} from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import useStyles from './style';
 import PostModal from "../../../components/Modal/PostModal/PostModal";
+import *as actions from "../../../redux/actions"
 
 const { Content, Header } = Layout;
 
@@ -21,6 +23,8 @@ export default function HomePage() {
   // const history = useHistory();
 
   const dispatch = useDispatch();
+
+  
 
   // const users = useSelector(LoginsState$);
 

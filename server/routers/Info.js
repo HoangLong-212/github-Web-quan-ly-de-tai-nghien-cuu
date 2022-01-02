@@ -6,7 +6,7 @@ const router = express.Router();
 
  router.get("/", getInfo);
  router.post("/", createInfo);
- router.patch("/", updateInfo);
+ router.patch("/:id", updateInfo);
 
 
 export default router;

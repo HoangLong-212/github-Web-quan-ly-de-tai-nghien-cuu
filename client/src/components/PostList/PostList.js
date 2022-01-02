@@ -9,7 +9,9 @@ import { useHistory } from "react-router-dom";
 
 export default function PostList() {
   const dispatch = useDispatch();
+
   const posts = useSelector(PostState$);
+
 
   const users = useSelector(LoginsState$);
 
@@ -17,8 +19,6 @@ export default function PostList() {
     dispatch(actions.getPosts.getPostsRequest());
   }, [dispatch]);
   const history = useHistory();
-
-
 
 
   return (
@@ -29,10 +29,10 @@ export default function PostList() {
         dataSource={posts}
         renderItem={(item) => (
           <List.Item
-            actions={users.role === "GiangVien" ? null : ([             
-              <a key="list-loadmore-edit">edit</a>,
-              <a key="list-loadmore-more">delete</a>
-            ])}
+            // actions={users.role === "GiangVien" ? null : ([             
+            //   <a key="list-loadmore-edit">edit</a>,
+            //   <a key="list-loadmore-more">delete</a>
+            // ])}
           > 
             <List.Item.Meta
               key={item._id}

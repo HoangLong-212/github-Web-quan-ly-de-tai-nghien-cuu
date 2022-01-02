@@ -2,11 +2,18 @@ export const BACKEND_URL = "http://localhost:5000";
 export const FRONTEND_URL = "http://localhost:3000";
 
 export const INIT_STATE = {
-<<<<<<< HEAD
   Logins: {
     isLoading: false,
     isAuthenticated: false,
     user: null,
+  },
+  //Region User
+  User:{
+    isLoading: false,
+    data: [],
+},
+  UserModal: {
+      isShow: false,
   },
 
   Posts: {
@@ -17,21 +24,27 @@ export const INIT_STATE = {
   modal: {
     isShow: false,
   },
-};
-=======
-    Logins:{
-        isLoading: false,
-        isAuthenticated: false,
-		user: null,
-    },
+
     //region Info
-    Info:{
-        isLoading: false,
-        data: [],
-    },
-    InfoModal: {
-        isShow: false,
-    },
-    
-}
->>>>>>> origin/Hon
+  Info:{
+    isLoading: false,
+    data: [],
+  },
+  InfoModal: {
+      isShow: false,
+  },
+
+    //region Info
+  Faculty:{
+    isLoading: false,
+    data: [],
+  },
+  FacultyModal: {
+      isShow: false,
+  },
+
+  UpdateUserModal: {
+    isShow: false,
+  }
+};
+
