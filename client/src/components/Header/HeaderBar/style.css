@@ -1,7 +1,7 @@
 .account {
-  float: right;
+  float: center;
   display:flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: row-reverse;
   
 }
