@@ -5,20 +5,30 @@ import { TeamModel } from "../models/TeamModel.js";
 export const getProject = async (req, res) => {
   try {
     await ProjectModel.find()
-      .populate({
-        path: "idTeam",
-        populate: {
-          path: "idChuNhiem",
-        },
-      })
+      // .populate({
+      //   path: "idTeam",
+      //   populate: {
+      //     path: "idChuNhiem",
+      //   },
+      // })
       .populate({
         path: "idTeam",
         populate: {
           path: "ThanhVien",
         },
       })
+      .populate({
+        path: "idTeam",
+        populate: {
+          path: "idChuNhiem",
+          populate:{
+            path: "facultyId",
+          }
+        },
+      })
       .exec()
       .then((project) => {
+        console.log("[PRO]",project)
         res.status(200).json(project);
       });
   } catch (err) {
@@ -50,7 +60,7 @@ export const createProject = async (req, res) => {
         })
         .exec()
         .then((project) => {
-          console.log(project);
+         
           res.status(200).json(project);
         });
     });

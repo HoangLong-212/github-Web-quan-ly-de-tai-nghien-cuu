@@ -75,7 +75,7 @@ export const createFaculty = createActions({
 });
 
 export const updateFaculty = createActions({
-  updateFacultyRequest: undefined,
+  updateFacultyRequest: (payload) => payload,
   updateFacultySuccess: (payload) => payload,
   updateFacultyFailure: (err) => err,
 });

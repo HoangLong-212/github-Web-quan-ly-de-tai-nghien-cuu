@@ -1,8 +1,9 @@
-import { Button, PageHeader, Tabs, Tag } from "antd";
+import { Button, Descriptions, PageHeader, Tabs, Tag } from "antd";
+import moment from "moment";
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getInfo, getUser, showUserModal, showUpdateUserModal } from "../../../redux/actions";
-import { FacultyState$, InfoState$, UserState$, Up, UpdateUserModalState$ } from "../../../redux/selectors";
+import { FacultyState$, InfoState$, UserState$, UpdateUserModalState$ } from "../../../redux/selectors";
 
 export default function ExpandedRowRender({ record, setCurrentId }) {
     const dispatch = useDispatch();
@@ -48,11 +49,24 @@ export default function ExpandedRowRender({ record, setCurrentId }) {
         <>
         <PageHeader
         title={InfoValue.name}
+        subTitle = {InfoValue.facultyId.name}
         extra={[
             <Button key="1" type="primary" onClick={openUpdateUserModal}>
               Sửa
             </Button>
         ]}>
+                    <div>
+        <Descriptions size="small" column={3}>
+            <Descriptions.Item label="Ngày sinh">
+              {moment(InfoValue.dateOfBirth).format("DD/MM/YYYY")}
+            </Descriptions.Item>
+            <Descriptions.Item label="Số điện thoại">
+              {InfoValue.phoneNumber}
+            </Descriptions.Item>
+            <Descriptions.Item label="Email">{InfoValue.email}</Descriptions.Item>
+            <Descriptions.Item label="Hợp đồng">{InfoValue.contract}</Descriptions.Item>
+          </Descriptions>
+      </div>
         </PageHeader>
         </>
     )

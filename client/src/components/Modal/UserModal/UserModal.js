@@ -20,12 +20,14 @@ import {
 } from "../../../redux/actions";
 import {
   FacultyState$,
+  InfoState$,
   LoginsState$,
   UserModalState$,
   UserState$,
 } from "../../../redux/selectors";
 import { messageError } from "../../message";
 import React from "react";
+import * as actions from "../../../redux/actions";
 
 // export default function UserModal({currentId, setCurrentId}) {
 export default function UserModal({ currentId, setCurrentId }) {
@@ -34,6 +36,8 @@ export default function UserModal({ currentId, setCurrentId }) {
   const { isShow } = useSelector(UserModalState$);
 
   const Users = useSelector(UserState$);
+
+  const Info = useSelector(InfoState$);
 
   // console.log("User ddaay", Users);
 
@@ -54,20 +58,23 @@ export default function UserModal({ currentId, setCurrentId }) {
     if (UserValue) setData(UserValue);
   }, [UserValue]);
 
-  // useEffect(() => {
-  //   dispatch(getFaculty.getFacultyRequest());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getFaculty.getFacultyRequest());
+  }, [dispatch]);
 
   const Faculty = useSelector(FacultyState$);
 
   const currentUser = useSelector(LoginsState$);
 
+  // console.log("[currentFaculty]", currentFaculty)
+
   // console.log("nnn", Faculty)
 
   // console.log("...", _faculty)
+
   const Options = Faculty.map((data) => {
     var o = Object.assign({});
-    o.value = data.username;
+    o.value = data._id;
     o.label = `${data.name + " - " + data.username}`;
     return o;
   });
@@ -86,10 +93,15 @@ export default function UserModal({ currentId, setCurrentId }) {
         return false;
       }
     }
-    // if (isExisUser) {
-    //   messageError("Đã tồn tên tài khoản");
-    //   return false;
-    // }
+    if (currentId !== null) {
+      return true;
+    } else {
+      if (isExisUser) {
+        messageError("Đã tồn tên tài khoản");
+        return false;
+      }
+    }
+
     if (!data.username) {
       messageError("Chưa nhập tên tài khoản");
       return false;
@@ -130,37 +142,56 @@ export default function UserModal({ currentId, setCurrentId }) {
     facultyId: "",
   };
 
-  const infoDepartment = {
-    username: data.username,
-    name: data.name,
-    dateOfBirth: new Date(),
-    email: "",
-    contract: "",
-    phoneNumber: "",
-    level: "",
-    facultyId: currentUser.username,
-  };
-
   // console.log("[FAC]",info);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const faculty = {
     username: data.username,
     name: data.name,
   };
+  console.log("[LONG]", faculty);
 
   // info.facultyId = data.faculty.toString();
 
   const onSubmit = useCallback(() => {
-    // info.facultyId = data.faculty.toString();
+    //   const currentInfo = Info.find((Info) =>
+    //   Info.username === UserValue.username ? Info : null
+    // );
+    // const infoDepartment1 = {
+    //   username: data.username,
+    //   name: data.name,
+    //   dateOfBirth: new Date(),
+    //   email: "",
+    //   contract: "",
+    //   phoneNumber: "",
+    //   level: "",
+    //   facultyId: currentInfo.facultyId,
+    // };
+    // console.log( "jjj",infoDepartment1)
     if (checkData()) {
-      if (currentId != null) {
+      if (currentId !== null) {
         dispatch(updateUser.updateUserRequest(data));
         if (data.role === "Khoa") {
           dispatch(updateFaculty.updateFacultyRequest(faculty));
-        } else if (currentUser.role === "Khoa") {
-          dispatch(updateInfo.updateInfoRequest(infoDepartment));
         } else {
-          dispatch(updateInfo.updateInfoRequest(info));
+          const currentInfo = Info.find((Info) =>
+            Info.username === UserValue.username ? Info : null
+          );
+          const infoDepartment1 = {
+            username: data.username,
+            name: data.name,
+            dateOfBirth: new Date(),
+            email: "",
+            contract: "",
+            phoneNumber: "",
+            level: "",
+            facultyId: currentInfo.facultyId._id,
+          };
+          console.log("jjj", infoDepartment1);
+          if (currentUser.role === "Khoa") {
+            dispatch(updateInfo.updateInfoRequest(infoDepartment1));
+          } else {
+            dispatch(updateInfo.updateInfoRequest(infoDepartment1));
+          }
         }
         console.log("Đã dispatch");
       } else {
@@ -170,6 +201,19 @@ export default function UserModal({ currentId, setCurrentId }) {
         if (data.role === "Khoa") {
           dispatch(createFaculty.createFacultyRequest(faculty));
         } else if (currentUser.role === "Khoa") {
+          const currentFaculty = Faculty.find((faculty) => {
+            return faculty.username === currentUser.username;
+          });
+          const infoDepartment = {
+            username: data.username,
+            name: data.name,
+            dateOfBirth: new Date(),
+            email: "",
+            contract: "",
+            phoneNumber: "",
+            level: "",
+            facultyId: currentFaculty._id,
+          };
           dispatch(createInfo.createInfoRequest(infoDepartment));
         } else {
           dispatch(createInfo.createInfoRequest(info));
@@ -178,7 +222,8 @@ export default function UserModal({ currentId, setCurrentId }) {
       // dispatch(createInfo.createInfoRequest(info));
     }
     onClose();
-    dispatch(getUser.getUserRequest());
+    // checkNew();
+    // dispatch(getUser.getUserRequest());
   }, [dispatch, onClose, checkData]);
 
   const onDisplaySearch = (inputValue, path) => {
@@ -196,14 +241,18 @@ export default function UserModal({ currentId, setCurrentId }) {
         layout="horizontal"
       >
         <Form.Item label="Loại tài khoản" required>
-          <Select
-            placeholder="Chọn loại tài khoản"
-            value={data.role}
-            onChange={(e) => setData({ ...data, role: e })}
-          >
-            <Option value="Khoa">Khoa</Option>
-            <Option value="Giang Vien">Giảng Viên</Option>
-          </Select>
+          {currentId !== null ? (
+            <div>{data.role}</div>
+          ) : (
+            <Select
+              placeholder="Chọn loại tài khoản"
+              value={data.role}
+              onChange={(e) => setData({ ...data, role: e })}
+            >
+              <Option value="Khoa">Khoa</Option>
+              <Option value="Giang Vien">Giảng Viên</Option>
+            </Select>
+          )}
         </Form.Item>
         <Form.Item label="Tên" required>
           <Input
@@ -214,27 +263,54 @@ export default function UserModal({ currentId, setCurrentId }) {
           />
         </Form.Item>
         <Form.Item label="Tên tài khoản" required>
-          <Input
-            // readOnly={true}
+          {currentId !== null ? (
+            <div>{data.username}</div>
+          ) : (
+            <Input
+              // readOnly={true}
 
-            value={data.username}
-            onChange={(e) => {
-              setData({ ...data, username: e.target.value });
-            }}
-          />
+              value={data.username}
+              onChange={(e) => {
+                setData({ ...data, username: e.target.value });
+              }}
+            />
+          )}
         </Form.Item>
-        <Form.Item label="Tên khoa" required>
-          <Cascader
-            options={Options}
-            placeholder="Nhập tên khoa"
-            onChange={(e) => {
-              setData({ ...data, faculty: e });
-            }}
-            allowClear
-            suffixIcon={<SearchOutlined />}
-            showSearch={onDisplaySearch}
-          ></Cascader>
-        </Form.Item>
+        {
+          currentId !== null ? null : (
+            <Form.Item label="Tên khoa" required>
+              <Cascader
+                options={Options}
+                placeholder="Nhập tên khoa"
+                onChange={(e) => {
+                  setData({ ...data, faculty: e });
+                }}
+                allowClear
+                suffixIcon={<SearchOutlined />}
+                showSearch={onDisplaySearch}
+                disabled={data.role !== "Giang Vien"}
+              ></Cascader>
+            </Form.Item>
+          )
+          // : data.role === "Giang Vien"?(
+          //   <Form.Item label="Tên khoa" required>
+          //   <Cascader
+          //     options={Options}
+          //     placeholder="Nhập tên khoa"
+          //     onChange={(e) => {setData({...data, faculty: e});
+          //     }}
+          //     allowClear
+          //     suffixIcon={<SearchOutlined/>}
+          //     showSearch = {onDisplaySearch}
+          //     disabled={
+          //       data.role === "Giang Vien"
+          //     }
+          //     >
+          //   </Cascader>
+          // </Form.Item>
+          // )
+        }
+
         <Form.Item label="Mật khẩu" required>
           <Input.Password
             placeholder="Nhập mật khẩu"
@@ -290,13 +366,18 @@ export default function UserModal({ currentId, setCurrentId }) {
           />
         </Form.Item>
         <Form.Item label="Tên tài khoản" required>
-          <Input
-            // readOnly={true}
-            value={data.username}
-            onChange={(e) => {
-              setData({ ...data, username: e.target.value });
-            }}
-          />
+          {currentId !== null ? (
+            <div>{data.username}</div>
+          ) : (
+            <Input
+              // readOnly={true}
+
+              value={data.username}
+              onChange={(e) => {
+                setData({ ...data, username: e.target.value });
+              }}
+            />
+          )}
         </Form.Item>
         <Form.Item label="Mật khẩu" required>
           <Input.Password

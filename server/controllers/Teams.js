@@ -3,7 +3,7 @@ import { TeamModel } from "../models/TeamModel.js";
 export const getTeams = async (req, res) => {
   try {
     const teams = await TeamModel.find();
-    console.log("teams", teams);
+  
     res.status(200).json(teams);
   } catch (err) {
     res.status(500).json({ error: err });

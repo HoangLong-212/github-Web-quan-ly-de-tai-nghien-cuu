@@ -23,6 +23,7 @@ export default function HomePage() {
   const openPostModal = React.useCallback(() => {
     dispatch(showModal());
   }, [dispatch]);
+
   React.useEffect(() => {
     dispatch(actions.getInfo.getInfoRequest());
   }, [dispatch]);

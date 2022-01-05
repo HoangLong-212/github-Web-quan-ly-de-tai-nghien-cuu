@@ -5,7 +5,6 @@ import HomePage from "./pages/HomePage/HomePage";
 
 import ProjectPage_GV from "./pages/GiangVienPage/ProjectPage/ProjectPage"
 import Info_GiangVien  from "./pages/GiangVienPage/InfoPage/InfoPage"
-
 import { PrivateRoute } from "./components/PrivateRoute";
 import Notfound from "./components/Notfound";
 import "./App.css";
@@ -15,7 +14,6 @@ import PostPage from "./pages/PostPage/PostPage";
 
 import React from "react";
 import InfoProjectPage from "./pages/GiangVienPage/ProjectPage/InfoProjectPage";
-import User_Page from "./pages/UserPage/UserPage";
 import UserPage from "./pages/UserPage/UserPage";
 
 function App() {

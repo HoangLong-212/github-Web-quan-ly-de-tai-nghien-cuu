@@ -40,7 +40,7 @@ export default function InfoReducers(state = INIT_STATE.Info, action) {
       };
 
     case getType(updateInfo.updateInfoSuccess):
-      messageSuccess("Chỉnh sửa thông tin thành công");
+      // messageSuccess("Chỉnh sửa thông tin thành công");
       return {
         ...state,
         isLoading: false,

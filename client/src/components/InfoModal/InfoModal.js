@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -12,11 +11,14 @@ import { Form, Input, Select, DatePicker, Modal } from "antd";
 
 import { messageError } from "../message";
 import { hideInfoModal, updateInfo } from "../../redux/actions";
+import { Option } from "antd/lib/mentions";
 
 export default function InfoModal() {
   const dispatch = useDispatch();
 
   const { isShow } = useSelector(InfoModalState$);
+
+  console.log("isshow", isShow);
 
   const user = useSelector(LoginsState$);
 
@@ -25,23 +27,24 @@ export default function InfoModal() {
   const InfoValue = Info.find((Info) => Info.username === user.username);
 
   const [data, setData] = useState(
-    //     {
-    //     username: "",
-    //     name: "",
-    //     dateOfBirth: new Date(),
-    //     faculty: "",
-    //     email: "",
-    //     contract: "",
-    //     phoneNumber: "",
-    //     level: "",
-    //     facultyId: "",
+    // {
+    //   username: "",
+    //   name: "",
+    //   dateOfBirth: "",
+    //   email: "",
+    //   contract: "",
+    //   phoneNumber: "",
+    //   level: "",
+    //   faculty: "",
+    //   facultyId: [],
     // }
     InfoValue
   );
+  console.log("dataaaa", data)
 
-  // useEffect(() => {
-  //     if(InfoValue) setData(InfoValue);
-  // }, [InfoValue]);
+  useEffect(() => {
+    if (InfoValue) setData(InfoValue);
+  }, [InfoValue]);
 
   const [form] = Form.useForm();
 
@@ -96,26 +99,15 @@ export default function InfoModal() {
 
   const onClose = useCallback(() => {
     dispatch(hideInfoModal());
-    // setCurrentId(null);
     setData(
-      data
-      // username: "",
-      // name: "",
-      // dateOfBirth: new Date(),
-      // faculty: "",
-      // email: "",
-      // contract: "",
-      // phoneNumber: "",
-      // level: "",
-      // facultyId: "",
+      InfoValue
     );
   }, [dispatch, data]);
 
   const onSubmit = useCallback(() => {
     dispatch(updateInfo.updateInfoRequest(data));
-
     onClose();
-  }, [dispatch, data]);
+  }, [dispatch, data, onClose]);
 
   const body = (
     <>
@@ -134,7 +126,7 @@ export default function InfoModal() {
         </Form.Item>
         <Form.Item label="Ngày sinh">
           <DatePicker
-            defaultValue={moment(data.dateOfBirth).format("DD/MM/YYYY")}
+            defaultValue={moment(data.dateOfBirth)}
             placeholder="Chọn ngày sinh"
             onChange={(e) => {
               if (e) setData({ ...data, dateOfBirth: e });
@@ -156,10 +148,20 @@ export default function InfoModal() {
           />
         </Form.Item>
         <Form.Item label="Trình độ">
-          <Input
+          {/* <Input
             value={data.level}
             onChange={(e) => setData({ ...data, level: e.target.value })}
-          ></Input>
+          ></Input> */}
+                                <Select
+              placeholder="Trình độ"
+              value={data.level}
+              onChange={(e) => setData({ ...data, level: e })}
+            >
+              <Option value="Cử nhân">Cử nhân</Option>
+              <Option value="Thạc sĩ">Thạc sĩ</Option>
+              <Option value="Tiến sĩ">Tiến sĩ</Option>
+              <Option value="Giáo sư">Giáo sư</Option>
+            </Select>
         </Form.Item>
         <Form.Item label="Khoa">
           {/* <Input
@@ -167,12 +169,22 @@ export default function InfoModal() {
             placeholder="Nhập mã khoa"
             onChange={(e) => setData({ ...data, facultyId: e.target.value })}
           /> */}
+          <div>{data.facultyId.name}</div>
         </Form.Item>
         <Form.Item label="Hợp đồng">
-          <Input
+          {/* <Input
             value={data.contract}
             onChange={(e) => setData({ ...data, contract: e.target.value })}
-          ></Input>
+          ></Input> */}
+                      <Select
+              placeholder="Hợp đồng"
+              value={data.contract}
+              onChange={(e) => setData({ ...data, contract: e })}
+            >
+              <Option value="Hợp đồng">Hợp đồng</Option>
+              <Option value="Biến chế">Biên chế</Option>
+              <Option value="Thính giảng">Thính giảng</Option>
+            </Select>
         </Form.Item>
       </Form>
     </>
