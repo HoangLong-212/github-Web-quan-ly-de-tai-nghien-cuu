@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
@@ -6,7 +6,7 @@ import "./style.css";
 import { login } from "../../redux/actions";
 import { LoginsState$ } from "../../redux/selectors/index";
 import { useHistory } from "react-router-dom";
-
+import * as actions from "../../redux/actions"
 export default function Login() {
 
   const [data, setData] = useState({
@@ -18,6 +18,11 @@ export default function Login() {
   const history = useHistory();
 
   const users = useSelector(LoginsState$);
+  useEffect(() => {
+    dispatch(actions.getInfo.getInfoRequest());
+    dispatch(actions.getUser.getUserRequest());
+    dispatch(actions.getFaculty.getFacultyRequest());
+  }, [dispatch]);
 
 
 

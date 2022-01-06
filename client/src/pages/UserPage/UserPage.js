@@ -28,11 +28,11 @@ import {
 import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
 import * as actions from "../../redux/actions";
 
-import UserTable from "../../components/Table/UserTable/LecturerTable";
+import UserTable from "../../components/Table/UserTable/UserTable";
 import { configConsumerProps } from "antd/lib/config-provider";
 import { showUserModal } from "../../redux/actions";
 import UserModal from "../../components/Modal/UserModal/UserModal";
-import LecturerTable from "../../components/Table/UserTable/LecturerTable";
+
 
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
@@ -114,6 +114,17 @@ export default function UserPage() {
           <Header>
             <Headerbar />
           </Header>
+
+          <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Danh mục hàng hóa"
+            />
+          </Content>
+        </Layout>
+
           <Layout>
             <Sider
               width={300}
@@ -141,16 +152,28 @@ export default function UserPage() {
                         >
                           Giảng viên
                         </Radio>
+                        <Row justify="end">
+                <Space direction="horizontal">
+                  <Button
+                  style={{margin: "5px 5px 0px 5px", width: "120%"}}
+                    icon={<PlusOutlined />}
+                    type="primary"
+                    onClick={openUserModal}
+                  >
+                    Thêm tài khoản
+                  </Button>
+                </Space>
+              </Row>
                       </Space>
                     </Radio.Group>
                   </Card>
                 </Space>
               </div>
             </Sider>
-            <Content style={{ padding: "17px 24px 24px" }}>
+            <Content style={{ padding: "17px 24px 24px 0px" }}>
               <div className="site-layout-content">
-                <Divider orientation="left"></Divider>
-                <Row justify="end">
+                {/* <Divider orientation="left"></Divider> */}
+                {/* <Row justify="end">
                   <Space direction="horizontal">
                     <Button
                       icon={<PlusOutlined />}
@@ -160,8 +183,8 @@ export default function UserPage() {
                       Thêm tài khoản
                     </Button>
                   </Space>
-                </Row>
-                <LecturerTable
+                </Row> */}
+                <UserTable
                   dataSource={dataSourceFaculty}
                   setCurrentId={setCurrentId}
                 />
@@ -177,10 +200,21 @@ export default function UserPage() {
         <Header>
           <Headerbar />
         </Header>
+
+        <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Danh mục hàng hóa"
+            />
+          </Content>
+        </Layout>
+
         <Layout>
           <Sider
             width={300}
-            style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+            style={{ padding: "0px 0px 0px 0x", background: "#F0F2F5" }}
             className="site-layout-sider"
           >
             <div className="site-card-border-less-wrapper">
@@ -215,18 +249,10 @@ export default function UserPage() {
                       >
                         Giảng viên
                       </Radio>
-                    </Space>
-                  </Radio.Group>
-                </Card>
-              </Space>
-            </div>
-          </Sider>
-          <Content style={{ padding: "17px 24px 24px" }}>
-            <div className="site-layout-content">
-              <Divider orientation="left"></Divider>
-              <Row justify="end">
+                      <Row justify="end">
                 <Space direction="horizontal">
                   <Button
+                  style={{margin: "5px 5px 0px 5px", width: "120%"}}
                     icon={<PlusOutlined />}
                     type="primary"
                     onClick={openUserModal}
@@ -235,6 +261,14 @@ export default function UserPage() {
                   </Button>
                 </Space>
               </Row>
+                    </Space>
+                  </Radio.Group>
+                </Card>
+              </Space>
+            </div>
+          </Sider>
+          <Content style={{ padding: "17px 24px 24px 0px" }}>
+            <div className="site-layout-content">
               <UserTable dataSource={dataSource} setCurrentId={setCurrentId} />
               <UserModal currentId={currentId} setCurrentId={setCurrentId} />
             </div>

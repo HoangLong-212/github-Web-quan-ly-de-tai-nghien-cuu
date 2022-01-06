@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { UserState$ } from "../../../redux/selectors";
 import ExpandedRowRender from "./ExpandedRowRender";
 
-export default function LecturerTable({ dataSource, setCurrentId }) {
+export default function UserTable({ dataSource, setCurrentId }) {
   //Create Table
   const columns = [
     // {
@@ -95,9 +95,9 @@ export default function LecturerTable({ dataSource, setCurrentId }) {
       filterIcon: () => {
         return <SearchOutlined />;
       },
-      // onFilter: (value, record) => {
-      //   return record.username.toLowerCase().includes(value.toLowerCase());
-      // }
+      onFilter: (value, record) => {
+        return record.username.toLowerCase().includes(value.toLowerCase());
+      }
     },
     {
       title: "Mật khẩu",

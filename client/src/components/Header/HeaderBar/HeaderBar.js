@@ -28,10 +28,10 @@ const { SubMenu } = Menu;
 function Headerbar() {
   const dispatch = useDispatch();
 
-    useEffect(() => {
-      dispatch(actions.getInfo.getInfoRequest());
-      dispatch(actions.getUser.getUserRequest());
-      dispatch(actions.getFaculty.getFacultyRequest());
+  useEffect(() => {
+    dispatch(actions.getInfo.getInfoRequest());
+    dispatch(actions.getUser.getUserRequest());
+    dispatch(actions.getFaculty.getFacultyRequest());
   }, [dispatch]);
 
   const users = useSelector(LoginsState$);
@@ -44,14 +44,14 @@ function Headerbar() {
     return Info.username === users.username;
   });
 
-  console.log("infoj", info)
-  console.log("facultyj", faculty)
+  console.log("infoj", info);
+  console.log("facultyj", faculty);
 
   const facultyValue = faculty.find((faculty) => {
     return faculty.username === users.username;
   });
 
-  console.log("mmmmm", facultyValue)
+  console.log("mmmmm", facultyValue);
 
   const [data, setdata] = useState({
     name: "",
@@ -102,6 +102,13 @@ function Headerbar() {
     history.push("/");
   });
 
+  // Search
+  const handleSearchLecturer = React.useCallback(() => {
+    history.push("/Search_Lecturer_Page");
+  });
+  const handleSearchProject = React.useCallback(() => {
+    history.push("/Search_Project_Page");
+  });
   return (
     <div className="Header">
       <Header>
@@ -145,8 +152,15 @@ function Headerbar() {
             key="TraCuu"
             icon={<EyeOutlined />}
             title="Tra Cứu"
-            onTitleClick={{}}
-          ></SubMenu>
+            // onTitleClick={handleSearch}
+          >
+            <Menu.Item key="GiangVien" onClick={handleSearchLecturer}>
+              Giảng viên
+            </Menu.Item>
+            <Menu.Item key="Detai" onClick={handleSearchProject}>
+              Đề tài
+            </Menu.Item>
+          </SubMenu>
           <SubMenu
             key="NghiemThu"
             icon={<CalendarOutlined />}
@@ -202,10 +216,10 @@ function Headerbar() {
             {/* <Menu.Item key="subitem1" onClick={TKclick}>
               Tài khoản
             </Menu.Item> */}
-            {users.role !== "Giang Vien" ? null :(
-                          <Menu.Item key="subitem1" onClick={TKclick}>
-                          Tài khoản
-                        </Menu.Item>
+            {users.role !== "Giang Vien" ? null : (
+              <Menu.Item key="subitem1" onClick={TKclick}>
+                Tài khoản
+              </Menu.Item>
             )}
             <Menu.Item key="subitem2" onClick={onClick}>
               Đăng xuất

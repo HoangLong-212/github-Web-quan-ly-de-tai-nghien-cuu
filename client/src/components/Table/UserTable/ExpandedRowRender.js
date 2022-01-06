@@ -29,7 +29,16 @@ export default function ExpandedRowRender({ record, setCurrentId }) {
     const FacultyValue = Faculty.find((Faculty)=> 
     Faculty.username === record.username ? Faculty: null
     );
-
+if  (record.role === "Admin"){
+  return(
+    <>
+    <PageHeader
+    title="Admin"
+    >
+    </PageHeader>
+    </>
+)
+}
     if(record.role === "Khoa"){
         return(
             <>
