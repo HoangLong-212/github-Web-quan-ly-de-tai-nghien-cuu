@@ -16,37 +16,13 @@ const schema = new mongoose.Schema(
       ref: "Info",
       required: true,
     },
-    // ChuNhiem: {
-    //   type: Object (
-    //     {
-    //       idGV: {
-    //         type: Schema.Types.ObjectId,
-    //         ref: "Info",
-    //         required: true,
-    //       },
-    //       // username: {
-    //       //   type: String,
-    //       //   required: true,
-    //       // },
-    //       // name: {
-    //       //   type: String,
-    //       //   required: true,
-    //       // },
-    //     }
-    //   )},
+  
+
     ThanhVien: [
       {
         type: Schema.Types.ObjectId,
         ref: "Info",
-        // required: true,
-        // username: {
-        //   type: String,
-        //   // required: true,
-        // },
-        // name: {
-        //   type: String,
-        //   // required: true,
-        // },
+        
       },
     ],
   },

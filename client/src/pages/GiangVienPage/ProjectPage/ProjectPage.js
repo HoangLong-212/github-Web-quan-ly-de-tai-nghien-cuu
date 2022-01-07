@@ -24,11 +24,14 @@ export default function ProjectPage() {
       <Content>
         <ProjectList />
         <DangKyModal />
-        {user.role !== "Giang Vien" ? null : (
+        {/* {user.role !== "Giang Vien" ? null : (
           <Button type="primary" className="DangKy" onClick={openProjectModal}>
             Đăng ký đề tài mới
           </Button>
-        )}
+        )} */}
+        <Button type="primary" className="DangKy" onClick={openProjectModal}>
+            Đăng ký đề tài mới
+          </Button>
       </Content>
     </Layout>
   );

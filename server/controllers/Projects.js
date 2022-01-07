@@ -5,12 +5,6 @@ import { TeamModel } from "../models/TeamModel.js";
 export const getProject = async (req, res) => {
   try {
     await ProjectModel.find()
-      // .populate({
-      //   path: "idTeam",
-      //   populate: {
-      //     path: "idChuNhiem",
-      //   },
-      // })
       .populate({
         path: "idTeam",
         populate: {
@@ -21,14 +15,13 @@ export const getProject = async (req, res) => {
         path: "idTeam",
         populate: {
           path: "idChuNhiem",
-          populate:{
+          populate: {
             path: "facultyId",
-          }
+          },
         },
       })
       .exec()
       .then((project) => {
-        console.log("[PRO]",project)
         res.status(200).json(project);
       });
   } catch (err) {
@@ -50,6 +43,9 @@ export const createProject = async (req, res) => {
           path: "idTeam",
           populate: {
             path: "idChuNhiem",
+            populate: {
+              path: "facultyId",
+            },
           },
         })
         .populate({
@@ -60,11 +56,44 @@ export const createProject = async (req, res) => {
         })
         .exec()
         .then((project) => {
-         
           res.status(200).json(project);
         });
     });
   } catch (err) {
     res.status(500).json({ error: err });
+  }
+};
+
+export const updateProject = async (req, res, next) => {
+  try {
+    const updateProject = req.body;
+    await ProjectModel.findOneAndUpdate(
+      { _id: updateProject._id },
+      updateProject,
+      { new: true }
+    )
+      .populate({
+        path: "idTeam",
+        populate: {
+          path: "idChuNhiem",
+          populate: {
+            path: "facultyId",
+          },
+        },
+      })
+      .populate({
+        path: "idTeam",
+        populate: {
+          path: "ThanhVien",
+        },
+      })
+      .exec()
+      .then((project) => {
+        
+        res.status(200).json(project);
+      });
+  } catch (err) {
+    res.status(500).json({ error: err });
+    next();
   }
 };

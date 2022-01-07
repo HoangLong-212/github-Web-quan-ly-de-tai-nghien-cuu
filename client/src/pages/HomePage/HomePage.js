@@ -9,7 +9,7 @@ import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
 import PostList from "../../components/Lists/PostList/PostList";
 import PostModal from "../../components/Modal/PostModal/PostModal";
 import { showModal } from "../../redux/actions";
-import { InfoState$, LoginsState$ } from "../../redux/selectors";
+import { InfoState$, LoginsState$, ProjectState$ } from "../../redux/selectors";
 import* as actions from "../../redux/actions"
 
 const { Content, Header } = Layout;
@@ -18,6 +18,7 @@ export default function HomePage() {
 
   const user = useSelector(LoginsState$);
   const info = useSelector(InfoState$);
+  const project = useSelector(ProjectState$);
 
   const dispatch = useDispatch();
   const openPostModal = React.useCallback(() => {
@@ -26,6 +27,7 @@ export default function HomePage() {
 
   React.useEffect(() => {
     dispatch(actions.getInfo.getInfoRequest());
+    dispatch(actions.getProjects.getProjectsRequest());
   }, [dispatch]);
 
   return (

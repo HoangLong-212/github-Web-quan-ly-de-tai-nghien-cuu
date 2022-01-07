@@ -37,7 +37,16 @@ function Headerbar() {
   const handleUser = React.useCallback(()=>{
     history.push("/User_Page");
   })
-  // const users = useSelector(LoginsState$);
+
+  const handleForm = React.useCallback(()=>{
+    if(users.role === "Giang Vien"){
+      history.push("/ExtendAndCancelPage_GV");
+    }
+    else{
+      history.push("/ExtendAndCancelPage");
+    }
+    
+  })
 
   // const isAuthenticated = useSelector(LoginsState_isAuthenticated$);
 
@@ -81,7 +90,7 @@ function Headerbar() {
             key="Don"
             icon={<SwapOutlined />}
             title="Đơn"
-            onTitleClick={{}}
+            onTitleClick={handleForm}
           >
             <Menu.Item key="GiaHanDeTai" onClick={{}}>
               Gia hạn đề tài
@@ -112,7 +121,7 @@ function Headerbar() {
           </SubMenu>
 
           {/* Cmt lại để code không bug */}
-          {/* {users.role === "Giang Vien" ? null : (
+          {users.role === "Giang Vien" ? null : (
               <SubMenu
                 key="TaiKhoan"
                 icon={<TeamOutlined />}
@@ -120,14 +129,14 @@ function Headerbar() {
                 onTitleClick={handleUser}
                 ></SubMenu>
       
-            )} */}
+            )}
 
-          <SubMenu
+          {/* <SubMenu
             key="TaiKhoan"
             icon={<TeamOutlined />}
             title="Tài khoản"
             onTitleClick={handleUser}
-          ></SubMenu>
+          ></SubMenu> */}
             
           {/* <SubMenu
               key="Account"

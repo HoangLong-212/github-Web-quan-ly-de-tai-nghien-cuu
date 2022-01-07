@@ -10,7 +10,7 @@ export const ModalState$ =(state) => state.modal;
 //Projects
 export const ProjectState$ =(state) => state.Projects.data;
 
-//
+//Team
 export const TeamState$ =(state) => state.Teams.data;
 
 export const InfoState$ = (state) => state.Info.data;
@@ -23,3 +23,8 @@ export const FacultyState$ = (state) => state.Faculty.data;
 export const FacultyModalState$ = (state) => state.FacultyModal;
 
 export const UpdateUserModalState$ = (state) => state.UpdateUserModal;
+
+//Extend
+export const ExtendsState$ =(state) => state.Extends.data;
+//Cancel
+export const CancelsState$ =(state) => state.Cancels.data;

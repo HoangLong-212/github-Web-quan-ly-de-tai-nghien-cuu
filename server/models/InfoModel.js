@@ -47,7 +47,6 @@ const schema = new mongoose.Schema(
         },
         facultyId: {
             type: Schema.Types.ObjectId,
-            // type: String,
             ref: "Faculty",  
         }
         // Image: String

@@ -21,7 +21,7 @@ export default function PostsReducers(state = INIT_STATE.Posts, action) {
           isLoading: false,
       }
       case getType(createPosts.createPostsSuccess):
-        messageSuccess("Thêm mới thành công");
+        messageSuccess("Đăng thông báo mới thành công");
       return {
         ...state,
         data: [...state.data, action.payload],

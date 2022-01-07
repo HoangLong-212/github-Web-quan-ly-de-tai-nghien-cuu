@@ -71,13 +71,23 @@ function* fetchProjectSaga(action) {
 
 function* createProjectSaga(action) {
   try {
-    console.log("SAGA", action.payload);
     const projects = yield call(api.createProjects, action.payload);
     yield put(actions.createProjects.createProjectsSuccess(projects.data));
   } catch (error) {
     console.log("error", error.response.data);
     yield put(
       actions.createProjects.createProjectsFailure(error.response.data)
+    );
+  }
+}
+function* updateProjectSaga(action) {
+  try {
+    const projects = yield call(api.updateProjects, action.payload);
+
+    yield put(actions.updateProjects.updateProjectsSuccess(projects.data));
+  } catch (error) {
+    yield put(
+      actions.updateProjects.updateProjectsFailure(error.response.data)
     );
   }
 }
@@ -105,7 +115,7 @@ function* createTeamSaga(action) {
 function* fetchInfoSaga(action) {
   try {
     const Info = yield call(api.fetchInfo);
-    console.log("[Infos]", Info);
+
     yield put(actions.getInfo.getInfoSuccess(Info.data));
   } catch (error) {
     yield put(actions.getInfo.getInfoFailure(error));
@@ -135,7 +145,7 @@ function* updateInfoSaga(action) {
 function* fetchFacultySaga(action) {
   try {
     const Faculty = yield call(api.fetchFaculty);
-    console.log("[Infos]", Faculty);
+
     yield put(actions.getFaculty.getFacultySuccess(Faculty.data));
   } catch (error) {
     yield put(actions.getFaculty.getFacultyFailure(error));
@@ -156,8 +166,7 @@ function* createFacultySaga(action) {
 function* updateFacultySaga(action) {
   try {
     const Faculty = yield call(api.updateFaculty, action.payload);
-    console.log("fff", action.payload);
-    console.log("vvv", Faculty);
+
     yield put(actions.updateFaculty.updateFacultySuccess(Faculty));
   } catch (error) {
     console.log("errorrr", error.response.data);
@@ -169,7 +178,7 @@ function* updateFacultySaga(action) {
 function* fetchUserSaga(action) {
   try {
     const Users = yield call(api.fetchUser);
-    console.log("[Lấy User thành công]", Users);
+
     yield put(actions.getUser.getUserSuccess(Users.data));
   } catch (error) {
     yield put(actions.getUser.getUserFailure(error));
@@ -177,7 +186,6 @@ function* fetchUserSaga(action) {
 }
 function* createUserSaga(action) {
   try {
-    console.log("đã vào saga");
     const User = yield call(api.createUser, action.payload);
     yield put(actions.createUser.createUserSuccess(User.data));
   } catch (error) {
@@ -191,6 +199,68 @@ function* updateUserSaga(action) {
     yield put(actions.updateUser.updateUserSuccess(User.data));
   } catch (error) {
     yield put(actions.updateInfo.updateUserFailure(error.response.data));
+  }
+}
+
+//Extend
+function* fetchExtendSaga(action) {
+  try {
+    const extend = yield call(api.fetchExtends);
+    yield put(actions.getExtends.getExtendsSuccess(extend.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.getExtends.getExtendsFailure(error.response.data));
+  }
+}
+
+function* createExtendSaga(action) {
+  try {
+    const extend = yield call(api.createExtends, action.payload);
+    yield put(actions.createExtends.createExtendsSuccess(extend.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.createExtends.createExtendsFailure(error.response.data));
+  }
+}
+function* updateExtendSaga(action) {
+  try {
+    const extend = yield call(api.updateExtends, action.payload);
+
+    yield put(actions.updateExtends.updateExtendsSuccess(extend.data));
+  } catch (error) {
+    yield put(
+      actions.updateExtends.updateExtendsFailure(error.response.data)
+    );
+  }
+}
+//Cancel
+function* fetchCancelSaga(action) {
+  try {
+    const cancel = yield call(api.fetchCancels);
+    yield put(actions.getCancels.getCancelsSuccess(cancel.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.getCancels.getCancelsFailure(error.response.data));
+  }
+}
+
+function* createCancelSaga(action) {
+  try {
+    const cancel = yield call(api.createCancels, action.payload);
+    yield put(actions.createCancels.createCancelsSuccess(cancel.data));
+  } catch (error) {
+    yield put(actions.createCancels.createCancelsFailure(error.response.data));
+  }
+}
+function* updateCancelSaga(action) {
+  try {
+    const cancel = yield call(api.updateCancels, action.payload);
+
+    yield put(actions.updateCancels.updateCancelsSuccess(cancel.data));
+  } catch (error) {
+    yield put(
+      actions.updateCancels.updateCancelsFailure(error.response.data)
+    );
   }
 }
 //   // #endregion
@@ -218,7 +288,10 @@ function* mySaga() {
     actions.createProjects.createProjectsRequest,
     createProjectSaga
   );
-
+  yield takeLatest(
+    actions.updateProjects.updateProjectsRequest,
+    updateProjectSaga
+  );
   //Teams
   yield takeLatest(actions.getTeams.getTeamsRequest, fetchTeamSaga);
   yield takeLatest(actions.createTeams.createTeamsRequest, createTeamSaga);
@@ -241,6 +314,27 @@ function* mySaga() {
   yield takeLatest(
     actions.updateFaculty.updateFacultyRequest,
     updateFacultySaga
+  );
+
+  //Extend
+  yield takeLatest(actions.getExtends.getExtendsRequest, fetchExtendSaga);
+  yield takeLatest(
+    actions.createExtends.createExtendsRequest,
+    createExtendSaga
+  );
+  yield takeLatest(
+    actions.updateExtends.updateExtendsRequest,
+    updateExtendSaga
+  );
+  //Cancel
+  yield takeLatest(actions.getCancels.getCancelsRequest, fetchCancelSaga);
+  yield takeLatest(
+    actions.createCancels.createCancelsRequest,
+    createCancelSaga
+  );
+  yield takeLatest(
+    actions.updateCancels.updateCancelsRequest,
+    updateCancelSaga
   );
 }
 

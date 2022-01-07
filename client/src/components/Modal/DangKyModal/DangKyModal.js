@@ -52,6 +52,7 @@ export default function DangKyModal() {
     idChuNhiem: "",
     ThanhVien: [],
   });
+  console.log("CCC",data_Nhom)
 
   const handleOk = React.useCallback(() => {
     if (
@@ -79,6 +80,7 @@ export default function DangKyModal() {
 
   const handleCancel = React.useCallback(() => {
     dispatch(hideModal());
+    form.resetFields();
     setData_DeTai({
       MaDeTai: "",
       TenDeTai: "",

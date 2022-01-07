@@ -9,6 +9,8 @@ import Projects from './routers/Projects.js'
 import Info from './routers/Info.js'
 import Teams from './routers/Teams.js'
 import Faculty from './routers/Faculty.js'
+import Extends from './routers/Extends.js' 
+import Cancels from './routers/Cancels.js' 
 
 const app = express();
 const PORT = process.env.port || 5000;
@@ -25,6 +27,8 @@ app.use("/Users", Users);
 app.use("/Projects", Projects);
 app.use("/Info", Info);
 app.use("/Teams", Teams);
+app.use("/Extends", Extends);
+app.use("/Cancels", Cancels);
 app.use("/Faculty", Faculty);
 
 mongoose
