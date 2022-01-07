@@ -126,6 +126,12 @@ export const createProjects = createActions({
   createProjectsFailure: (err)=>err,
 })
 
+export const updateProjects = createActions({
+  updateProjectsRequest: (payload) => payload,
+  updateProjectsSuccess: (payload) => payload,
+  updateProjectsFailure: (err) => err,
+});
+
 // Đăng ký đề tài
 export const showProjectModal = createAction("SHOW_CREATE_PROJECT_MODAL");
 export const hideProjectModal = createAction("HIDE_CREATE_PROJECT_MODAL");
@@ -141,3 +147,36 @@ export const createTeams = createActions({
   createTeamsSuccess: (payload)=>payload,
   createTeamsFailure: (err)=>err,
 })
+
+//Extend
+export const getExtends = createActions({
+  getExtendsRequest: undefined,
+  getExtendsSuccess: (payload)=>payload,
+  getExtendsFailure: (err)=>err,
+})
+export const createExtends = createActions({
+  createExtendsRequest: (payload)=>payload,
+  createExtendsSuccess: (payload)=>payload,
+  createExtendsFailure: (err)=>err,
+})
+export const updateExtends = createActions({
+  updateExtendsRequest: (payload) => payload,
+  updateExtendsSuccess: (payload) => payload,
+  updateExtendsFailure: (err) => err,
+});
+//Cancel
+export const getCancels = createActions({
+  getCancelsRequest: undefined,
+  getCancelsSuccess: (payload)=>payload,
+  getCancelsFailure: (err)=>err,
+})
+export const createCancels = createActions({
+  createCancelsRequest: (payload)=>payload,
+  createCancelsSuccess: (payload)=>payload,
+  createCancelsFailure: (err)=>err,
+})
+export const updateCancels = createActions({
+  updateCancelsRequest: (payload) => payload,
+  updateCancelsSuccess: (payload) => payload,
+  updateCancelsFailure: (err) => err,
+});

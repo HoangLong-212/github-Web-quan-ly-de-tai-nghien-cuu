@@ -1,0 +1,13 @@
+.Form{
+    width: 60%;
+    position: absolute;
+    margin-left: 5%;
+    margin-top: 80px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    
+}
+.Text{
+    margin-left: 15px;
+    margin-top: 15px;
+}

@@ -52,6 +52,14 @@ export const INIT_STATE = {
 
   UpdateUserModal: {
     isShow: false,
+  },
+  Extends:{
+    isLoading: false,
+    data: [],
+  },
+  Cancels:{
+    isLoading: false,
+    data: [],
   }
 };
       
