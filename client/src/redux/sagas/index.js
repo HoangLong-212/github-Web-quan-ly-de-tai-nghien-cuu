@@ -115,7 +115,6 @@ function* createTeamSaga(action) {
 function* fetchInfoSaga(action) {
   try {
     const Info = yield call(api.fetchInfo);
-
     yield put(actions.getInfo.getInfoSuccess(Info.data));
   } catch (error) {
     yield put(actions.getInfo.getInfoFailure(error));
@@ -125,7 +124,6 @@ function* fetchInfoSaga(action) {
 function* createInfoSaga(action) {
   try {
     const Info = yield call(api.createInfo, action.payload);
-
     yield put(actions.createInfo.createInfoSuccess(Info.data));
   } catch (error) {
     yield put(actions.createInfo.createInfoFailure(error.response.data));
@@ -135,6 +133,7 @@ function* createInfoSaga(action) {
 function* updateInfoSaga(action) {
   try {
     const Info = yield call(api.updateInfo, action.payload);
+    console.log("[Infossss]", Info);
     yield put(actions.updateInfo.updateInfoSuccess(Info.data));
   } catch (error) {
     yield put(actions.updateInfo.updateInfoFailure(error.response.data));
@@ -145,7 +144,6 @@ function* updateInfoSaga(action) {
 function* fetchFacultySaga(action) {
   try {
     const Faculty = yield call(api.fetchFaculty);
-
     yield put(actions.getFaculty.getFacultySuccess(Faculty.data));
   } catch (error) {
     yield put(actions.getFaculty.getFacultyFailure(error));
@@ -166,8 +164,7 @@ function* createFacultySaga(action) {
 function* updateFacultySaga(action) {
   try {
     const Faculty = yield call(api.updateFaculty, action.payload);
-
-    yield put(actions.updateFaculty.updateFacultySuccess(Faculty));
+    yield put(actions.updateFaculty.updateFacultySuccess(Faculty.data));
   } catch (error) {
     console.log("errorrr", error.response.data);
     yield put(actions.updateFaculty.updateFacultyFailure(error.response.data));
@@ -196,6 +193,7 @@ function* createUserSaga(action) {
 function* updateUserSaga(action) {
   try {
     const User = yield call(api.updateUser, action.payload);
+    console.log("[User]", User)
     yield put(actions.updateUser.updateUserSuccess(User.data));
   } catch (error) {
     yield put(actions.updateInfo.updateUserFailure(error.response.data));

@@ -6,7 +6,6 @@ import GVPage from "./pages/ExtendAndCancelPage/GVPage"
 import KhoaAndAdminPage from "./pages/ExtendAndCancelPage/KhoaAndAdminPage";
 import ProjectPage_GV from "./pages/GiangVienPage/ProjectPage/ProjectPage"
 import Info_GiangVien  from "./pages/GiangVienPage/InfoPage/InfoPage"
-import UserPage from "./pages/UserPage/UserPage";
 import { PrivateRoute } from "./components/PrivateRoute";
 import Notfound from "./components/Notfound";
 import "./App.css";
@@ -18,6 +17,9 @@ import React from "react";
 import InfoProjectPage from "./pages/GiangVienPage/ProjectPage/InfoProjectPage";
 import ExtendPage from "./pages/ExtendAndCancelPage/ExtendPage";
 import CancelPage from "./pages/ExtendAndCancelPage/CancelPage";
+import UserPage from "./pages/UserPage/UserPage";
+import SearchLecturerPage from "./pages/SearchPage/SearchLecturerPage/SearchLecturerPage";
+import SearchProjectPage from "./pages/SearchPage/SearchProjectPage/SearchProjectPage";
 
 function App() {
 
@@ -36,6 +38,9 @@ function App() {
           <Route path="/ExtendAndCancelPage" exact component={KhoaAndAdminPage} />
           <Route path="/ExtendPage/:id"  exact component={ExtendPage} />
           <Route path="/CancelPage/:id"  exact component={CancelPage} />
+          <Route path="/User_Page"  exact component={UserPage} />
+          <Route path="/Search_Lecturer_Page"  exact component={SearchLecturerPage} />
+          <Route path="/Search_Project_Page"  exact component={SearchProjectPage} />
           <Route>
             <Notfound/>
           </Route>

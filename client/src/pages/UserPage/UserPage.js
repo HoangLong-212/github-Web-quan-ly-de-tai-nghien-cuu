@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { InfoState$, LoginsState$, UserModalState$, UserState$ } from "../../redux/selectors";
+import {
+  InfoState$,
+  LoginsState$,
+  UserModalState$,
+  UserState$,
+} from "../../redux/selectors";
 import {
   DatabaseTwoTone,
   FrownTwoTone,
@@ -21,19 +26,18 @@ import {
   Result,
 } from "antd";
 import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
-import *as actions from "../../redux/actions";
+import * as actions from "../../redux/actions";
 
-import UserTable from "../../components/Table/UserTable/LecturerTable";
+import UserTable from "../../components/Table/UserTable/UserTable";
 import { configConsumerProps } from "antd/lib/config-provider";
 import { showUserModal } from "../../redux/actions";
 import UserModal from "../../components/Modal/UserModal/UserModal";
-import LecturerTable from "../../components/Table/UserTable/LecturerTable";
+
 
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
 
 export default function UserPage() {
-
   const dispatch = useDispatch();
 
   const [currentId, setCurrentId] = useState(null);
@@ -42,7 +46,6 @@ export default function UserPage() {
     dispatch(showUserModal());
   }, [dispatch]);
 
-   
   //#endregion
 
   //#region Data User
@@ -52,40 +55,39 @@ export default function UserPage() {
 
   const info = useSelector(InfoState$);
 
-
   const dataInfo = info.filter(
-    (info) => info.facultyId === currentUser.username
-  )
+    (info) => info.facultyId.username === currentUser.username //KH001
+  );
+
+  console.log("--------------------------------")
+  console.log("dataInfo", dataInfo)
+  console.log("AAAAA", User)
 
   const dataUser = [];
 
-  User.forEach(element => {
-    dataInfo.forEach(info => {
-      if(element.username === info.username){
+  User.forEach((element) => {
+    dataInfo.forEach((info) => {
+      if (element.username === info.username) {
         dataUser.push(element);
         return;
       }
-    })
+    });
   });
-
 
   // const isShow = useSelector(UserModalState$);
 
-  const [dataSource, setDataSource] = useState(User)
+  const [dataSource, setDataSource] = useState(User);
 
-  const [dataSourceFaculty, setDataSourceFaculty] = useState(dataUser)
+  const [dataSourceFaculty, setDataSourceFaculty] = useState(dataUser);
 
-  console.log("DataSourceFaculty", dataSourceFaculty)
+  console.log("DataSourceFaculty", dataSourceFaculty);
 
-  console.log("datasource", dataSource)
-
-  useEffect(() => {
-    dispatch(actions.getInfo.getInfoRequest());
-    dispatch(actions.getUser.getUserRequest());
-  }, [dispatch]);
+  console.log("datasource", dataSource);
 
   useEffect(() => {
-    dispatch(actions.getFaculty.getFacultyRequest());
+      dispatch(actions.getInfo.getInfoRequest());
+      dispatch(actions.getUser.getUserRequest());
+      dispatch(actions.getFaculty.getFacultyRequest());
   }, [dispatch]);
 
   useEffect(() => {
@@ -95,8 +97,8 @@ export default function UserPage() {
   // console.log("dataSource", dataSource);
 
   if (currentUser.role != "Admin") {
-    if(currentUser.role !== "Khoa"){
-      if(currentUser.role != "Giang Vien") {
+    if (currentUser.role !== "Khoa") {
+      if (currentUser.role != "Giang Vien") {
         return (
           <Result
             className="error-page"
@@ -105,14 +107,25 @@ export default function UserPage() {
             subTitle="Vui lòng kiểm tra lại đường link hoặc tài khoản đăng nhập!"
           />
         );
-    }
-    } else 
-    return (
-      <Layout>
-        <Header>
-          <Headerbar />
-        </Header>
+      }
+    } else
+      return (
         <Layout>
+          <Header>
+            <Headerbar />
+          </Header>
+
+          <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Danh mục hàng hóa"
+            />
+          </Content>
+        </Layout>
+
+          <Layout>
             <Sider
               width={300}
               style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
@@ -123,7 +136,7 @@ export default function UserPage() {
                   <Card
                     title="Loại tài khoản"
                     bordered={false}
-                    style={{ width: 250}}
+                    style={{ width: 250 }}
                   >
                     <Radio.Group defaultValue={1}>
                       <Space direction="vertical">
@@ -132,23 +145,35 @@ export default function UserPage() {
                           onClick={() =>
                             setDataSourceFaculty(
                               dataUser.filter(
-                                (user) => user.role === "Giang Vien" 
+                                (user) => user.role === "Giang Vien"
                               )
                             )
                           }
                         >
                           Giảng viên
                         </Radio>
+                        <Row justify="end">
+                <Space direction="horizontal">
+                  <Button
+                  style={{margin: "5px 5px 0px 5px", width: "120%"}}
+                    icon={<PlusOutlined />}
+                    type="primary"
+                    onClick={openUserModal}
+                  >
+                    Thêm tài khoản
+                  </Button>
+                </Space>
+              </Row>
                       </Space>
                     </Radio.Group>
                   </Card>
                 </Space>
               </div>
             </Sider>
-            <Content style={{ padding: "17px 24px 24px" }}>
+            <Content style={{ padding: "17px 24px 24px 0px" }}>
               <div className="site-layout-content">
-                <Divider orientation="left"></Divider>
-                <Row justify="end">
+                {/* <Divider orientation="left"></Divider> */}
+                {/* <Row justify="end">
                   <Space direction="horizontal">
                     <Button
                       icon={<PlusOutlined />}
@@ -158,30 +183,38 @@ export default function UserPage() {
                       Thêm tài khoản
                     </Button>
                   </Space>
-                </Row>
-                <LecturerTable
+                </Row> */}
+                <UserTable
                   dataSource={dataSourceFaculty}
                   setCurrentId={setCurrentId}
                 />
-                <UserModal
-                  currentId={currentId}
-                  setCurrentId={setCurrentId}
-                />
+                <UserModal currentId={currentId} setCurrentId={setCurrentId} />
               </div>
             </Content>
           </Layout>
-      </Layout>
-    );
-  } else 
-  return (
-    <Layout>
-      <Header>
-        <Headerbar />
-      </Header>
+        </Layout>
+      );
+  } else
+    return (
       <Layout>
+        <Header>
+          <Headerbar />
+        </Header>
+
+        <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Danh mục hàng hóa"
+            />
+          </Content>
+        </Layout>
+
+        <Layout>
           <Sider
             width={300}
-            style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+            style={{ padding: "0px 0px 0px 0x", background: "#F0F2F5" }}
             className="site-layout-sider"
           >
             <div className="site-card-border-less-wrapper">
@@ -189,7 +222,7 @@ export default function UserPage() {
                 <Card
                   title="Loại tài khoản"
                   bordered={false}
-                  style={{ width: 250}}
+                  style={{ width: 250 }}
                 >
                   <Radio.Group defaultValue={1}>
                     <Space direction="vertical">
@@ -200,9 +233,7 @@ export default function UserPage() {
                         value={2}
                         onClick={() =>
                           setDataSource(
-                            User.filter(
-                              (user) => user.role === "Khoa"
-                            )
+                            User.filter((user) => user.role === "Khoa")
                           )
                         }
                       >
@@ -212,26 +243,16 @@ export default function UserPage() {
                         value={3}
                         onClick={() =>
                           setDataSource(
-                            User.filter(
-                              (user) => user.role === "Giang Vien"
-                            )
+                            User.filter((user) => user.role === "Giang Vien")
                           )
                         }
                       >
                         Giảng viên
                       </Radio>
-                    </Space>
-                  </Radio.Group>
-                </Card>
-              </Space>
-            </div>
-          </Sider>
-          <Content style={{ padding: "17px 24px 24px" }}>
-            <div className="site-layout-content">
-              <Divider orientation="left"></Divider>
-              <Row justify="end">
+                      <Row justify="end">
                 <Space direction="horizontal">
                   <Button
+                  style={{margin: "5px 5px 0px 5px", width: "120%"}}
                     icon={<PlusOutlined />}
                     type="primary"
                     onClick={openUserModal}
@@ -240,17 +261,19 @@ export default function UserPage() {
                   </Button>
                 </Space>
               </Row>
-              <UserTable
-                dataSource={dataSource}
-                setCurrentId={setCurrentId}
-              />
-              <UserModal
-                currentId={currentId}
-                setCurrentId={setCurrentId}
-              />
+                    </Space>
+                  </Radio.Group>
+                </Card>
+              </Space>
+            </div>
+          </Sider>
+          <Content style={{ padding: "17px 24px 24px 0px" }}>
+            <div className="site-layout-content">
+              <UserTable dataSource={dataSource} setCurrentId={setCurrentId} />
+              <UserModal currentId={currentId} setCurrentId={setCurrentId} />
             </div>
           </Content>
         </Layout>
-    </Layout>
-  );
+      </Layout>
+    );
 }

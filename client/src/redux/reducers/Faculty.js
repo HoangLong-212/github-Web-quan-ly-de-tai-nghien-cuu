@@ -41,6 +41,7 @@ export default function FacultyReducers(state = INIT_STATE.Faculty, action) {
         };
     case getType(updateFaculty.updateFacultySuccess):
       // messageSuccess("Chỉnh sửa Khoa thành công");
+      console.log("[update]",action.payload);
       return {
         ...state,
         isLoading: false,
