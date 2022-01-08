@@ -37,11 +37,12 @@ export const createFaculty = async (req, res) => {
 export const updateFaculty = async (req, res) => {
     try{
         const updateFaculty = req.body;
+        console.log("[id]", updateFaculty)
         const faculty = await FacultyModel.findOneAndUpdate(
-            {_id: updateFaculty._id},
+            {username: updateFaculty.username},
             updateFaculty,
             {new: true}
-        );
+        );  
         res.status(200).json(faculty);
     }
     catch (err){

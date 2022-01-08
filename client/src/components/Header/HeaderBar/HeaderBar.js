@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Logo from "../../../assets/Logo.png";
 import { Menu } from "antd";
@@ -14,27 +14,77 @@ import {
 } from "@ant-design/icons";
 import MenuItem from "antd/lib/menu/MenuItem";
 import { useDispatch, useSelector } from "react-redux";
-import { LoginsState$ } from "../../../redux/selectors";
+import {
+  FacultyState$,
+  InfoState$,
+  LoginsState$,
+} from "../../../redux/selectors";
 import { Header } from "antd/lib/layout/layout";
-import * as actions from "../../../redux/actions"
+import * as actions from "../../../redux/actions";
+import { useState } from "react";
 
 const { SubMenu } = Menu;
 
 function Headerbar() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actions.getInfo.getInfoRequest());
+    dispatch(actions.getUser.getUserRequest());
+    dispatch(actions.getFaculty.getFacultyRequest());
+  }, [dispatch]);
+
   const users = useSelector(LoginsState$);
 
-  const history = useHistory();
+  const info = useSelector(InfoState$);
 
-  const dispatch = useDispatch();
+  const faculty = useSelector(FacultyState$);
+
+  const infoValue = info.find((Info) => {
+    return Info.username === users.username;
+  });
+
+  console.log("infoj", info);
+  console.log("facultyj", faculty);
+
+  const facultyValue = faculty.find((faculty) => {
+    return faculty.username === users.username;
+  });
+
+  console.log("mmmmm", facultyValue);
+
+  const [data, setdata] = useState({
+    name: "",
+  });
+
+  useEffect(() => {
+    if (users.role === "Admin") {
+      setdata({
+        name: "Admin",
+      });
+    } else {
+      if (users.role === "Khoa") {
+        console.log("faculty header", facultyValue);
+        setdata(facultyValue);
+      } else {
+        console.log("info header", infoValue);
+        setdata(infoValue);
+      }
+    }
+  }, [setdata, facultyValue, users.role, infoValue]);
+
+  console.log("header", data);
+
+  const history = useHistory();
 
   const handleHome = () => {
     history.push("/Home");
   };
-  const handleProject =()=>{
+  const handleProject = () => {
     history.push("/Project_GV");
-  }
+  };
 
-  const handleUser = React.useCallback(()=>{
+  const handleUser = React.useCallback(() => {
     history.push("/User_Page");
   })
 
@@ -47,20 +97,28 @@ function Headerbar() {
     }
     
   })
+  // const users = useSelector(LoginsState$);
 
   // const isAuthenticated = useSelector(LoginsState_isAuthenticated$);
 
-  const TKclick = React.useCallback(()=>{
+  const TKclick = React.useCallback(() => {
     history.push("/Info_GiangVien");
-  })
+  });
 
-  const onClick = React.useCallback(() => {   
+  const onClick = React.useCallback(() => {
     dispatch(actions.login.logoutRequest());
 
     localStorage.removeItem("access_token");
     history.push("/");
   });
 
+  // Search
+  const handleSearchLecturer = React.useCallback(() => {
+    history.push("/Search_Lecturer_Page");
+  });
+  const handleSearchProject = React.useCallback(() => {
+    history.push("/Search_Project_Page");
+  });
   return (
     <div className="Header">
       <Header>
@@ -104,8 +162,15 @@ function Headerbar() {
             key="TraCuu"
             icon={<EyeOutlined />}
             title="Tra Cứu"
-            onTitleClick={{}}
-          ></SubMenu>
+            // onTitleClick={handleSearch}
+          >
+            <Menu.Item key="GiangVien" onClick={handleSearchLecturer}>
+              Giảng viên
+            </Menu.Item>
+            <Menu.Item key="Detai" onClick={handleSearchProject}>
+              Đề tài
+            </Menu.Item>
+          </SubMenu>
           <SubMenu
             key="NghiemThu"
             icon={<CalendarOutlined />}
@@ -131,22 +196,7 @@ function Headerbar() {
       
             )}
 
-          {/* <SubMenu
-            key="TaiKhoan"
-            icon={<TeamOutlined />}
-            title="Tài khoản"
-            onTitleClick={handleUser}
-          ></SubMenu> */}
-            
-          {/* <SubMenu
-              key="Account"
-              title="0585502434"
-              icon={<UserOutlined />}
-              className="account"
-            >
-              <Menu.Item key="subitem1">Tài khoản</Menu.Item>
-              <Menu.Item key="subitem2">Đăng xuất</Menu.Item>
-            </SubMenu> */}
+        
         </Menu>
 
         <Menu
@@ -155,9 +205,18 @@ function Headerbar() {
           defaultSelectedKeys={["2"]}
           className="account"
         >
-          <SubMenu key="account" title="0585502434" icon={<UserOutlined />}>
-            <Menu.Item key="subitem1" onClick={TKclick}>Tài khoản</Menu.Item>
-            <Menu.Item key="subitem2" onClick={onClick}>Đăng xuất</Menu.Item>
+          <SubMenu key="account" title={data.name} icon={<UserOutlined />}>
+            {/* <Menu.Item key="subitem1" onClick={TKclick}>
+              Tài khoản
+            </Menu.Item> */}
+            {users.role !== "Giang Vien" ? null : (
+              <Menu.Item key="subitem1" onClick={TKclick}>
+                Tài khoản
+              </Menu.Item>
+            )}
+            <Menu.Item key="subitem2" onClick={onClick}>
+              Đăng xuất
+            </Menu.Item>
           </SubMenu>
         </Menu>
       </Header>
