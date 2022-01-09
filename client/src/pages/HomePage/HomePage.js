@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "antd";
+import { Layout, PageHeader } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Fab } from "@material-ui/core";
@@ -35,6 +35,15 @@ export default function HomePage() {
       <Header>
         <Headerbar />
       </Header>
+      <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Thông báo"
+            />
+          </Content>
+        </Layout>
       <Content>
         <PostList />
         <PostModal />

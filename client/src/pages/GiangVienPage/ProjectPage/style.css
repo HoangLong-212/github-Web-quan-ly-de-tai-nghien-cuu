@@ -11,9 +11,10 @@ body {
   border-radius: 10px;
 }
 .DangKy {
-  position: absolute;
-  left: 7%;
+  position: relative;
+  left: 69.2%;
   top: 30%;
+  margin: 12px 0px 0px 0px;
 }
 .h3 {
   margin: 0px 0px 0px 25px;

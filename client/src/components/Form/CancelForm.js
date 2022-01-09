@@ -106,7 +106,7 @@ export default function CancelForm() {
   })
 
   const body = (
-    <div className="Form">
+    <div className="Form1">
       <Form
         form={form}
         labelCol={{
@@ -166,7 +166,7 @@ export default function CancelForm() {
         <Form.Item label="Đề tài" required>
           <Cascader
             options={options}
-            style={{ width: "calc(100% - 52px)" }}
+            style={{ width: "calc(100% - 29px)" }}
             placeholder="Mời chọn đề tài cần hủy"
             onChange={(e) => setData({ ...data, idDeTai: e })}
             allowClear
@@ -185,7 +185,7 @@ export default function CancelForm() {
           ]}
         >
           <Input
-            style={{ width: "calc(100% - 52px)" }}
+            style={{ width: "calc(100% - 29px)" }}
             placeholder="Nhập tiêu đề"
             value={data.title}
             onChange={(e) =>
@@ -195,7 +195,7 @@ export default function CancelForm() {
         </Form.Item>
         <Form.Item label="Lý do hủy" required>
           <TextArea
-            style={{ width: "calc(100% - 52px)" }}
+            style={{ width: "calc(100% - 29px)" }}
             allowClear
             rows={7}
             placeholder="Nhập lý do"
@@ -205,9 +205,9 @@ export default function CancelForm() {
             }
           />
         </Form.Item>
-        <Form.Item wrapperCol={{ offset: 18 }}>
+        <Form.Item wrapperCol={{ offset: 20 }}>
           <Button key="back" onClick={handleReset} style={{ marginLeft: 19 }}>
-            Reset
+            Làm mới
           </Button>
           <Button
             key="submit"
@@ -215,7 +215,7 @@ export default function CancelForm() {
             onClick={handleOK}
             style={{ marginLeft: 15 }}
           >
-            Summit
+            Gửi
           </Button>
         </Form.Item>
       </Form>

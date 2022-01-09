@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Layout, Row, Col, Space, Button, Descriptions, Input } from "antd";
+import { Layout, Row, Col, Space, Button, Descriptions, PageHeader, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { showInfoModal } from "../../../redux/actions";
 import {
@@ -65,6 +65,15 @@ export default function InfoPage() {
       <Header>
         <Headerbar />
       </Header>
+      <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Thông tin cá nhân"
+            />
+          </Content>
+        </Layout>
       <Content>
         <InfoModal/>
         <div className="layout-content">

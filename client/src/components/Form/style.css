@@ -1,13 +1,19 @@
 .Form{
-    width: 60%;
-    position: absolute;
-    margin-left: 5%;
-    margin-top: 80px;
+    width: 96.2%;
+    position: relative;
+    margin-top: 0%;
     background-color: #ffffff;
-    border-radius: 10px;
-    
+    border-radius: 10px; 
 }
 .Text{
     margin-left: 15px;
-    margin-top: 15px;
+    margin-top: 20px;
+}
+.Form1{
+    width: 96.2%;
+    position: relative;
+    margin-top: 0%;
+    background-color: #ffffff;
+    border-radius: 10px; 
+    height: 450px;
 }

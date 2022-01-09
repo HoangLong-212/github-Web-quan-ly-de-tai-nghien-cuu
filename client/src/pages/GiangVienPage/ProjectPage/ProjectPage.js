@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Layout } from "antd";
+import { Button, Layout, PageHeader } from "antd";
 import HeaderBar from "../../../components/Header/HeaderBar/HeaderBar";
 import ProjectList from "../../../components/Lists/ProjectList.js/ProjectList";
 import "./style.css";
@@ -21,7 +21,20 @@ export default function ProjectPage() {
       <Header>
         <HeaderBar />
       </Header>
-      <Content>
+      <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Đề tài"
+            />
+          </Content>
+        </Layout>
+      <div>
+      <Button type="primary" className="DangKy" onClick={openProjectModal}>
+            Đăng ký đề tài mới
+          </Button>
+      <Content className="content">
         <ProjectList />
         <DangKyModal />
         {/* {user.role !== "Giang Vien" ? null : (
@@ -29,10 +42,8 @@ export default function ProjectPage() {
             Đăng ký đề tài mới
           </Button>
         )} */}
-        <Button type="primary" className="DangKy" onClick={openProjectModal}>
-            Đăng ký đề tài mới
-          </Button>
       </Content>
+      </div>
     </Layout>
   );
 }

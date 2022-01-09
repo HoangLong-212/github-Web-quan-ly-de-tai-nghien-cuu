@@ -108,7 +108,7 @@ const onDisplaySearch = (inputValue, path) => {
   })
 
   const body = (
-    <div className="Form">
+    <div className="Form1" >
       <Form
       form={form}
       
@@ -156,7 +156,7 @@ const onDisplaySearch = (inputValue, path) => {
                <Input.Group compact>
                 <Input
                   allowClear
-                  style={{ width: "calc(100% - 31px)" }}
+                  style={{ width: "calc(100% - 7px)" }}
                   placeholder="Nhập thời gian"
                   addonAfter="tháng"
                   value={data.GiaHan}
@@ -171,7 +171,7 @@ const onDisplaySearch = (inputValue, path) => {
         <Form.Item label="Đề tài" required>
           <Cascader
             options={options}
-            style={{ width: "calc(100% - 52px)" }}
+            style={{ width: "calc(100% - 29px)" }}
             placeholder="Mời chọn đề tài cần gia hạn"
             value={data.idDeTai}
             onChange={(e) => setData({ ...data, idDeTai: e })}
@@ -191,7 +191,7 @@ const onDisplaySearch = (inputValue, path) => {
           ]}
         >
           <Input
-          style={{ width: "calc(100% - 52px)" }}
+          style={{ width: "calc(100% - 29px)" }}
             placeholder="Nhập tiêu đề"
             value={data.title}
             onChange={(e) =>
@@ -201,7 +201,7 @@ const onDisplaySearch = (inputValue, path) => {
         </Form.Item>
         <Form.Item label="Lý do gia hạn" required>
           <TextArea
-           style={{ width: "calc(100% - 52px)" }}
+           style={{ width: "calc(100% - 29px)" }}
             allowClear
             rows={7}
             placeholder="Nhập lý do"
@@ -211,12 +211,12 @@ const onDisplaySearch = (inputValue, path) => {
             }
           />
         </Form.Item>
-        <Form.Item wrapperCol={{  offset: 18 }}>
+        <Form.Item wrapperCol={{  offset: 20 }}>
         <Button key="reset" onClick={handleReset} style={{marginLeft: 19}}>
-            Reset
+            Làm mới
           </Button>
           <Button key="submit" type="primary" onClick={handleOK} style={{marginLeft: 15}}>
-            Summit
+            Gửi
           </Button>
         </Form.Item>
       </Form>
@@ -224,7 +224,7 @@ const onDisplaySearch = (inputValue, path) => {
   );
   return (
 
-   <div>
+   <div style={{background: "#12hh56"}}>
       {body}
       </div>
   )
