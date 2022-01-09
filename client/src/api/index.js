@@ -47,5 +47,10 @@ export const updateExtends = (payload) => axios.patch(`${URL}/Extends/${payload.
 export const fetchCancels= () => axios.get(`${URL}/Cancels`);
 export const createCancels = (payload) => axios.post(`${URL}/Cancels`, payload);
 export const updateCancels = (payload) => axios.patch(`${URL}/Cancels/${payload._id}`, payload);
+
+//Cancel
+export const fetchCouncils= () => axios.get(`${URL}/Councils`);
+export const createCouncils = (payload) => axios.post(`${URL}/Councils`, payload);
+export const updateCouncils = (payload) => axios.patch(`${URL}/Councils/${payload._id}`, payload);
 //#endregion
 

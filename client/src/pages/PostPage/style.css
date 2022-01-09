@@ -1,29 +1,36 @@
-.Post{
-    width: 60%;
-    height: 80%;
-    position: absolute;
-    margin-left: 20%;
-    margin-top: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
+.Post {
+  width: 60%;
+  height: 80%;
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
 }
 
-.title{
-    margin: 10px 25px 0px 25px;
-    font-weight: normal;
-    font-size: 22px;
-    color: #00649C;
+.title {
+  margin: 10px 25px 0px 25px;
+  font-weight: normal;
+  font-size: 22px;
+  color: #00649c;
 }
-.timeAndAuthor{
-    margin: 5px 25px 0px 25px;
-    font-weight: normal;
-    font-size: 13px;
-    font-style: italic;
+.timeAndAuthor {
+  margin: 5px 25px 0px 25px;
+  font-weight: normal;
+  font-size: 13px;
+  font-style: italic;
 }
 
-.content{
-    margin: 15px 25px 0px 25px;
-    font-weight: normal;
-    font-size: 14px;
-    color: black;
+.content {
+  margin: 15px 25px 0px 25px;
+  font-weight: normal;
+  font-size: 14px;
+  color: black;
+}
+
+.attachment {
+  margin-left: 25px;
+  font-size: 20px;
+  color: #02a541;
+  font-weight: bold;
 }

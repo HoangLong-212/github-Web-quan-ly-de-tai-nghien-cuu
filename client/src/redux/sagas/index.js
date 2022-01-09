@@ -261,6 +261,36 @@ function* updateCancelSaga(action) {
     );
   }
 }
+//Council
+function* fetchCouncilSaga(action) {
+  try {
+    const council = yield call(api.fetchCouncils);
+    yield put(actions.getCouncils.getCouncilsSuccess(council.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.getCouncils.getCouncilsFailure(error.response.data));
+  }
+}
+
+function* createCouncilSaga(action) {
+  try {
+    const council = yield call(api.createCouncils, action.payload);
+    yield put(actions.createCouncils.createCouncilsSuccess(council.data));
+  } catch (error) {
+    yield put(actions.createCouncils.createCouncilsFailure(error.response.data));
+  }
+}
+function* updateCouncilSaga(action) {
+  try {
+    const council = yield call(api.updateCouncils, action.payload);
+
+    yield put(actions.updateCouncils.updateCouncilsSuccess(council.data));
+  } catch (error) {
+    yield put(
+      actions.updateCouncils.updateCouncilsFailure(error.response.data)
+    );
+  }
+}
 //   // #endregion
 
 function* mySaga() {
@@ -333,6 +363,16 @@ function* mySaga() {
   yield takeLatest(
     actions.updateCancels.updateCancelsRequest,
     updateCancelSaga
+  );
+  //Council
+  yield takeLatest(actions.getCouncils.getCouncilsRequest, fetchCouncilSaga);
+  yield takeLatest(
+    actions.createCouncils.createCouncilsRequest,
+    createCouncilSaga
+  );
+  yield takeLatest(
+    actions.updateCouncils.updateCouncilsRequest,
+    updateCouncilSaga
   );
 }
 

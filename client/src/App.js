@@ -20,6 +20,7 @@ import CancelPage from "./pages/ExtendAndCancelPage/CancelPage";
 import UserPage from "./pages/UserPage/UserPage";
 import SearchLecturerPage from "./pages/SearchPage/SearchLecturerPage/SearchLecturerPage";
 import SearchProjectPage from "./pages/SearchPage/SearchProjectPage/SearchProjectPage";
+import CouncilPage from "./pages/CouncilPage/CouncilPage";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/User_Page"  exact component={UserPage} />
           <Route path="/Search_Lecturer_Page"  exact component={SearchLecturerPage} />
           <Route path="/Search_Project_Page"  exact component={SearchProjectPage} />
+          <Route path="/CouncilPage" exact component={CouncilPage} />
           <Route>
             <Notfound/>
           </Route>

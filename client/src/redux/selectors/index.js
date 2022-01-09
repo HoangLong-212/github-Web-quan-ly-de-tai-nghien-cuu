@@ -28,3 +28,5 @@ export const UpdateUserModalState$ = (state) => state.UpdateUserModal;
 export const ExtendsState$ =(state) => state.Extends.data;
 //Cancel
 export const CancelsState$ =(state) => state.Cancels.data;
+//Council
+export const CouncilsState$ =(state) => state.Councils.data;
