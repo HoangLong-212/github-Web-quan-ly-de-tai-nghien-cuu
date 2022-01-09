@@ -41,7 +41,7 @@ export default function CancelList() {
   }
 
   return (
-    <div className="Form">
+    <div className="Form" style={{ margin:"15px 0px 0px 0px"}}>
       <List
         size="large"
         bordered

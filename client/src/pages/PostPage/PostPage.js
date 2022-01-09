@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { PostState$ } from "../../redux/selectors";
-import { Layout } from "antd";
+import { Layout, PageHeader } from "antd";
 import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
 import "./style.css";
 import moment from "moment";
@@ -24,6 +24,15 @@ export default function PostPage() {
       <Header>
         <Headerbar />
       </Header>
+      <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Thông báo"
+            />
+          </Content>
+        </Layout>
       <Content>
         <div className="Post">
           <div className="title">{post.title}</div>

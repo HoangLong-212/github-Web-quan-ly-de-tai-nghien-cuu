@@ -72,7 +72,7 @@ export default function LecturerTable({ dataSource, setCurrentId }) {
               allowClear
               autoFocus
               style={{ width: 200 }}
-              placeholder="Nhập tên tài khoản cần tìm"
+              placeholder="Nhập mã đề tài cần tìm"
               value={selectedKeys[0]}
               onChange={(e) => {
                 setSelectedKeys(e.target.value ? [e.target.value] : []);
@@ -155,7 +155,7 @@ export default function LecturerTable({ dataSource, setCurrentId }) {
                 allowClear
                 autoFocus
                 style={{ width: 200 }}
-                placeholder="Nhập tên tài khoản cần tìm"
+                placeholder="Nhập lĩnh vực cần tìm"
                 value={selectedKeys[0]}
                 onChange={(e) => {
                   setSelectedKeys(e.target.value ? [e.target.value] : []);
@@ -196,7 +196,7 @@ export default function LecturerTable({ dataSource, setCurrentId }) {
                 allowClear
                 autoFocus
                 style={{ width: 200 }}
-                placeholder="Nhập tên tài khoản cần tìm"
+                placeholder="Nhập trình trạng cần tìm"
                 value={selectedKeys[0]}
                 onChange={(e) => {
                   setSelectedKeys(e.target.value ? [e.target.value] : []);
@@ -237,7 +237,7 @@ export default function LecturerTable({ dataSource, setCurrentId }) {
                 allowClear
                 autoFocus
                 style={{ width: 200 }}
-                placeholder="Nhập tên tài khoản cần tìm"
+                placeholder="Nhập số điểm cần tìm"
                 value={selectedKeys[0]}
                 onChange={(e) => {
                   setSelectedKeys(e.target.value ? [e.target.value] : []);
@@ -276,7 +276,7 @@ export default function LecturerTable({ dataSource, setCurrentId }) {
           searchable
           searchableProps={{
             inputProps: {
-              placeholder: "Nhập tên tài khoản",
+              placeholder: "Tìm kiếm",
               prefix: <SearchOutlined />,
               width: 200,
             },
