@@ -36,6 +36,7 @@ const schema = new mongoose.Schema(
         "Đang tiến hành",
         "Không thông qua",
         "Đang tiến hành (Đã gia hạn)",
+        "Đang tiến hành (Chờ nghiệm thu)",
         "Đã hủy",
         "Đã nghiệm thu",
       ],

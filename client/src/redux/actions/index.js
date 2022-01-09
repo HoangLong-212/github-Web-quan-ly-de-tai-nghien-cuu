@@ -180,3 +180,19 @@ export const updateCancels = createActions({
   updateCancelsSuccess: (payload) => payload,
   updateCancelsFailure: (err) => err,
 });
+//Cancel
+export const getCouncils = createActions({
+  getCouncilsRequest: undefined,
+  getCouncilsSuccess: (payload)=>payload,
+  getCouncilsFailure: (err)=>err,
+})
+export const createCouncils = createActions({
+  createCouncilsRequest: (payload)=>payload,
+  createCouncilsSuccess: (payload)=>payload,
+  createCouncilsFailure: (err)=>err,
+})
+export const updateCouncils = createActions({
+  updateCouncilsRequest: (payload) => payload,
+  updateCouncilsSuccess: (payload) => payload,
+  updateCouncilsFailure: (err) => err,
+});

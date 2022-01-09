@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, TextField, Button, TextareaAutosize } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import { ModalState$ } from "../../../redux/selectors";
+import { FacultyState$,  LoginsState$,  ModalState$, UserState$ } from "../../../redux/selectors";
 import useStyles from "./style";
 import FileBase64 from "react-file-base64";
 import { createPosts, hideModal } from "../../../redux/actions";
@@ -10,10 +10,20 @@ export default function PostModal() {
   const [data, setData] = React.useState({
     title: "",
     content: "",
+    author:"",
     attachment: "",
   });
 
   const { isShow } = useSelector(ModalState$);
+  const user = useSelector(LoginsState$);
+  const faculty = useSelector(FacultyState$);
+  if(user.role === "Khoa"){
+    const khoa = faculty.find((value)=> value.username===user.username)
+    data.author = khoa.name.toString();
+  }
+  else{
+    data.author = "Trường đại học Công nghệ Thông tin";
+  }
 
   const dispatch = useDispatch();
 
@@ -24,6 +34,7 @@ export default function PostModal() {
     setData({
       title: '',
       content: '',  
+      content: "",
       attachment: '',
     })
   }, [dispatch]);
@@ -56,9 +67,12 @@ export default function PostModal() {
             <FileBase64
               multiple={false}
               type="file"
+    
               value={data.attachment}
               onDone={({ base64 }) => setData({ ...data, attachment: base64 })}
-            />
+            >
+           
+            </FileBase64>
             <div className={classes.footer}>
               <Button
                 variant="contained"

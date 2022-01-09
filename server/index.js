@@ -11,6 +11,7 @@ import Teams from './routers/Teams.js'
 import Faculty from './routers/Faculty.js'
 import Extends from './routers/Extends.js' 
 import Cancels from './routers/Cancels.js' 
+import Councils from './routers/Councils.js' 
 
 const app = express();
 const PORT = process.env.port || 5000;
@@ -30,6 +31,7 @@ app.use("/Teams", Teams);
 app.use("/Extends", Extends);
 app.use("/Cancels", Cancels);
 app.use("/Faculty", Faculty);
+app.use("/Councils", Councils);
 
 mongoose
   .connect(URI, {

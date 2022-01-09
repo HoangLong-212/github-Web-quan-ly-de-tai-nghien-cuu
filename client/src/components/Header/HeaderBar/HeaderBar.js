@@ -44,14 +44,13 @@ function Headerbar() {
     return Info.username === users.username;
   });
 
-  console.log("infoj", info);
-  console.log("facultyj", faculty);
+ 
 
   const facultyValue = faculty.find((faculty) => {
     return faculty.username === users.username;
   });
 
-  console.log("mmmmm", facultyValue);
+  
 
   const [data, setdata] = useState({
     name: "",
@@ -64,16 +63,15 @@ function Headerbar() {
       });
     } else {
       if (users.role === "Khoa") {
-        console.log("faculty header", facultyValue);
+       
         setdata(facultyValue);
       } else {
-        console.log("info header", infoValue);
+        
         setdata(infoValue);
       }
     }
   }, [setdata, facultyValue, users.role, infoValue]);
 
-  console.log("header", data);
 
   const history = useHistory();
 
@@ -97,9 +95,10 @@ function Headerbar() {
     }
     
   })
-  // const users = useSelector(LoginsState$);
 
-  // const isAuthenticated = useSelector(LoginsState_isAuthenticated$);
+  const handelCouncil = React.useCallback(() => {
+    history.push("/CouncilPage");
+  });
 
   const TKclick = React.useCallback(() => {
     history.push("/Info_GiangVien");
@@ -177,7 +176,7 @@ function Headerbar() {
             title="Nghiệm thu"
             onTitleClick={{}}
           >
-            <Menu.Item key="HoiDongNghiemThu" onClick={{}}>
+            <Menu.Item key="HoiDongNghiemThu" onClick={handelCouncil}>
               Hội đồng nghiệm thu
             </Menu.Item>
             <Menu.Item key="BaoCaoNghiemThu" onClick={{}}>

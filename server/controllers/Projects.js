@@ -67,6 +67,7 @@ export const createProject = async (req, res) => {
 export const updateProject = async (req, res, next) => {
   try {
     const updateProject = req.body;
+    console.log("updateProject",updateProject)
     await ProjectModel.findOneAndUpdate(
       { _id: updateProject._id },
       updateProject,
@@ -89,7 +90,7 @@ export const updateProject = async (req, res, next) => {
       })
       .exec()
       .then((project) => {
-        
+        console.log("upProject",project)
         res.status(200).json(project);
       });
   } catch (err) {

@@ -60,6 +60,10 @@ export const INIT_STATE = {
   Cancels:{
     isLoading: false,
     data: [],
+  },
+  Councils:{
+    isLoading: false,
+    data: [],
   }
 };
       

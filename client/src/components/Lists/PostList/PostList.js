@@ -7,12 +7,25 @@ import moment from "moment";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 
-export default function PostList() {
+export default function PostList({ setCurrentId }) {
   const dispatch = useDispatch();
 
   const posts = useSelector(PostState$);
   
-  let new_posts = posts.slice().reverse();
+  let new_posts;
+
+  console.log("setCurrentId",setCurrentId)
+  if(setCurrentId ==="Tất cả"){
+     new_posts = posts.slice().reverse();
+  }
+  else if(setCurrentId ==="Trường"){
+    const data=posts.filter((value)=>value.author === "Trường đại học Công nghệ Thông tin")
+    new_posts = data.slice().reverse();
+  }
+  else{
+    const data=posts.filter((value)=>value.author !== "Trường đại học Công nghệ Thông tin")
+    new_posts = data.slice().reverse();
+  }
 
 
   const users = useSelector(LoginsState$);
@@ -29,7 +42,7 @@ export default function PostList() {
 
 
   return (
-    <div className="List">
+    <div className="Form">
       <List
         size="large"
         bordered

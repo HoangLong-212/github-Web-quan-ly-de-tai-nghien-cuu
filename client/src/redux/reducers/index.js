@@ -13,6 +13,7 @@ import FacultyModal from "./FacultyModal"
 import UpdateUserModal from "./UpdateUserModal"
 import Extends from "./Extends"
 import Cancels from "./Cancels"
+import Councils from "./Councils"
 export default combineReducers({
     Logins,
     Posts,
@@ -28,6 +29,7 @@ export default combineReducers({
     UpdateUserModal,
     Extends,
     Cancels,
+    Councils,
 })
 
 

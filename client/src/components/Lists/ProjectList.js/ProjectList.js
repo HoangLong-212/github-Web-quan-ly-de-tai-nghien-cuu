@@ -42,8 +42,6 @@ export default function ProjectList() {
     new_projects = data.slice().reverse();
   }
 
-
-
   return (
     <div className="List_Project">
       <List
@@ -54,16 +52,41 @@ export default function ProjectList() {
           <List.Item
             actions={
               item.TinhTrang === "Đã hủy"
-                ? [<p className="Status" style={{color: "#000000"}} >{item.TinhTrang}</p>]
+                ? [
+                    <p className="Status" style={{ color: "#000000" }}>
+                      {item.TinhTrang}
+                    </p>,
+                  ]
                 : item.TinhTrang === "Đang tiến hành"
-                ? [<div className="Status" style={{color: "#52c41a"}}>{item.TinhTrang}</div>]
+                ? [
+                    <div className="Status" style={{ color: "#52c41a" }}>
+                      {item.TinhTrang}
+                    </div>,
+                  ]
                 : item.TinhTrang === "Không thông qua"
-                ? [<div className="Status" style={{color: "#ff4d4f"}}>{item.TinhTrang}</div>]
-                : item.TinhTrang === "Đang tiến hành (Đã gia hạn)"
-                ? [<div className="Status" style={{color: "#52c41a"}}>{item.TinhTrang}</div>]
+                ? [
+                    <div className="Status" style={{ color: "#ff4d4f" }}>
+                      {item.TinhTrang}
+                    </div>,
+                  ]
+                : item.TinhTrang === "Đang tiến hành (Đã gia hạn)" ||
+                  item.TinhTrang === "Đang tiến hành (Chờ nghiệm thu)"
+                ? [
+                    <div className="Status" style={{ color: "#52c41a" }}>
+                      {item.TinhTrang}
+                    </div>,
+                  ]
                 : item.TinhTrang === "Đã nghiệm thu"
-                ? [<div className="Status" style={{color: "#1890ff"}}>{item.TinhTrang}</div>]
-                : [<div className="Status"style={{color: "#ffa940"}}>{item.TinhTrang}</div>]
+                ? [
+                    <div className="Status" style={{ color: "#1890ff" }}>
+                      {item.TinhTrang}
+                    </div>,
+                  ]
+                : [
+                    <div className="Status" style={{ color: "#ffa940" }}>
+                      {item.TinhTrang}
+                    </div>,
+                  ]
             }
           >
             <List.Item.Meta
