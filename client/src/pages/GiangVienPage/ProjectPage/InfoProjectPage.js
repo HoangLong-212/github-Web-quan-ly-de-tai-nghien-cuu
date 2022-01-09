@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Layout } from "antd";
+import { Layout, PageHeader } from "antd";
 import "./style.css";
 import moment from "moment";
 import Headerbar from "../../../components/Header/HeaderBar/HeaderBar";
@@ -87,6 +87,15 @@ export default function InfoProjectPage() {
       <Header>
         <Headerbar />
       </Header>
+      <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Thông tin đề tài"
+            />
+          </Content>
+        </Layout>
       <Content>
         <div className="InfoProject">
           <div className="TenDeTai">{data.TenDeTai}</div>

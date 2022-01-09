@@ -40,7 +40,7 @@ export default function ExtendList() {
   }
 
   return (
-    <div className="Form">
+    <div className="Form" style={{margin:"15px 30px 0px 0px"}}>
       <List
         size="large"
         bordered

@@ -38,6 +38,15 @@ export default function KhoaAndAdminPage() {
             <Headerbar />
           </Header>
           <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Đơn"
+            />
+          </Content>
+        </Layout>
+          <Layout>
             <Sider
               width={300}
               style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
@@ -72,7 +81,7 @@ export default function KhoaAndAdminPage() {
                 </Space>
               </div>
             </Sider>
-            <Content>
+            <Content >
               {data.Don ==="Đơn gia hạn" ?  <ExtendList/>  :<CancelList/>}
             </Content>
           </Layout>

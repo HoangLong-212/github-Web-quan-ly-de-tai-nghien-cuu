@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "antd";
+import { Layout, PageHeader } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Fab } from "@material-ui/core";
@@ -16,7 +16,6 @@ import {
   Card,
   Col,
   Divider,
-  PageHeader,
   Radio,
   Row,
   Space,
@@ -115,19 +114,7 @@ export default function HomePage() {
             </Fab>
           )}
         </Content>
-        {/* <Content>
-              {data.Don ==="Đơn gia hạn" ?  <ExtendList/>  :<CancelList/>}
-            </Content> */}
       </Layout>
-      {/* <Content>
-        <PostList />
-        <PostModal />
-        {user.role === "Giang Vien" ? null : (
-          <Fab color="primary" className={classes.fab} onClick={openPostModal}>
-            <AddIcon />
-          </Fab>
-        )}
-      </Content> */}
     </Layout>
   );
 }

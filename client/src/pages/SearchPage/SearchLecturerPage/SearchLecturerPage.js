@@ -9,6 +9,7 @@ import {
   Layout,
   Typography,
   Result,
+  PageHeader,
 } from "antd";
 import Headerbar from "../../../components/Header/HeaderBar/HeaderBar";
 import * as actions from "../../../redux/actions";
@@ -69,52 +70,20 @@ export default function SearchLecturerPage() {
 
   // console.log("dataSource", dataSource);
 
-  if (currentUser.role != "Admin") {
-    if (currentUser.role !== "Khoa") {
-      if (currentUser.role != "Giang Vien") {
-        return (
-          <Result
-            className="error-page"
-            status="error"
-            title="Hạn chế quyền truy cập"
-            subTitle="Vui lòng kiểm tra lại đường link hoặc tài khoản đăng nhập!"
-          />
-        );
-      }
-    } else
-      return (
-        <Layout>
-          <Header>
-            <Headerbar />
-          </Header>
-          <Layout
-            style={{
-              padding: "24px 24px 0px 24px",
-              width: "80%",
-              backgroundColor: "#57C0FB",
-              borderRadius: "5px",
-              position: "absolute",
-              top: "8.2%",
-              left: "10%",
-            }}
-          >
-            <Content>
-              <div className="site-layout-content">
-                <LecturerTable
-                  dataSource={dataSourceFaculty}
-                  setCurrentId={setCurrentId}
-                />
-              </div>
-            </Content>
-          </Layout>
-        </Layout>
-      );
-  } else
     return (
       <Layout>
         <Header>
           <Headerbar />
         </Header>
+        <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Tra cứu giảng viên"
+            />
+          </Content>
+        </Layout>
         <Layout
           style={{
             padding: "24px 24px 0px 24px",
@@ -122,7 +91,7 @@ export default function SearchLecturerPage() {
             backgroundColor: "#57C0FB",
             borderRadius: "5px",
             position: "absolute",
-            top: "8.2%",
+            top: "19.3%",
             left: "10%",
           }}
           // type="flex"

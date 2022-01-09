@@ -41,6 +41,15 @@ export default function GVPage() {
         <Headerbar />
       </Header>
       <Layout>
+          <Content>
+            <PageHeader
+              onBack={() => window.history.back()}
+              className="site-page-header"
+              title="Soạn đơn"
+            />
+          </Content>
+        </Layout>
+      <Layout>
         <Sider
           width={300}
           style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
