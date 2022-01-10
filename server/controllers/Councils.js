@@ -52,9 +52,7 @@ export const getCouncil = async (req, res) => {
 export const createCouncil = async (req, res) => {
   try {
     const dataCouncil = req.body;
-    //const update = { TinhTrang: "Đang tiến hành (Chờ nghiệm thu)" };
-    //console.log("dataCouncil", dataCouncil.idDeTai.toString());
-    //const check = projects.find((e) => e._id === data.idDeTai.toString());
+  
 
     const Council = new CouncilModel(dataCouncil);
     await Council.save().then((Council) => {

@@ -15,9 +15,7 @@ export default function ExtendList() {
   const dispatch = useDispatch();
 
   const Extend = useSelector(ExtendsState$);
-  console.log("[Extend]", Extend);
 
-  // let new_posts = Extend.slice().reverse();
   let new_posts;
   const users = useSelector(LoginsState$);
 
@@ -28,19 +26,18 @@ export default function ExtendList() {
 
   if (users.role === "Khoa") {
     const data = Extend.filter(
-      (value) => (value.idDeTai.Capdo === "Khoa" && value.idDeTai.idTeam.idChuNhiem.facultyId.username === users.username)
+      (value) =>
+        value.idDeTai.Capdo === "Khoa" &&
+        value.idDeTai.idTeam.idChuNhiem.facultyId.username === users.username
     );
     new_posts = data.slice().reverse();
   } else {
-    const data = Extend.filter(
-      (value) =>
-      value.idDeTai.Capdo === "Trường"
-    );
+    const data = Extend.filter((value) => value.idDeTai.Capdo === "Trường");
     new_posts = data.slice().reverse();
   }
 
   return (
-    <div className="Form" style={{margin:"15px 30px 0px 0px"}}>
+    <div className="Form" style={{ margin: "15px 30px 0px 0px" }}>
       <List
         size="large"
         bordered
@@ -68,7 +65,9 @@ export default function ExtendList() {
                   <div className="div_Title">
                     <a
                       className="Title"
-                      onClick={()=> {history.push("/ExtendPage/"+ item._id)}}
+                      onClick={() => {
+                        history.push("/ExtendPage/" + item._id);
+                      }}
                     >
                       {item.title}
                     </a>
@@ -80,7 +79,7 @@ export default function ExtendList() {
                   <div>Đề tài: {item.idDeTai.TenDeTai}</div>
                   <div>Thời gian gia hạn: {item.GiaHan} tháng</div>
                   <div className="TimeAndAuthor">
-                    {moment(item.updatedAt).format("HH:MM MMM DD, YYYY")}
+                    {moment(item.updatedAt).format("HH:MM DD/MM/YYYY")}
                   </div>
                 </div>
               }

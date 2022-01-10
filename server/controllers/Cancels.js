@@ -27,7 +27,7 @@ export const getCancel = async (req, res) => {
 export const createCancel = async (req, res) => {
   try {
     const  dataCancel = req.body;
-    console.log("dataCancel",dataCancel)
+   
     const Cancel = new CancelModel(dataCancel);
 
     await Cancel.save().then((cancel) => {

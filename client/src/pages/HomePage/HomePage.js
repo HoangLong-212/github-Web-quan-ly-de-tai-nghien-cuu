@@ -76,7 +76,7 @@ export default function HomePage() {
                     <Radio
                       value={2}
                       onClick={
-                        // () =>{check = "Đơn gia hạn"}
+                        
                         () => setCurrentId({ ...currentId, ThongBao: "Trường" })
                       }
                     >
@@ -85,7 +85,7 @@ export default function HomePage() {
                     <Radio
                       value={3}
                       onClick={
-                        // () =>{check = "Đơn hủy"}
+                      
                         () => setCurrentId({ ...currentId, ThongBao: "Khoa" })
                       }
                     >
@@ -113,15 +113,7 @@ export default function HomePage() {
         <Content style={{ padding: "0px 70px 24px 80px" }}>
           <PostList   setCurrentId={currentId.ThongBao} />
           <PostModal />
-          {/* {user.role === "Giang Vien" ? null : (
-            <Fab
-              color="primary"
-              className={classes.fab}
-              onClick={openPostModal}
-            >
-              <AddIcon />
-            </Fab>
-          )} */}
+         
         </Content>
       </Layout>
     </Layout>

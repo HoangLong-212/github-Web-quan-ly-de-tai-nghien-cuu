@@ -55,7 +55,7 @@ export const updateInfo = async (req, res) => {
       })
       .exec()
       .then((info) => {
-        console.log("Info", info);
+      
         res.status(200).json(info);
       });
     res.status(200).json(info);

@@ -42,11 +42,11 @@ export default function DangKyModal() {
     Capdo: "Khoa",
     TinhTrang: "Chờ Khoa duyệt",
     Diem: 0,
-    XepLoai:"",
+    attachment: "",
+    XepLoai: "",
     Mota: "",
     NgayBD: moment(),
     NgayKT: moment().add(1, "y"),
-    attachment: "",
   });
   const [data_Nhom, setData_Nhom] = React.useState({
     MaTeam: "",
@@ -54,7 +54,7 @@ export default function DangKyModal() {
     idChuNhiem: "",
     ThanhVien: [],
   });
-  console.log("CCC",data_Nhom)
+  console.log("CCC", data_Nhom);
 
   const handleOk = React.useCallback(() => {
     if (
@@ -67,8 +67,7 @@ export default function DangKyModal() {
       data_Nhom.idChuNhiem === ""
     ) {
       messageError("Vui lòng nhập đầy đủ thông tin");
-    }
-    else{
+    } else {
       dispatch(
         actions.createProjects.createProjectsRequest({
           dataNhom: data_Nhom,
@@ -76,7 +75,6 @@ export default function DangKyModal() {
         })
       );
       handleCancel();
-
     }
   }, [dispatch, data_DeTai, data_Nhom]);
 
@@ -90,7 +88,7 @@ export default function DangKyModal() {
       Capdo: "Khoa",
       TinhTrang: "Chờ Khoa duyệt",
       Diem: 0,
-      XepLoai:"",
+      XepLoai: "",
       Mota: "",
       NgayBD: moment(),
       NgayKT: moment().add(1, "y"),
@@ -221,8 +219,6 @@ export default function DangKyModal() {
         </Form.Item>
 
         <Form.Item
-          // {...formItemLayout}
-          //name="username"
           label="Tên đề tài"
           required
           rules={[
@@ -305,14 +301,6 @@ export default function DangKyModal() {
                 />
                 <Button icon={<RetweetOutlined />} onClick={RandomMaNhom} />
               </Input.Group>
-              {/* <div
-                value={data_Nhom.MaTeam}
-                onChange={(e) => {
-                  if (e) setData_Nhom({ ...data_Nhom, MaTeam: e });
-                }}
-              >
-                DT001
-              </div> */}
             </Form.Item>
             <Form.Item
               required
@@ -334,6 +322,7 @@ export default function DangKyModal() {
           <Cascader
             options={options}
             placeholder="Nhập tên giảng viên"
+            value={data_Nhom.idChuNhiem}
             onChange={(e) => setData_Nhom({ ...data_Nhom, idChuNhiem: e })}
             allowClear
             suffixIcon={<SearchOutlined />}
@@ -344,6 +333,7 @@ export default function DangKyModal() {
           <Cascader
             options={options}
             placeholder="Nhập tên giảng viên"
+            value={data_Nhom.ThanhVien[0]}
             onChange={(e) => onChangeThanhViens(e, 0)}
             allowClear
             suffixIcon={<SearchOutlined />}
@@ -354,6 +344,7 @@ export default function DangKyModal() {
           <Cascader
             options={options}
             placeholder="Nhập tên giảng viên"
+            value={data_Nhom.ThanhVien[1]}
             onChange={(e) => onChangeThanhViens(e, 1)}
             allowClear
             suffixIcon={<SearchOutlined />}
@@ -364,6 +355,7 @@ export default function DangKyModal() {
           <Cascader
             options={options}
             placeholder="Nhập tên giảng viên"
+            value={data_Nhom.ThanhVien[2]}
             onChange={(e) => onChangeThanhViens(e, 2)}
             allowClear
             suffixIcon={<SearchOutlined />}
@@ -374,6 +366,7 @@ export default function DangKyModal() {
           <Cascader
             options={options}
             placeholder="Nhập tên giảng viên"
+            value={data_Nhom.ThanhVien[3]}
             onChange={(e) => onChangeThanhViens(e, 3)}
             allowClear
             suffixIcon={<SearchOutlined />}

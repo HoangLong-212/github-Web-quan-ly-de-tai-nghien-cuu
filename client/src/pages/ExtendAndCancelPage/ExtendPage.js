@@ -6,7 +6,11 @@ import moment from "moment";
 import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
 import { Button, Popconfirm, message } from "antd";
 import * as actions from "../../redux/actions";
-import { ExtendsState$, LoginsState$, ProjectState$ } from "../../redux/selectors";
+import {
+  ExtendsState$,
+  LoginsState$,
+  ProjectState$,
+} from "../../redux/selectors";
 import { useHistory } from "react-router-dom";
 
 const { Content, Header } = Layout;
@@ -28,17 +32,14 @@ export default function ExtendPage() {
   const project = projects.find(function (project) {
     return project._id === extend.idDeTai._id;
   });
-  
+
   const [data, setData] = React.useState(extend);
-  const [dataProject,setDataProject] = React.useState(project);
-  console.log("XXXX", extend);
-  console.log("KKKK", project);
- 
+  const [dataProject, setDataProject] = React.useState(project);
+
   function confirmDuyet(e) {
-      data.status ="Thông qua"
-    dataProject.TinhTrang = "Đang tiến hành (Đã gia hạn)"
-    dataProject.NgayKT= moment(dataProject.NgayKT).add(data.GiaHan, "M");
-    //console.log("KKK",moment(dataProject.NgayKT).format("DD/MM/YYYY"))
+    data.status = "Thông qua";
+    dataProject.TinhTrang = "Đang tiến hành (Đã gia hạn)";
+    dataProject.NgayKT = moment(dataProject.NgayKT).add(data.GiaHan, "M");
     dispatch(actions.updateExtends.updateExtendsRequest(data));
     dispatch(actions.updateProjects.updateProjectsRequest(dataProject));
     message.success("Đề tài đã được gia hạn");
@@ -69,14 +70,14 @@ export default function ExtendPage() {
         <Headerbar />
       </Header>
       <Layout>
-          <Content>
-            <PageHeader
-              onBack={() => window.history.back()}
-              className="site-page-header"
-              title="Đơn gia hạn"
-            />
-          </Content>
-        </Layout>
+        <Content>
+          <PageHeader
+            onBack={() => window.history.back()}
+            className="site-page-header"
+            title="Đơn gia hạn"
+          />
+        </Content>
+      </Layout>
       <Content>
         <div className="InfoProject">
           <div className="TenDeTai">{data.title}</div>
@@ -85,10 +86,12 @@ export default function ExtendPage() {
             Người gửi: {data.idDeTai.idTeam.idChuNhiem.name} - MSGV:{" "}
             {data.idDeTai.idTeam.idChuNhiem.username}{" "}
           </div>
-          <div className="LinhVuc" style={{color: "#ff4d4f"}} >Thời gian gia hạn: {data.GiaHan} tháng</div>
+          <div className="LinhVuc" style={{ color: "#ff4d4f" }}>
+            Thời gian gia hạn: {data.GiaHan} tháng
+          </div>
           <div className="TimeAndStatus">
             <d className="time">
-              {moment(data.updatedAt).format(" MMM DD, YYYY")} -{" "}
+              {moment(data.updatedAt).format(" DD/MM/YYYY")} -{" "}
             </d>
             <d className="status">{data.status}</d>
           </div>
@@ -103,11 +106,7 @@ export default function ExtendPage() {
           <h3 className="lydo">Lý do gia hạn:</h3>
           <div className="Mota">{data.content}</div>
 
-            {data.status === "Chờ duyệt" ? (
-              <div>{body}</div>
-            ) : (
-              <br />
-            )} 
+          {data.status === "Chờ duyệt" ? <div>{body}</div> : <br />}
         </div>
       </Content>
     </Layout>

@@ -13,7 +13,7 @@ export default function CouncilPage() {
   const dispatch = useDispatch();
   const user = useSelector(LoginsState$);
   const openProjectModal = React.useCallback(() => {
-    dispatch(actions.showModal());  
+    dispatch(actions.showModal());
   }, [dispatch]);
 
   return (
@@ -22,13 +22,13 @@ export default function CouncilPage() {
         <HeaderBar />
       </Header>
       <Content>
-       <CouncilList/>
-       <CouncilModal/>
+        <CouncilList />
+        <CouncilModal />
         {user.role === "Giang Vien" ? null : (
-           <Button type="primary" className="DangKy" onClick={openProjectModal}>
-           Tạo hội đồng mới
-         </Button>
-        )} 
+          <Button type="primary" className="DangKy" onClick={openProjectModal}>
+            Tạo hội đồng mới
+          </Button>
+        )}
       </Content>
     </Layout>
   );

@@ -23,7 +23,7 @@ export default function InfoProjectPage() {
   const project = projects.find(function (project) {
     return project._id === path[1];
   });
-  console.log("DDD", project);
+
   const [data, setData] = React.useState(project);
 
   function confirmDuyet(e) {
@@ -60,8 +60,8 @@ export default function InfoProjectPage() {
         title="Bạn muốn duyệt đề tài này?"
         onConfirm={confirmDuyet}
         onCancel={cancel}
-        okText="Yes"
-        cancelText="No"
+        okText="Có"
+        cancelText="Không"
       >
         <Button className="ButtonDuyet" type="primary">
           Duyệt
@@ -72,8 +72,8 @@ export default function InfoProjectPage() {
         title="Bạn muốn hủy đề tài này?"
         onConfirm={confirmHuy}
         onCancel={cancel}
-        okText="Yes"
-        cancelText="No"
+        okText="Có"
+        cancelText="Không"
       >
         <Button danger className="ButtonHuy">
           Không duyệt
@@ -83,22 +83,19 @@ export default function InfoProjectPage() {
   );
 
   return (
-    <Layout 
-    className="layout" 
-    style={{background:"#f0f2f5"}}
-    >
+    <Layout className="layout" style={{ background: "#f0f2f5" }}>
       <Header>
         <Headerbar />
       </Header>
       <Layout>
-          <Content>
-            <PageHeader
-              onBack={() => window.history.back()}
-              className="site-page-header"
-              title="Thông tin đề tài"
-            />
-          </Content>
-        </Layout>
+        <Content>
+          <PageHeader
+            onBack={() => window.history.back()}
+            className="site-page-header"
+            title="Thông tin đề tài"
+          />
+        </Content>
+      </Layout>
       <Content>
         <div className="InfoProject">
           <div className="TenDeTai">{data.TenDeTai}</div>
@@ -155,22 +152,21 @@ export default function InfoProjectPage() {
             <h3 className="h4">Kết quả nghiệm thu:</h3>
             <d>Điểm: </d>
             {data.Diem === 0 ? null : <d>{data.Diem}</d>}
-            <br/>
+            <br />
             <d>Xếp loại: </d>
             {data.XepLoai === "" ? null : <d>{data.XepLoai}</d>}
             {data.attachment === "" ? null : (
-            <div>
-               <h3 className="h4">Báo cáo nghiệm thu đề tài:</h3>
-              <a
-                
-                onClick={() => {
-                  window.open(data.attachment, "_blank");
-                }}
-              >
-                #Báo cáo nghiệm thu
-              </a>
-            </div>
-          )}
+              <div>
+                <h3 className="h4">Báo cáo nghiệm thu đề tài:</h3>
+                <a
+                  onClick={() => {
+                    window.open(data.attachment, "_blank");
+                  }}
+                >
+                  #Báo cáo nghiệm thu
+                </a>
+              </div>
+            )}
             <h3 className="NgayKT">
               Ngày kết thúc: {moment(data.NgayKT).format("DD/MM/YYYY")}
             </h3>
@@ -183,7 +179,6 @@ export default function InfoProjectPage() {
           ) : (
             <br />
           )}
-          
         </div>
       </Content>
     </Layout>

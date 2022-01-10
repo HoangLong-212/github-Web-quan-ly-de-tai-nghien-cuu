@@ -18,29 +18,13 @@ export default function InfoModal() {
 
   const { isShow } = useSelector(InfoModalState$);
 
-  console.log("isshow", isShow);
-
   const user = useSelector(LoginsState$);
 
   const Info = useSelector(InfoState$);
 
   const InfoValue = Info.find((Info) => Info.username === user.username);
 
-  const [data, setData] = useState(
-    // {
-    //   username: "",
-    //   name: "",
-    //   dateOfBirth: "",
-    //   email: "",
-    //   contract: "",
-    //   phoneNumber: "",
-    //   level: "",
-    //   faculty: "",
-    //   facultyId: [],
-    // }
-    InfoValue
-  );
-  console.log("dataaaa", data)
+  const [data, setData] = useState(InfoValue);
 
   useEffect(() => {
     if (InfoValue) setData(InfoValue);
@@ -48,44 +32,11 @@ export default function InfoModal() {
 
   const [form] = Form.useForm();
 
-  // const checkData = () => {
-  //     const isExistIdLectuter = Info.find((Info) =>
-  //     Info.idLecturer === data.idLecturer && data.idLecturer != InfoValue.idLecturer
-  //     ? true
-  //     : false
-  // );
-  // if (isExistIdLectuter){
-  //     messageError("Đã tồn tại mã giảng viên");
-  //     return false;
-  // }
-  // if(!data.name){
-  //   messageError("Chưa nhập tên");
-  //   return false;
-  // }
-  // if(!data.dateOfBirth){
-  //   messageError("Chưa chọn ngày sinh");
-  //   return false;
-  // }
-  // if(!data.email){
-  //   messageError("Chưa nhập email");
-  //   return false;
-  // }
-  // if(!data.phoneNumber){
-  //     messageError("Chưa nhập số điện thoại");
-  //     return false;
-  // }
-  // return true;
-  // };
-
   const checkData = () => {
     if (!data.name) {
       messageError("Chưa nhập tên");
       return false;
     }
-    // if(!data.dateOfBirth){
-    //   messageError("Chưa chọn ngày sinh");
-    //   return false;
-    // }
     if (!data.email) {
       messageError("Chưa nhập email");
       return false;
@@ -99,9 +50,7 @@ export default function InfoModal() {
 
   const onClose = useCallback(() => {
     dispatch(hideInfoModal());
-    setData(
-      InfoValue
-    );
+    setData(InfoValue);
   }, [dispatch, data]);
 
   const onSubmit = useCallback(() => {
@@ -148,43 +97,30 @@ export default function InfoModal() {
           />
         </Form.Item>
         <Form.Item label="Trình độ">
-          {/* <Input
+          <Select
+            placeholder="Trình độ"
             value={data.level}
-            onChange={(e) => setData({ ...data, level: e.target.value })}
-          ></Input> */}
-                                <Select
-              placeholder="Trình độ"
-              value={data.level}
-              onChange={(e) => setData({ ...data, level: e })}
-            >
-              <Option value="Cử nhân">Cử nhân</Option>
-              <Option value="Thạc sĩ">Thạc sĩ</Option>
-              <Option value="Tiến sĩ">Tiến sĩ</Option>
-              <Option value="Giáo sư">Giáo sư</Option>
-            </Select>
+            onChange={(e) => setData({ ...data, level: e })}
+          >
+            <Option value="Cử nhân">Cử nhân</Option>
+            <Option value="Thạc sĩ">Thạc sĩ</Option>
+            <Option value="Tiến sĩ">Tiến sĩ</Option>
+            <Option value="Giáo sư">Giáo sư</Option>
+          </Select>
         </Form.Item>
         <Form.Item label="Khoa">
-          {/* <Input
-            value={data.facultyId}
-            placeholder="Nhập mã khoa"
-            onChange={(e) => setData({ ...data, facultyId: e.target.value })}
-          /> */}
           <div>{data.facultyId.name}</div>
         </Form.Item>
         <Form.Item label="Hợp đồng">
-          {/* <Input
+          <Select
+            placeholder="Hợp đồng"
             value={data.contract}
-            onChange={(e) => setData({ ...data, contract: e.target.value })}
-          ></Input> */}
-                      <Select
-              placeholder="Hợp đồng"
-              value={data.contract}
-              onChange={(e) => setData({ ...data, contract: e })}
-            >
-              <Option value="Hợp đồng">Hợp đồng</Option>
-              <Option value="Biến chế">Biên chế</Option>
-              <Option value="Thính giảng">Thính giảng</Option>
-            </Select>
+            onChange={(e) => setData({ ...data, contract: e })}
+          >
+            <Option value="Hợp đồng">Hợp đồng</Option>
+            <Option value="Biến chế">Biên chế</Option>
+            <Option value="Thính giảng">Thính giảng</Option>
+          </Select>
         </Form.Item>
       </Form>
     </>

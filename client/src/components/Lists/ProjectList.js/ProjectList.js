@@ -11,8 +11,6 @@ export default function ProjectList() {
   const dispatch = useDispatch();
   const project = useSelector(ProjectState$);
 
-  console.log("[cc]", project);
-
   const users = useSelector(LoginsState$);
 
   React.useEffect(() => {
@@ -43,9 +41,7 @@ export default function ProjectList() {
   }
 
   return (
-    <div 
-    className="List_Project"
-    >
+    <div className="List_Project">
       <List
         size="large"
         bordered
@@ -55,9 +51,7 @@ export default function ProjectList() {
             actions={
               item.TinhTrang === "Đã hủy"
                 ? [
-                    <p 
-                    className="Status" 
-                    style={{ color: "#000000" }}>
+                    <p className="Status" style={{ color: "#000000" }}>
                       {item.TinhTrang}
                     </p>,
                   ]
@@ -114,7 +108,7 @@ export default function ProjectList() {
                   <div>Lĩnh vực: {item.LinhVuc}</div>
                   <div>Cấp độ: {item.Capdo}</div>
                   <d className="TimeAndAuthor">
-                    {moment(item.NgayBD).format("HH:MM MMM DD, YYYY")}
+                    {moment(item.NgayBD).format("HH:MM DD/MM/YYYY")}
                   </d>
                 </div>
               }

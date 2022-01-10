@@ -88,18 +88,16 @@ export default function UserPage() {
     }
   },[User, info]);
 
-  // const isShow = useSelector(UserModalState$);
+
   const [dataSource, setDataSource] = useState(User);
 
-  console.log("DataSourceFaculty", dataSourceFaculty);
 
-  // console.log("datasource", dataSource);
 
   useEffect(() => {
     if (User) setDataSource(User);
   }, [User]);
 
-  // console.log("dataSource", dataSource);
+
 
   if (currentUser.role != "Admin") {
     if (currentUser.role !== "Khoa") {

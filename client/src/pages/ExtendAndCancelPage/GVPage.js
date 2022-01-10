@@ -28,12 +28,9 @@ import CancelForm from "../../components/Form/CancelForm";
 const { Content, Sider, Header } = Layout;
 
 export default function GVPage() {
-  const [ data, setdata ] = React.useState({
+  const [data, setdata] = React.useState({
     Don: "Đơn gia hạn",
   });
-
-  console.log("Check", data);
-  
 
   return (
     <Layout>
@@ -41,14 +38,14 @@ export default function GVPage() {
         <Headerbar />
       </Header>
       <Layout>
-          <Content>
-            <PageHeader
-              onBack={() => window.history.back()}
-              className="site-page-header"
-              title="Soạn đơn"
-            />
-          </Content>
-        </Layout>
+        <Content>
+          <PageHeader
+            onBack={() => window.history.back()}
+            className="site-page-header"
+            title="Soạn đơn"
+          />
+        </Content>
+      </Layout>
       <Layout>
         <Sider
           width={300}
@@ -62,19 +59,13 @@ export default function GVPage() {
                   <Space direction="vertical">
                     <Radio
                       value={1}
-                      onClick={
-                        // () =>{check = "Đơn gia hạn"}
-                        () => setdata({...data,Don: "Đơn gia hạn"})
-                      }
+                      onClick={() => setdata({ ...data, Don: "Đơn gia hạn" })}
                     >
                       Đơn gia hạn
                     </Radio>
                     <Radio
                       value={2}
-                      onClick={
-                        // () =>{check = "Đơn hủy"}
-                        () => setdata({...data,Don: "Đơn hủy"})
-                      }
+                      onClick={() => setdata({ ...data, Don: "Đơn hủy" })}
                     >
                       Đơn hủy
                     </Radio>
