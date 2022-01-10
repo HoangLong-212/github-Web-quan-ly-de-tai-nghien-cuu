@@ -30,11 +30,6 @@ export default function HomePage() {
     ThongBao: "Tất cả",
   });
 
-  // const [ data, setdata ] = React.useState({
-  //   Don: "Đơn gia hạn",
-  // });
-  console.log("currentId", currentId);
-
   const user = useSelector(LoginsState$);
   const info = useSelector(InfoState$);
   const project = useSelector(ProjectState$);
@@ -47,8 +42,8 @@ export default function HomePage() {
   React.useEffect(() => {
     dispatch(actions.getInfo.getInfoRequest());
     dispatch(actions.getProjects.getProjectsRequest());
+    dispatch(actions.getCouncils.getCouncilsRequest());
   }, [dispatch]);
-
   return (
     <Layout>
       <Header>

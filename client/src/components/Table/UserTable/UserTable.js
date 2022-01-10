@@ -10,6 +10,7 @@ import { UserState$ } from "../../../redux/selectors";
 import ExpandedRowRender from "./ExpandedRowRender";
 
 export default function UserTable({ dataSource, setCurrentId }) {
+  console.log("dataSource",dataSource)
   //Create Table
   const columns = [
     // {

@@ -2,31 +2,6 @@ import { UserModel } from "../models/UserModel.js";
 
 export const getUser = async (req, res) => {
   try {
-    // const user1 = new UserModel({
-    //   username: "admin",
-    //   password: "123",
-    //   role: "Admin",
-    // });
-    // user1.save();
-    // const user2 = new UserModel({
-    //   username: "GV03",
-    //   password: "123",
-    //   role: "Giang Vien",
-    // });
-    // user2.save();
-    // const user3 = new UserModel({
-    //   username: "GV04",
-    //   password: "123",
-    //   role: "Giang Vien",
-    // });
-    // user3.save();
-    // const user4 = new UserModel({
-    //   username: "GV05",
-    //   password: "123",
-    //   role: "Giang Vien",
-    // });
-    // user4.save();
-    
 
     const Users = await UserModel.find();
 
@@ -38,12 +13,9 @@ export const getUser = async (req, res) => {
 
 export const createUser = async (req, res) => {
   try {
-    // const { newUsername, newPassword, newRole } = req.body;
+   
     const newUser = req.body;
-  //     if (!newUsername || !newPassword) {
-  //   return res.status(400).send("Chưa có tài khoản hoặc mật khẩu");
-  // }
-    // Check for existing user
+  
     const user = await UserModel.findOne({ username: newUser.username });
     if (user) {
       return res
@@ -59,10 +31,11 @@ export const createUser = async (req, res) => {
     });
     await User.save();
 
-    res.status(200).json({success: true, message: "Created"});
+    
+     res.status(200).json(User);
   } catch (error) {
     res.status(500).json({ error: error });
-    // next();
+    
   }
 };
 

@@ -180,7 +180,7 @@ export const updateCancels = createActions({
   updateCancelsSuccess: (payload) => payload,
   updateCancelsFailure: (err) => err,
 });
-//Cancel
+//Council
 export const getCouncils = createActions({
   getCouncilsRequest: undefined,
   getCouncilsSuccess: (payload)=>payload,
@@ -195,4 +195,20 @@ export const updateCouncils = createActions({
   updateCouncilsRequest: (payload) => payload,
   updateCouncilsSuccess: (payload) => payload,
   updateCouncilsFailure: (err) => err,
+});
+//Report
+export const getReports = createActions({
+  getReportsRequest: undefined,
+  getReportsSuccess: (payload)=>payload,
+  getReportsFailure: (err)=>err,
+})
+export const createReports = createActions({
+  createReportsRequest: (payload)=>payload,
+  createReportsSuccess: (payload)=>payload,
+  createReportsFailure: (err)=>err,
+})
+export const updateReports= createActions({
+  updateReportsRequest: (payload) => payload,
+  updateReportsSuccess: (payload) => payload,
+  updateReportsFailure: (err) => err,
 });

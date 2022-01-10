@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useContext, useCallback } from "react";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+  useMemo,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   InfoState$,
@@ -33,7 +39,6 @@ import { configConsumerProps } from "antd/lib/config-provider";
 import { showUserModal } from "../../redux/actions";
 import UserModal from "../../components/Modal/UserModal/UserModal";
 
-
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
 
@@ -46,6 +51,12 @@ export default function UserPage() {
     dispatch(showUserModal());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(actions.getInfo.getInfoRequest());
+    dispatch(actions.getUser.getUserRequest());
+    dispatch(actions.getFaculty.getFacultyRequest());
+  }, [dispatch]);
+
   //#endregion
 
   //#region Data User
@@ -56,39 +67,35 @@ export default function UserPage() {
   const info = useSelector(InfoState$);
 
   const dataInfo = info.filter(
-    (info) => info.facultyId.username === currentUser.username //KH001
+    (info) => info.facultyId.username === currentUser.username // username: KH001 CNPM
   );
 
-  console.log("--------------------------------")
-  console.log("dataInfo", dataInfo)
-  console.log("AAAAA", User)
+  // console.log("--------------------------------")
+  console.log("User", User);
+  console.log("dataInfo", dataInfo);
 
-  const dataUser = [];
-
-  User.forEach((element) => {
-    dataInfo.forEach((info) => {
-      if (element.username === info.username) {
-        dataUser.push(element);
-        return;
-      }
-    });
-  });
+  const [dataSourceFaculty, setDataSourceFaculty] = useState([]);
+  useEffect(() => {
+    if (User.length && info.length) {
+      const dataUser = [];
+      User.forEach((element) => {
+        dataInfo.forEach((info) => {
+          if (element.username === info.username) {
+            dataUser.push(element); // username:.. mk:....
+            return;
+          }
+        });
+      });
+      setDataSourceFaculty(dataUser);
+    }
+  },[User, info]);
 
   // const isShow = useSelector(UserModalState$);
-
   const [dataSource, setDataSource] = useState(User);
-
-  const [dataSourceFaculty, setDataSourceFaculty] = useState(dataUser);
 
   console.log("DataSourceFaculty", dataSourceFaculty);
 
-  console.log("datasource", dataSource);
-
-  useEffect(() => {
-      dispatch(actions.getInfo.getInfoRequest());
-      dispatch(actions.getUser.getUserRequest());
-      dispatch(actions.getFaculty.getFacultyRequest());
-  }, [dispatch]);
+  // console.log("datasource", dataSource);
 
   useEffect(() => {
     if (User) setDataSource(User);
@@ -116,14 +123,14 @@ export default function UserPage() {
           </Header>
 
           <Layout>
-          <Content>
-            <PageHeader
-              onBack={() => window.history.back()}
-              className="site-page-header"
-              title="Tài khoản"
-            />
-          </Content>
-        </Layout>
+            <Content>
+              <PageHeader
+                onBack={() => window.history.back()}
+                className="site-page-header"
+                title="Tài khoản"
+              />
+            </Content>
+          </Layout>
 
           <Layout>
             <Sider
@@ -144,7 +151,7 @@ export default function UserPage() {
                           value={1}
                           onClick={() =>
                             setDataSourceFaculty(
-                              dataUser.filter(
+                              dataSourceFaculty.filter(
                                 (user) => user.role === "Giang Vien"
                               )
                             )
@@ -153,17 +160,20 @@ export default function UserPage() {
                           Giảng viên
                         </Radio>
                         <Row justify="end">
-                <Space direction="horizontal">
-                  <Button
-                  style={{margin: "5px 5px 0px 5px", width: "120%"}}
-                    icon={<PlusOutlined />}
-                    type="primary"
-                    onClick={openUserModal}
-                  >
-                    Thêm tài khoản
-                  </Button>
-                </Space>
-              </Row>
+                          <Space direction="horizontal">
+                            <Button
+                              style={{
+                                margin: "5px 5px 0px 5px",
+                                width: "120%",
+                              }}
+                              icon={<PlusOutlined />}
+                              type="primary"
+                              onClick={openUserModal}
+                            >
+                              Thêm tài khoản
+                            </Button>
+                          </Space>
+                        </Row>
                       </Space>
                     </Radio.Group>
                   </Card>
@@ -250,17 +260,17 @@ export default function UserPage() {
                         Giảng viên
                       </Radio>
                       <Row justify="end">
-                <Space direction="horizontal">
-                  <Button
-                  style={{margin: "5px 5px 0px 5px", width: "120%"}}
-                    icon={<PlusOutlined />}
-                    type="primary"
-                    onClick={openUserModal}
-                  >
-                    Thêm tài khoản
-                  </Button>
-                </Space>
-              </Row>
+                        <Space direction="horizontal">
+                          <Button
+                            style={{ margin: "5px 5px 0px 5px", width: "120%" }}
+                            icon={<PlusOutlined />}
+                            type="primary"
+                            onClick={openUserModal}
+                          >
+                            Thêm tài khoản
+                          </Button>
+                        </Space>
+                      </Row>
                     </Space>
                   </Radio.Group>
                 </Card>

@@ -30,3 +30,5 @@ export const ExtendsState$ =(state) => state.Extends.data;
 export const CancelsState$ =(state) => state.Cancels.data;
 //Council
 export const CouncilsState$ =(state) => state.Councils.data;
+//Report
+export const ReportsState$ =(state) => state.Reports.data;

@@ -28,6 +28,7 @@ export default function UserReducers(state = INIT_STATE.User, action) {
 
       case getType(createUser.createUserSuccess):
         messageSuccess("Thêm mới tài khoản thành công");
+        console.log("action.payload",action.payload)
         return {
           ...state,
           isLoading: false,
