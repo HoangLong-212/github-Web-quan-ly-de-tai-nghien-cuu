@@ -70,9 +70,7 @@ export default function UserPage() {
     (info) => info.facultyId.username === currentUser.username // username: KH001 CNPM
   );
 
-  // console.log("--------------------------------")
-  console.log("User", User);
-  console.log("dataInfo", dataInfo);
+
 
   const [dataSourceFaculty, setDataSourceFaculty] = useState([]);
   useEffect(() => {
@@ -123,7 +121,8 @@ export default function UserPage() {
           </Header>
 
           <Layout>
-            <Content>
+           
+            <Content style={{ padding: "0px 0px 0px 73px" }}>
               <PageHeader
                 onBack={() => window.history.back()}
                 className="site-page-header"
@@ -135,7 +134,7 @@ export default function UserPage() {
           <Layout>
             <Sider
               width={300}
-              style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+              style={{ padding: "0px 0px 0px 100px", background: "#F0F2F5" }}
               className="site-layout-sider"
             >
               <div className="site-card-border-less-wrapper">
@@ -180,7 +179,7 @@ export default function UserPage() {
                 </Space>
               </div>
             </Sider>
-            <Content style={{ padding: "17px 24px 24px 0px" }}>
+            <Content style={{ padding: "17px 100px 24px 80px" }}>
               <div className="site-layout-content">
                 {/* <Divider orientation="left"></Divider> */}
                 {/* <Row justify="end">
@@ -212,7 +211,7 @@ export default function UserPage() {
         </Header>
 
         <Layout>
-          <Content>
+          <Content style={{ padding: "0px 0px 0px 73px" }}>
             <PageHeader
               onBack={() => window.history.back()}
               className="site-page-header"
@@ -224,7 +223,7 @@ export default function UserPage() {
         <Layout>
           <Sider
             width={300}
-            style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+            style={{ padding: "0px 0px 0px 100px", background: "#F0F2F5" }}
             className="site-layout-sider"
           >
             <div className="site-card-border-less-wrapper">
@@ -277,7 +276,7 @@ export default function UserPage() {
               </Space>
             </div>
           </Sider>
-          <Content style={{ padding: "17px 24px 24px 0px" }}>
+          <Content style={{ padding: "17px 100px 24px 80px" }}>
             <div className="site-layout-content">
               <UserTable dataSource={dataSource} setCurrentId={setCurrentId} />
               <UserModal currentId={currentId} setCurrentId={setCurrentId} />

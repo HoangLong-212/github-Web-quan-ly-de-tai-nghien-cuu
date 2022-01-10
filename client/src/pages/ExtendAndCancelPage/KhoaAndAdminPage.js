@@ -38,7 +38,7 @@ export default function KhoaAndAdminPage() {
             <Headerbar />
           </Header>
           <Layout>
-          <Content>
+          <Content style={{ padding: "0px 0px 0px 73px"}}>
             <PageHeader
               onBack={() => window.history.back()}
               className="site-page-header"
@@ -49,7 +49,7 @@ export default function KhoaAndAdminPage() {
           <Layout>
             <Sider
               width={300}
-              style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+              style={{ padding: "0px 0px 0px 100px", background: "#F0F2F5" }}
               className="site-layout-sider"
             >
               <div className="site-card-border-less-wrapper">
@@ -81,7 +81,7 @@ export default function KhoaAndAdminPage() {
                 </Space>
               </div>
             </Sider>
-            <Content >
+            <Content style={{ padding: "0px 70px 24px 80px" }}>
               {data.Don ==="Đơn gia hạn" ?  <ExtendList/>  :<CancelList/>}
             </Content>
           </Layout>
