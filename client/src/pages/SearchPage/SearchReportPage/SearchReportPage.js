@@ -4,6 +4,7 @@ import {
   InfoState$,
   LoginsState$,
   ProjectState$,
+  ReportsState$,
   UserState$,
 } from "../../../redux/selectors";
 import {
@@ -15,13 +16,14 @@ import {
 import Headerbar from "../../../components/Header/HeaderBar/HeaderBar";
 import * as actions from "../../../redux/actions";
 import ProjectTable from "../../../components/Table/SearchTable/SearchProjectTable/ProjectTable"
+import ReportTable from "../../../components/Table/SearchTable/SearchReportTable/ReportTable";
 
 
 
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
 
-export default function SearchProjectPage() {
+export default function SearchReportPage() {
   const dispatch = useDispatch();
 
   const [currentId, setCurrentId] = useState(null);
@@ -29,35 +31,10 @@ export default function SearchProjectPage() {
   //#endregion
 
   //#region Data User
-  const User = useSelector(UserState$);
 
-  const currentUser = useSelector(LoginsState$);
+  const report = useSelector(ReportsState$);
 
-  const project = useSelector(ProjectState$);
-
-  const dataProject =project.filter(
-    (project) => project.idTeam.idChuNhiem.facultyId.username === currentUser.username //KH001
-  );
-
-  console.log("dataProject", dataProject)
-  // const dataUser = [];
-
-  // User.forEach((element) => {
-  //   dataInfo.forEach((info) => {
-  //     if (element.username === info.username) {
-  //       dataUser.push(element);
-  //       return;
-  //     }
-  //   });
-  // });
-
-  // const isShow = useSelector(UserModalState$);
-
-  const [dataSource, setDataSource] = useState(project);
-
-  const [dataSourceFaculty, setDataSourceFaculty] = useState(dataProject);
-
-  console.log("DataSourceFaculty", dataSourceFaculty);
+  const [dataSource, setDataSource] = useState(report);
 
   console.log("datasource", dataSource);
 
@@ -66,11 +43,13 @@ export default function SearchProjectPage() {
     dispatch(actions.getUser.getUserRequest());
     dispatch(actions.getFaculty.getFacultyRequest());
     dispatch(actions.getProjects.getProjectsRequest());
+    dispatch(actions.getCouncils.getCouncilsRequest());
+    dispatch(actions.getReports.getReportsRequest());
   }, [dispatch]);
 
   useEffect(() => {
-    if (project) setDataSource(project);
-  }, [project]);
+    if (report) setDataSource(report);
+  }, [report]);
 
   // console.log("dataSource", dataSource);
 
@@ -80,11 +59,11 @@ export default function SearchProjectPage() {
           <Headerbar />
         </Header>
         <Layout>
-          <Content>
+          <Content style={{ padding: "0px 0px 0px 126px" }}>
             <PageHeader
               onBack={() => window.history.back()}
               className="site-page-header"
-              title="Tra cứu đề tài"
+              title="Tra cứu báo cáo nghiệm thu"
             />
           </Content>
         </Layout>
@@ -102,7 +81,7 @@ export default function SearchProjectPage() {
         >
           <Content>
             <div className="site-layout-content">
-              <ProjectTable
+              <ReportTable
                 dataSource={dataSource}
                 setCurrentId={setCurrentId}
               />

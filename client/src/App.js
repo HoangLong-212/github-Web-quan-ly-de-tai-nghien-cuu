@@ -23,6 +23,7 @@ import SearchProjectPage from "./pages/SearchPage/SearchProjectPage/SearchProjec
 import CouncilPage from "./pages/CouncilPage/CouncilPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import InfoReportPage from "./pages/ReportPage/InfoReportPage";
+import SearchReportPage from "./pages/SearchPage/SearchReportPage/SearchReportPage";
 
 function App() {
 
@@ -47,6 +48,8 @@ function App() {
           <Route path="/CouncilPage" exact component={CouncilPage} />
           <Route path="/ReportPage" exact component={ReportPage} />
           <Route path="/ReportPage/:id" exact component={InfoReportPage} />
+          <Route path="/Search_Report_Page"  exact component={SearchReportPage} />
+
           <Route>
             <Notfound/>
           </Route>

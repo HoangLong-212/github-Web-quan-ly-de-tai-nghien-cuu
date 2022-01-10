@@ -44,13 +44,9 @@ function Headerbar() {
     return Info.username === users.username;
   });
 
- 
-
   const facultyValue = faculty.find((faculty) => {
     return faculty.username === users.username;
   });
-
-  
 
   const [data, setdata] = useState({
     name: "",
@@ -63,15 +59,12 @@ function Headerbar() {
       });
     } else {
       if (users.role === "Khoa") {
-       
         setdata(facultyValue);
       } else {
-        
         setdata(infoValue);
       }
     }
   }, [setdata, facultyValue, users.role, infoValue]);
-
 
   const history = useHistory();
 
@@ -84,17 +77,15 @@ function Headerbar() {
 
   const handleUser = React.useCallback(() => {
     history.push("/User_Page");
-  })
+  });
 
-  const handleForm = React.useCallback(()=>{
-    if(users.role === "Giang Vien"){
+  const handleForm = React.useCallback(() => {
+    if (users.role === "Giang Vien") {
       history.push("/ExtendAndCancelPage_GV");
-    }
-    else{
+    } else {
       history.push("/ExtendAndCancelPage");
     }
-    
-  })
+  });
 
   const handelReport = React.useCallback(() => {
     history.push("/ReportPage");
@@ -121,6 +112,12 @@ function Headerbar() {
   const handleSearchProject = React.useCallback(() => {
     history.push("/Search_Project_Page");
   });
+
+  const handleSearchReport = React.useCallback(() => {
+    history.push("/Search_Report_Page");
+  });
+
+  
   return (
     <div className="Header">
       <Header>
@@ -151,9 +148,7 @@ function Headerbar() {
             icon={<SwapOutlined />}
             title="Đơn"
             onTitleClick={handleForm}
-          >
-    
-          </SubMenu>
+          ></SubMenu>
 
           <SubMenu
             key="TraCuu"
@@ -167,6 +162,11 @@ function Headerbar() {
             <Menu.Item key="Detai" onClick={handleSearchProject}>
               Đề tài
             </Menu.Item>
+            {users.role === "Giang Vien" ? null : (
+              <Menu.Item key="Detai" onClick={handleSearchReport}>
+                Báo cáo
+              </Menu.Item>
+            )}
           </SubMenu>
           <SubMenu
             key="NghiemThu"
@@ -184,16 +184,13 @@ function Headerbar() {
 
           {/* Cmt lại để code không bug */}
           {users.role === "Giang Vien" ? null : (
-              <SubMenu
-                key="TaiKhoan"
-                icon={<TeamOutlined />}
-                title="Tài khoản"
-                onTitleClick={handleUser}
-                ></SubMenu>
-      
-            )}
-
-        
+            <SubMenu
+              key="TaiKhoan"
+              icon={<TeamOutlined />}
+              title="Tài khoản"
+              onTitleClick={handleUser}
+            ></SubMenu>
+          )}
         </Menu>
 
         <Menu
