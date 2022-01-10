@@ -17,7 +17,7 @@ export const getCancel = async (req, res) => {
     })
     .exec()
       .then((cancel) => {
-        console.log("get",cancel);
+       
         res.status(200).json(cancel);
       });
   } catch (err) {
@@ -46,7 +46,7 @@ export const createCancel = async (req, res) => {
         })
         .exec()
         .then((cancel) => {
-            console.log("create",cancel);
+          
           res.status(200).json(cancel);
         });
     });
@@ -76,7 +76,7 @@ export const updateCancel = async (req, res, next) => {
     })
     .exec()
     .then((cancel) => {
-        console.log("update",cancel);
+      
       res.status(200).json(cancel);
     });
   } catch (err) {

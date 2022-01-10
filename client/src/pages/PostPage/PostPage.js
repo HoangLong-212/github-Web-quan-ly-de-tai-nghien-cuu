@@ -25,14 +25,14 @@ export default function PostPage() {
         <Headerbar />
       </Header>
       <Layout>
-          <Content>
-            <PageHeader
-              onBack={() => window.history.back()}
-              className="site-page-header"
-              title="Thông báo"
-            />
-          </Content>
-        </Layout>
+        <Content>
+          <PageHeader
+            onBack={() => window.history.back()}
+            className="site-page-header"
+            title="Thông báo"
+          />
+        </Content>
+      </Layout>
       <Content>
         <div className="Post">
           <div className="title">{post.title}</div>
@@ -42,13 +42,11 @@ export default function PostPage() {
           </div>
           <div className="content">{post.content}</div>
           {post.attachment === "" ? null : (
-            <div>
+            <div className="attachment">
               <br />
-              <br />
-              <br />
-              <br />
+              <h3>Tệp đính kèm:</h3>
               <a
-                className="attachment"
+                //className="attachment"
                 onClick={() => {
                   window.open(post.attachment, "_blank");
                 }}
@@ -57,6 +55,7 @@ export default function PostPage() {
               </a>
             </div>
           )}
+          <br />
         </div>
       </Content>
     </Layout>

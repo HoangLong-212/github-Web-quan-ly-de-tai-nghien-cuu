@@ -47,7 +47,7 @@ export default function CouncilModal() {
     idThuKy: "",
     idPhanBien1: "",
     idPhanBien2: "",
-    status: "Nghiệm thu",
+    status: "Chờ nghiệm thu",
     UyVien: [],
     NgayNghiemThu: moment(),
     idDeTai: "",

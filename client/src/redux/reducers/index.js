@@ -14,6 +14,7 @@ import UpdateUserModal from "./UpdateUserModal"
 import Extends from "./Extends"
 import Cancels from "./Cancels"
 import Councils from "./Councils"
+import Reports from "./Reports"
 export default combineReducers({
     Logins,
     Posts,
@@ -30,6 +31,7 @@ export default combineReducers({
     Extends,
     Cancels,
     Councils,
+    Reports,
 })
 
 

@@ -39,7 +39,6 @@ export default function UserModal({ currentId, setCurrentId }) {
 
   const Info = useSelector(InfoState$);
 
-  // console.log("User ddaay", Users);
 
   const [data, setData] = useState({
     username: "",
@@ -66,11 +65,6 @@ export default function UserModal({ currentId, setCurrentId }) {
 
   const currentUser = useSelector(LoginsState$);
 
-  // console.log("[currentFaculty]", currentFaculty)
-
-  // console.log("nnn", Faculty)
-
-  // console.log("...", _faculty)
 
   const Options = Faculty.map((data) => {
     var o = Object.assign({});
@@ -78,11 +72,10 @@ export default function UserModal({ currentId, setCurrentId }) {
     o.label = `${data.name + " - " + data.username}`;
     return o;
   });
-  // console.log("mmm", Options);
+
 
   const [form] = Form.useForm();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkData = () => {
     const isExisUser = Users.find((User) =>
       User.username === data.username ? true : false
@@ -130,7 +123,6 @@ export default function UserModal({ currentId, setCurrentId }) {
     });
   }, [dispatch, setCurrentId]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const info = {
     username: data.username,
     name: data.name,
@@ -142,31 +134,14 @@ export default function UserModal({ currentId, setCurrentId }) {
     facultyId: "",
   };
 
-  // console.log("[FAC]",info);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   const faculty = {
     username: data.username,
     name: data.name,
   };
-  console.log("[LONG]", faculty);
 
-  // info.facultyId = data.faculty.toString();
 
   const onSubmit = useCallback(() => {
-    //   const currentInfo = Info.find((Info) =>
-    //   Info.username === UserValue.username ? Info : null
-    // );
-    // const infoDepartment1 = {
-    //   username: data.username,
-    //   name: data.name,
-    //   dateOfBirth: new Date(),
-    //   email: "",
-    //   contract: "",
-    //   phoneNumber: "",
-    //   level: "",
-    //   facultyId: currentInfo.facultyId,
-    // };
-    // console.log( "jjj",infoDepartment1)
     if (checkData()) {
       if (currentId !== null) {
         dispatch(updateUser.updateUserRequest(data));
@@ -196,7 +171,6 @@ export default function UserModal({ currentId, setCurrentId }) {
         console.log("Đã dispatch");
       } else {
         info.facultyId = data.faculty.toString();
-        console.log("Đã dispatch User");
         dispatch(createUser.createUserRequest(data));
         if (data.role === "Khoa") {
           dispatch(createFaculty.createFacultyRequest(faculty));
@@ -219,11 +193,8 @@ export default function UserModal({ currentId, setCurrentId }) {
           dispatch(createInfo.createInfoRequest(info));
         }
       }
-      // dispatch(createInfo.createInfoRequest(info));
     }
     onClose();
-    // checkNew();
-    // dispatch(getUser.getUserRequest());
   }, [dispatch, onClose, checkData]);
 
   const onDisplaySearch = (inputValue, path) => {
@@ -292,23 +263,6 @@ export default function UserModal({ currentId, setCurrentId }) {
               ></Cascader>
             </Form.Item>
           )
-          // : data.role === "Giang Vien"?(
-          //   <Form.Item label="Tên khoa" required>
-          //   <Cascader
-          //     options={Options}
-          //     placeholder="Nhập tên khoa"
-          //     onChange={(e) => {setData({...data, faculty: e});
-          //     }}
-          //     allowClear
-          //     suffixIcon={<SearchOutlined/>}
-          //     showSearch = {onDisplaySearch}
-          //     disabled={
-          //       data.role === "Giang Vien"
-          //     }
-          //     >
-          //   </Cascader>
-          // </Form.Item>
-          // )
         }
 
         <Form.Item label="Mật khẩu" required>
@@ -342,13 +296,6 @@ export default function UserModal({ currentId, setCurrentId }) {
         layout="horizontal"
       >
         <Form.Item label="Loại tài khoản" required>
-          {/* <Input
-            placeholder="Khoa/Giang Vien"
-            value={data.role}
-            onChange={(e) => {
-              setData({ ...data, role: e.target.value });
-            }}
-          /> */}
           <Select
             placeholder="Chọn loại tài khoản"
             value={data.role}

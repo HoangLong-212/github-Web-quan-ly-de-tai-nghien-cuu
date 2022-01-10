@@ -46,6 +46,9 @@ const schema = new mongoose.Schema(
       type: Number,
       // require: true,
     },
+    XepLoai:{
+      type:String
+    },
     Mota: {
       type: String,
       require: true,
@@ -58,6 +61,7 @@ const schema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    attachment: String,
     idTeam:{
       type: Schema.Types.ObjectId,
       ref: 'Team',

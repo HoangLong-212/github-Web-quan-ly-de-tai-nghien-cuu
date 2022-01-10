@@ -42,7 +42,7 @@ export const getCouncil = async (req, res) => {
       })
       .exec()
       .then((Council) => {
-        console.log("get", Council);
+       
         res.status(200).json(Council);
       });
   } catch (err) {
@@ -97,35 +97,10 @@ export const createCouncil = async (req, res) => {
         })
         .exec()
         .then((Council) => {
-          console.log("create", Council);
+         
           res.status(200).json(Council);
         });
 
-      //  await ProjectModel.findOneAndUpdate(
-      //   { _id: dataCouncil.idDeTai.toString() },
-      //   update,
-      //   { new: true }
-      // )
-        // .populate({
-        //   path: "idTeam",
-        //   populate: {
-        //     path: "idChuNhiem",
-        //     populate: {
-        //       path: "facultyId",
-        //     },
-        //   },
-        // })
-        // .populate({
-        //   path: "idTeam",
-        //   populate: {
-        //     path: "ThanhVien",
-        //   },
-        // })
-        // .exec()
-        // .then((project) => {
-        //   console.log("PLPLPLPLP", project);
-        //   res.status(200).json(project);
-        // });
     });
   } catch (err) {
     res.status(500).json({ error: err });

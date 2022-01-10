@@ -96,6 +96,9 @@ function Headerbar() {
     
   })
 
+  const handelReport = React.useCallback(() => {
+    history.push("/ReportPage");
+  });
   const handelCouncil = React.useCallback(() => {
     history.push("/CouncilPage");
   });
@@ -149,12 +152,7 @@ function Headerbar() {
             title="Đơn"
             onTitleClick={handleForm}
           >
-            <Menu.Item key="GiaHanDeTai" onClick={{}}>
-              Gia hạn đề tài
-            </Menu.Item>
-            <Menu.Item key="DungDeTai" onClick={{}}>
-              Dừng đề tài
-            </Menu.Item>
+    
           </SubMenu>
 
           <SubMenu
@@ -179,7 +177,7 @@ function Headerbar() {
             <Menu.Item key="HoiDongNghiemThu" onClick={handelCouncil}>
               Hội đồng nghiệm thu
             </Menu.Item>
-            <Menu.Item key="BaoCaoNghiemThu" onClick={{}}>
+            <Menu.Item key="BaoCaoNghiemThu" onClick={handelReport}>
               Báo cáo nghiệm thu
             </Menu.Item>
           </SubMenu>

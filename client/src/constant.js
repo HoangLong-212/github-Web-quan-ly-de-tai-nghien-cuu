@@ -64,6 +64,10 @@ export const INIT_STATE = {
   Councils:{
     isLoading: false,
     data: [],
+  },
+  Reports:{
+    isLoading: false,
+    data: [],
   }
 };
       

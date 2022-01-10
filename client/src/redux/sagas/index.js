@@ -184,6 +184,7 @@ function* fetchUserSaga(action) {
 function* createUserSaga(action) {
   try {
     const User = yield call(api.createUser, action.payload);
+    console.log("User in saga", User.data);
     yield put(actions.createUser.createUserSuccess(User.data));
   } catch (error) {
     yield put(actions.createUser.createUserFailure(error.response.data));
@@ -291,6 +292,36 @@ function* updateCouncilSaga(action) {
     );
   }
 }
+//Report
+function* fetchReportSaga(action) {
+  try {
+    const report = yield call(api.fetchReports);
+    yield put(actions.getReports.getReportsSuccess(report.data));
+  } catch (error) {
+    console.log("error", error.response.data);
+    yield put(actions.getReports.getReportsFailure(error.response.data));
+  }
+}
+
+function* createReportSaga(action) {
+  try {
+    const report = yield call(api.createReports, action.payload);
+    yield put(actions.createReports.createReportsSuccess(report.data));
+  } catch (error) {
+    yield put(actions.createReports.createReportsFailure(error.response.data));
+  }
+}
+function* updateReportSaga(action) {
+  try {
+    const report = yield call(api.updateReports, action.payload);
+
+    yield put(actions.updateReports.updateReportsSuccess(report.data));
+  } catch (error) {
+    yield put(
+      actions.updateReports.updateReportsFailure(error.response.data)
+    );
+  }
+}
 //   // #endregion
 
 function* mySaga() {
@@ -373,6 +404,16 @@ function* mySaga() {
   yield takeLatest(
     actions.updateCouncils.updateCouncilsRequest,
     updateCouncilSaga
+  );
+   //Report
+   yield takeLatest(actions.getReports.getReportsRequest, fetchReportSaga);
+   yield takeLatest(
+     actions.createReports.createReportsRequest,
+     createReportSaga
+   );
+   yield takeLatest(
+    actions.updateReports.updateReportsRequest,
+    updateReportSaga
   );
 }
 

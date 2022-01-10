@@ -14,7 +14,7 @@ export default function PostList({ setCurrentId }) {
   
   let new_posts;
 
-  console.log("setCurrentId",setCurrentId)
+
   if(setCurrentId ==="Tất cả"){
      new_posts = posts.slice().reverse();
   }

@@ -152,6 +152,22 @@ export default function InfoProjectPage() {
             <h3 className="h4">Kết quả nghiệm thu:</h3>
             <d>Điểm: </d>
             {data.Diem === 0 ? null : <d>{data.Diem}</d>}
+            <br/>
+            <d>Xếp loại: </d>
+            {data.XepLoai === "" ? null : <d>{data.XepLoai}</d>}
+            {data.attachment === "" ? null : (
+            <div>
+               <h3 className="h4">Báo cáo nghiệm thu đề tài:</h3>
+              <a
+                
+                onClick={() => {
+                  window.open(data.attachment, "_blank");
+                }}
+              >
+                #Báo cáo nghiệm thu
+              </a>
+            </div>
+          )}
             <h3 className="NgayKT">
               Ngày kết thúc: {moment(data.NgayKT).format("DD/MM/YYYY")}
             </h3>
@@ -164,6 +180,7 @@ export default function InfoProjectPage() {
           ) : (
             <br />
           )}
+          
         </div>
       </Content>
     </Layout>

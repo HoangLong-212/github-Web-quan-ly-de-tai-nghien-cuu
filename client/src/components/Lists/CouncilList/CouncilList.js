@@ -36,7 +36,12 @@ export default function CouncilList() {
       const data = council.filter(
         (value) =>
           value.idDeTai.idTeam.idChuNhiem.username === users.username ||
-          value.idDeTai.idTeam.ThanhVien.find((a) => a.username === users.username)
+          value.idDeTai.idTeam.ThanhVien.find((a) => a.username === users.username)|| 
+          value.idChuTich.username === users.username ||
+          value.UyVien.find((a) => a.username === users.username)||
+          value.idPhanBien1.username === users.username ||
+          value.idPhanBien2.username === users.username ||
+          value.idThuKy.username === users.username 
       );
       new_projects = data.slice().reverse();
     } 

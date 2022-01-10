@@ -42,9 +42,11 @@ export default function DangKyModal() {
     Capdo: "Khoa",
     TinhTrang: "Chờ Khoa duyệt",
     Diem: 0,
+    XepLoai:"",
     Mota: "",
     NgayBD: moment(),
     NgayKT: moment().add(1, "y"),
+    attachment: "",
   });
   const [data_Nhom, setData_Nhom] = React.useState({
     MaTeam: "",
@@ -88,6 +90,7 @@ export default function DangKyModal() {
       Capdo: "Khoa",
       TinhTrang: "Chờ Khoa duyệt",
       Diem: 0,
+      XepLoai:"",
       Mota: "",
       NgayBD: moment(),
       NgayKT: moment().add(1, "y"),
@@ -139,35 +142,6 @@ export default function DangKyModal() {
     }
   }, [dispatch, data_Nhom]);
 
-  // const isNotRepeat = React.useCallback(
-  //   () => {
-  //     let newOptions =  GiangVien.map((data) => {
-  //       var o = Object.assign({});
-  //       o.value = data._id;
-  //       o.label = `${data.name + " - " + data.username}`;
-  //       return o;
-  //     });
-  //     const indexOfChuNhiem = options.indexOf(data_Nhom.idChuNhiem[0]);
-  //     newOptions.splice(indexOfChuNhiem, )
-  //     if (data.value === ) return false;
-  //     if (data_Nhom.ThanhVien.length > 0) {
-  //       data_Nhom.ThanhVien.forEach((element) => {
-  //         if (element[0] === data.value) return false;
-  //       });
-  //     }
-  //     return true;
-  //   },
-  //   [data_Nhom]
-  // );
-
-  // const [options, setOptions] = React.useState(
-  //   GiangVien.map((data) => {
-  //     var o = Object.assign({});
-  //     o.value = data._id;
-  //     o.label = `${data.name + " - " + data.username}`;
-  //     return o;
-  //   })
-  // );
   const options = GiangVien.map((data) => {
     var o = Object.assign({});
     o.value = data._id;
