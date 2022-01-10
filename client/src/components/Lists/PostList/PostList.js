@@ -42,7 +42,7 @@ export default function PostList({ setCurrentId }) {
 
 
   return (
-    <div className="Form">
+    <div className="Form" style={{margin:"17px 24px 24px 0px"}}>
       <List
         size="large"
         bordered

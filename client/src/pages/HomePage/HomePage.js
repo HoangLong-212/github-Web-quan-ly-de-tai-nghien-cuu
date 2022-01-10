@@ -22,6 +22,7 @@ import {
   Typography,
   Result,
 } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 
 const { Content, Sider, Header } = Layout;
 export default function HomePage() {
@@ -57,7 +58,7 @@ export default function HomePage() {
       <Layout>
         <Sider
           width={300}
-          style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+          style={{ padding: "0px 0px 0px 100px", background: "#F0F2F5" }}
           className="site-layout-sider"
         >
           <div className="site-card-border-less-wrapper">
@@ -95,16 +96,29 @@ export default function HomePage() {
                     >
                       Khoa
                     </Radio>
+                    {user.role === "Giang Vien" ? null : (
+                    <Row justify="end">
+                <Space direction="horizontal">
+                  <Button
+                  style={{margin: "5px 5px 0px 1px", width: "120%"}}
+                    icon={<PlusOutlined />}
+                    type="primary"
+                    onClick={openPostModal}
+                  >
+                    Thêm thông báo
+                  </Button>
+                </Space>
+              </Row>)}
                   </Space>
                 </Radio.Group>
               </Card>
             </Space>
           </div>
         </Sider>
-        <Content>
+        <Content style={{ padding: "0px 70px 24px 80px" }}>
           <PostList   setCurrentId={currentId.ThongBao} />
           <PostModal />
-          {user.role === "Giang Vien" ? null : (
+          {/* {user.role === "Giang Vien" ? null : (
             <Fab
               color="primary"
               className={classes.fab}
@@ -112,7 +126,7 @@ export default function HomePage() {
             >
               <AddIcon />
             </Fab>
-          )}
+          )} */}
         </Content>
       </Layout>
     </Layout>

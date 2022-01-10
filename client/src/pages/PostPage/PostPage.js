@@ -33,8 +33,8 @@ export default function PostPage() {
             />
           </Content>
         </Layout>
-      <Content>
-        <div className="Post">
+      <Content >
+        <div className="Post" >
           <div className="title">{post.title}</div>
           <div className="timeAndAuthor">
             {moment(post.updatedAt).format("HH:MM MMM DD, YYYY")} -{" "}

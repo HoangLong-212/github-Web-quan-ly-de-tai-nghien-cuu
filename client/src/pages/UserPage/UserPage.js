@@ -33,7 +33,6 @@ import { configConsumerProps } from "antd/lib/config-provider";
 import { showUserModal } from "../../redux/actions";
 import UserModal from "../../components/Modal/UserModal/UserModal";
 
-
 const { Content, Sider, Header } = Layout;
 const { Text } = Typography;
 
@@ -59,9 +58,9 @@ export default function UserPage() {
     (info) => info.facultyId.username === currentUser.username //KH001
   );
 
-  console.log("--------------------------------")
-  console.log("dataInfo", dataInfo)
-  console.log("AAAAA", User)
+  console.log("--------------------------------");
+  console.log("dataInfo", dataInfo);
+  console.log("AAAAA", User);
 
   const dataUser = [];
 
@@ -85,9 +84,9 @@ export default function UserPage() {
   console.log("datasource", dataSource);
 
   useEffect(() => {
-      dispatch(actions.getInfo.getInfoRequest());
-      dispatch(actions.getUser.getUserRequest());
-      dispatch(actions.getFaculty.getFacultyRequest());
+    dispatch(actions.getInfo.getInfoRequest());
+    dispatch(actions.getUser.getUserRequest());
+    dispatch(actions.getFaculty.getFacultyRequest());
   }, [dispatch]);
 
   useEffect(() => {
@@ -116,19 +115,19 @@ export default function UserPage() {
           </Header>
 
           <Layout>
-          <Content>
-            <PageHeader
-              onBack={() => window.history.back()}
-              className="site-page-header"
-              title="Tài khoản"
-            />
-          </Content>
-        </Layout>
+            <Content style={{ padding: "0px 0px 0px 73px" }}>
+              <PageHeader
+                onBack={() => window.history.back()}
+                className="site-page-header"
+                title="Tài khoản"
+              />
+            </Content>
+          </Layout>
 
           <Layout>
             <Sider
               width={300}
-              style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+              style={{ padding: "0px 0px 0px 100px", background: "#F0F2F5" }}
               className="site-layout-sider"
             >
               <div className="site-card-border-less-wrapper">
@@ -153,24 +152,27 @@ export default function UserPage() {
                           Giảng viên
                         </Radio>
                         <Row justify="end">
-                <Space direction="horizontal">
-                  <Button
-                  style={{margin: "5px 5px 0px 5px", width: "120%"}}
-                    icon={<PlusOutlined />}
-                    type="primary"
-                    onClick={openUserModal}
-                  >
-                    Thêm tài khoản
-                  </Button>
-                </Space>
-              </Row>
+                          <Space direction="horizontal">
+                            <Button
+                              style={{
+                                margin: "5px 5px 0px 5px",
+                                width: "120%",
+                              }}
+                              icon={<PlusOutlined />}
+                              type="primary"
+                              onClick={openUserModal}
+                            >
+                              Thêm tài khoản
+                            </Button>
+                          </Space>
+                        </Row>
                       </Space>
                     </Radio.Group>
                   </Card>
                 </Space>
               </div>
             </Sider>
-            <Content style={{ padding: "17px 24px 24px 0px" }}>
+            <Content style={{ padding: "17px 100px 24px 80px" }}>
               <div className="site-layout-content">
                 {/* <Divider orientation="left"></Divider> */}
                 {/* <Row justify="end">
@@ -202,7 +204,7 @@ export default function UserPage() {
         </Header>
 
         <Layout>
-          <Content>
+          <Content style={{ padding: "0px 0px 0px 73px" }}>
             <PageHeader
               onBack={() => window.history.back()}
               className="site-page-header"
@@ -214,7 +216,7 @@ export default function UserPage() {
         <Layout>
           <Sider
             width={300}
-            style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+            style={{ padding: "0px 0px 0px 100px", background: "#F0F2F5" }}
             className="site-layout-sider"
           >
             <div className="site-card-border-less-wrapper">
@@ -250,24 +252,24 @@ export default function UserPage() {
                         Giảng viên
                       </Radio>
                       <Row justify="end">
-                <Space direction="horizontal">
-                  <Button
-                  style={{margin: "5px 5px 0px 5px", width: "120%"}}
-                    icon={<PlusOutlined />}
-                    type="primary"
-                    onClick={openUserModal}
-                  >
-                    Thêm tài khoản
-                  </Button>
-                </Space>
-              </Row>
+                        <Space direction="horizontal">
+                          <Button
+                            style={{ margin: "5px 5px 0px 5px", width: "120%" }}
+                            icon={<PlusOutlined />}
+                            type="primary"
+                            onClick={openUserModal}
+                          >
+                            Thêm tài khoản
+                          </Button>
+                        </Space>
+                      </Row>
                     </Space>
                   </Radio.Group>
                 </Card>
               </Space>
             </div>
           </Sider>
-          <Content style={{ padding: "17px 24px 24px 0px" }}>
+          <Content style={{ padding: "17px 100px 24px 80px" }}>
             <div className="site-layout-content">
               <UserTable dataSource={dataSource} setCurrentId={setCurrentId} />
               <UserModal currentId={currentId} setCurrentId={setCurrentId} />

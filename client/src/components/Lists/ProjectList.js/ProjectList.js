@@ -43,7 +43,9 @@ export default function ProjectList() {
   }
 
   return (
-    <div className="List_Project">
+    <div 
+    className="List_Project"
+    >
       <List
         size="large"
         bordered
@@ -53,7 +55,9 @@ export default function ProjectList() {
             actions={
               item.TinhTrang === "Đã hủy"
                 ? [
-                    <p className="Status" style={{ color: "#000000" }}>
+                    <p 
+                    className="Status" 
+                    style={{ color: "#000000" }}>
                       {item.TinhTrang}
                     </p>,
                   ]
