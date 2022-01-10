@@ -36,7 +36,6 @@ export default function Login() {
 
   React.useEffect(() => {
     try {
-      console.log("users",users);
       if(!isLoggedIn){
         if (users) {
           localStorage.setItem("access_token", users.username)
@@ -65,7 +64,7 @@ export default function Login() {
           rules={[
             {
               required: true,
-              message: "Please input your Username!",
+              message: "Mời nhập username",
             },
           ]}
         >
@@ -81,7 +80,7 @@ export default function Login() {
           rules={[
             {
               required: true,
-              message: "Please input your Password!",
+              message: "Mời nhập password",
             },
           ]}
         >

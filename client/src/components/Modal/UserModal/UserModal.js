@@ -39,7 +39,6 @@ export default function UserModal({ currentId, setCurrentId }) {
 
   const Info = useSelector(InfoState$);
 
-
   const [data, setData] = useState({
     username: "",
     password: "",
@@ -65,14 +64,12 @@ export default function UserModal({ currentId, setCurrentId }) {
 
   const currentUser = useSelector(LoginsState$);
 
-
   const Options = Faculty.map((data) => {
     var o = Object.assign({});
     o.value = data._id;
     o.label = `${data.name + " - " + data.username}`;
     return o;
   });
-
 
   const [form] = Form.useForm();
 
@@ -134,12 +131,10 @@ export default function UserModal({ currentId, setCurrentId }) {
     facultyId: "",
   };
 
-
   const faculty = {
     username: data.username,
     name: data.name,
   };
-
 
   const onSubmit = useCallback(() => {
     if (checkData()) {
@@ -161,14 +156,12 @@ export default function UserModal({ currentId, setCurrentId }) {
             level: "",
             facultyId: currentInfo.facultyId._id,
           };
-          console.log("jjj", infoDepartment1);
           if (currentUser.role === "Khoa") {
             dispatch(updateInfo.updateInfoRequest(infoDepartment1));
           } else {
             dispatch(updateInfo.updateInfoRequest(infoDepartment1));
           }
         }
-        console.log("Đã dispatch");
       } else {
         info.facultyId = data.faculty.toString();
         dispatch(createUser.createUserRequest(data));
@@ -247,23 +240,21 @@ export default function UserModal({ currentId, setCurrentId }) {
             />
           )}
         </Form.Item>
-        {
-          currentId !== null ? null : (
-            <Form.Item label="Tên khoa" required>
-              <Cascader
-                options={Options}
-                placeholder="Nhập tên khoa"
-                onChange={(e) => {
-                  setData({ ...data, faculty: e });
-                }}
-                allowClear
-                suffixIcon={<SearchOutlined />}
-                showSearch={onDisplaySearch}
-                disabled={data.role !== "Giang Vien"}
-              ></Cascader>
-            </Form.Item>
-          )
-        }
+        {currentId !== null ? null : (
+          <Form.Item label="Tên khoa" required>
+            <Cascader
+              options={Options}
+              placeholder="Nhập tên khoa"
+              onChange={(e) => {
+                setData({ ...data, faculty: e });
+              }}
+              allowClear
+              suffixIcon={<SearchOutlined />}
+              showSearch={onDisplaySearch}
+              disabled={data.role !== "Giang Vien"}
+            ></Cascader>
+          </Form.Item>
+        )}
 
         <Form.Item label="Mật khẩu" required>
           <Input.Password
@@ -317,8 +308,6 @@ export default function UserModal({ currentId, setCurrentId }) {
             <div>{data.username}</div>
           ) : (
             <Input
-              // readOnly={true}
-
               value={data.username}
               onChange={(e) => {
                 setData({ ...data, username: e.target.value });

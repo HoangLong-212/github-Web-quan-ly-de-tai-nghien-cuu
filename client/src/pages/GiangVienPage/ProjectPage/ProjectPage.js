@@ -76,14 +76,17 @@ export default function ProjectPage() {
                     </Radio>
                     <Row justify="end">
                       <Space direction="horizontal">
-                        <Button
-                          style={{ margin: "5px 5px 0px 0px", width: "113%" }}
-                          icon={<PlusOutlined />}
-                          type="primary"
-                          onClick={openProjectModal}
-                        >
-                          Đăng ký đề tài mới
-                        </Button>
+                      {user.role !== "Giang Vien" ? null : (
+                         <Button
+                         style={{ margin: "5px 5px 0px 0px", width: "113%" }}
+                         icon={<PlusOutlined />}
+                         type="primary"
+                         onClick={openProjectModal}
+                       >
+                         Đăng ký đề tài mới
+                       </Button>
+                      )}
+                       
                       </Space>
                     </Row>
                   </Space>

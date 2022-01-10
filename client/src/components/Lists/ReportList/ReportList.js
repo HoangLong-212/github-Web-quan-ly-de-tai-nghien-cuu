@@ -16,7 +16,6 @@ export default function ReportList() {
   const project = useSelector(ProjectState$);
   const users = useSelector(LoginsState$);
   const report = useSelector(ReportsState$);
-  console.log(report);
 
   const history = useHistory();
 
@@ -89,7 +88,7 @@ export default function ReportList() {
                   <div>
                     Ngày nghiệm thu:{" "}
                     {moment(item.idCouncil.NgayNghiemThu).format(
-                      "HH:MM MMM DD, YYYY"
+                      "HH:MM DD/MM/YYYY"
                     )}{" "}
                   </div>
                   <div className="ChuNhiem">
@@ -99,7 +98,7 @@ export default function ReportList() {
                   <div>Điểm: {item.Diem}</div>
 
                   <d className="TimeAndAuthor">
-                    {moment(item.updatedAt).format("HH:MM MMM DD, YYYY")}
+                    {moment(item.updatedAt).format("HH:MM DD/MM/YYYY")}
                   </d>
                 </div>
               }

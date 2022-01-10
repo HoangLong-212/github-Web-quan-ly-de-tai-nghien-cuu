@@ -31,8 +31,7 @@ export default function CancelPage() {
   
   const [data, setData] = React.useState(cancels);
   const [dataProject,setDataProject] = React.useState(project);
-  console.log("XXXX", cancels);
-  console.log("KKKK", project);
+
  
   function confirmDuyet(e) {
     data.status ="Thông qua"
@@ -87,7 +86,7 @@ export default function CancelPage() {
           </div>
           <div className="TimeAndStatus">
             <d className="time">
-              {moment(data.updatedAt).format(" MMM DD, YYYY")} -{" "}
+              {moment(data.updatedAt).format(" DD/MM/YYYY")} -{" "}
             </d>
             <d className="status">{data.status}</d>
           </div>

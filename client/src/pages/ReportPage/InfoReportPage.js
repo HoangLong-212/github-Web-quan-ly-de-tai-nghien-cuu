@@ -11,6 +11,7 @@ import {
 } from "../../redux/selectors";
 import { Button, Popconfirm, message } from "antd";
 import * as actions from "../../redux/actions";
+import { useHistory } from "react-router-dom";
 const { Content, Header } = Layout;
 
 export default function InfoReportPage() {
@@ -20,6 +21,7 @@ export default function InfoReportPage() {
   const projects = useSelector(ProjectState$);
   const reports = useSelector(ReportsState$);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   React.useEffect(() => {
     dispatch(actions.getReports.getReportsRequest());
@@ -28,7 +30,7 @@ export default function InfoReportPage() {
   const report = reports.find(function (project) {
     return project._id === path[1];
   });
-  console.log("DDD", report);
+
   const [data, setData] = React.useState(report);
 
   const [dataProject, setDataProject] = React.useState({
@@ -45,8 +47,8 @@ export default function InfoReportPage() {
   });
 
   React.useEffect(() => {
-      dataProject._id = report.idCouncil.idDeTai._id.toString();
-      dataProject.Diem = Number(report.Diem);
+    dataProject._id = report.idCouncil.idDeTai._id.toString();
+    dataProject.Diem = Number(report.Diem);
     if (dataProject.Diem >= 95) {
       dataProject.XepLoai = "Xuất sắc";
     } else {
@@ -67,30 +69,25 @@ export default function InfoReportPage() {
   }, [dataProject]);
 
   function confirmDuyet(e) {
-    // if (users.role === "Admin") {
-    //   message.success("Trường đã duyệt đề tài");
-    //   data.TinhTrang = "Đang tiến hành";
-    //   dispatch(actions.updateProjects.updateProjectsRequest(data));
-    // } else {
-    //   if (project.Capdo === "Khoa") {
-    //     message.success("Khoa đã duyệt đề tài");
-    //     data.TinhTrang = "Đang tiến hành";
-    //     dispatch(actions.updateProjects.updateProjectsRequest(data));
-    //   } else {
-    //     message.success("Đề tài đang chờ trường duyệt");
-    //     data.TinhTrang = "Chờ Trường duyệt";
-    //     dispatch(actions.updateProjects.updateProjectsRequest(data));
-    //   }
-    // }
-    data.status= "Thông qua"
+    data.status = "Thông qua";
     dataCouncil._id = report.idCouncil._id.toString();
     dataProject.attachment = report.attachment.toString();
-    console.log("dataCouncil",dataCouncil)
-    console.log("dataProject",dataProject)
+
     dispatch(actions.updateReports.updateReportsRequest(data));
-     dispatch(actions.updateProjects.updateProjectsRequest(dataProject));
+    dispatch(actions.updateProjects.updateProjectsRequest(dataProject));
     dispatch(actions.updateCouncils.updateCouncilsRequest(dataCouncil));
     message.success("Báo cáo đã thông qua");
+    setDataProject({
+      _id: "",
+      Diem: 0,
+      XepLoai: "",
+      attachment: "",
+      TinhTrang: "Đã nghiệm thu",
+    });
+    setDataCouncil({
+      _id: "",
+      status: "Đã nghiệm thu",
+    });
   }
 
   function cancel(e) {
@@ -132,7 +129,7 @@ export default function InfoReportPage() {
           <div className="TenDeTai">{data.Title}</div>
           <div className="LinhVuc">
             Ngày nghiệm thu:{" "}
-            {moment(data.idCouncil.NgayNghiemThu).format("HH:MM MMM DD, YYYY")}
+            {moment(data.idCouncil.NgayNghiemThu).format("HH:MM DD/MM/YYYY")}
           </div>
           <div className="LinhVuc">
             {" "}
@@ -142,10 +139,18 @@ export default function InfoReportPage() {
 
           <div className="timeandstatus">
             <d className="time">
-              {moment(data.updatedAt).format("HH:MM MMM DD, YYYY")} -{" "}
+              {moment(data.updatedAt).format("HH:MM DD/MM/YYYY")} -{" "}
             </d>
             <d className="status">{data.status}</d>
           </div>
+          <a
+            className="detai"
+            onClick={() => {
+              history.push("/Project_GV/" + data.idCouncil.idDeTai._id);
+            }}
+          >
+            Đề tài: {data.idCouncil.idDeTai.TenDeTai}
+          </a>
           <h3 className="h3">Nội dung:</h3>
           <div className="Mota">{data.Content}</div>
 

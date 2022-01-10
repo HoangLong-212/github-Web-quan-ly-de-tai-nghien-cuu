@@ -27,7 +27,7 @@ export const getReport = async (req, res) => {
       })
       .exec()
       .then((Report) => {
-        console.log("get", Report);
+     
         res.status(200).json(Report);
       });
   } catch (err) {
@@ -63,7 +63,7 @@ export const createReport = async (req, res) => {
         })
         .exec()
         .then((Report) => {
-          console.log("create", Report);
+        
           res.status(200).json(Report);
         });
     });

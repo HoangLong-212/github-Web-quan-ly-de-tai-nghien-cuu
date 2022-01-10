@@ -1,5 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Layout, Row, Col, Space, Button, Descriptions, PageHeader, Input } from "antd";
+import {
+  Layout,
+  Row,
+  Col,
+  Space,
+  Button,
+  Descriptions,
+  PageHeader,
+  Input,
+} from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { showInfoModal } from "../../../redux/actions";
 import {
@@ -20,17 +29,10 @@ export default function InfoPage() {
   const dispatch = useDispatch();
 
   const openInfoModal = useCallback(() => {
-    console.log("Đã bấm");
     dispatch(showInfoModal());
   }, [dispatch]);
 
-  // const { isShow } = useSelector(InfoModalState$);
-  // console.log("isshow", isShow);
-
-  //region Data Info
-
   const info = useSelector(InfoState$);
-  console.log("AAAA", info);
 
   const faculty = useSelector(FacultyState$);
 
@@ -39,8 +41,6 @@ export default function InfoPage() {
   const _info = info.find(function (info) {
     return info.username === users.username;
   });
-
-  console.log("_info", _info);
 
   const body = (
     <Descriptions title="Thông tin cá nhân">
@@ -66,16 +66,16 @@ export default function InfoPage() {
         <Headerbar />
       </Header>
       <Layout>
-          <Content>
-            <PageHeader
-              onBack={() => window.history.back()}
-              className="site-page-header"
-              title="Thông tin cá nhân"
-            />
-          </Content>
-        </Layout>
+        <Content>
+          <PageHeader
+            onBack={() => window.history.back()}
+            className="site-page-header"
+            title="Thông tin cá nhân"
+          />
+        </Content>
+      </Layout>
       <Content>
-        <InfoModal/>
+        <InfoModal />
         <div className="layout-content">
           <Row justify="end" className="button">
             <Space direction="horizontal">

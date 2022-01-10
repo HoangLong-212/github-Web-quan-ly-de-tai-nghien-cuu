@@ -16,9 +16,7 @@ export default function CancelList() {
   const dispatch = useDispatch();
 
   const Cancel = useSelector(CancelsState$);
-  console.log("[Cancel]", Cancel);
 
-  // let new_posts = Cancel.slice().reverse();
   let new_posts;
   const users = useSelector(LoginsState$);
 
@@ -81,7 +79,7 @@ export default function CancelList() {
                   <div>Đề tài: {item.idDeTai.TenDeTai}</div>
                  
                   <div className="TimeAndAuthor">
-                    {moment(item.updatedAt).format("HH:MM MMM DD, YYYY")}
+                    {moment(item.updatedAt).format("HH:MM DD/MM/YYYY")}
                   </div>
                 </div>
               }

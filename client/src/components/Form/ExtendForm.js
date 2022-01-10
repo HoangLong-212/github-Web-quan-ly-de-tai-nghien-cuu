@@ -35,8 +35,7 @@ export default function ExtendForm() {
   const project = projects.filter(
     (value) => value.idTeam.idChuNhiem.username === users.username && value.TinhTrang === "Đang tiến hành"
   )
-  console.log("project",project)
-  console.log("Extend",Extend)
+
   const [data, setData] = React.useState({
     MaDon: "",
     title: "",
@@ -46,7 +45,7 @@ export default function ExtendForm() {
     status: "Chờ duyệt"
   });
 
-  console.log("DATA",data)
+
 
   const RandomMaDon = React.useCallback(() => {
     if (data.MaDon === "" || data.MaDon === undefined) {
@@ -76,7 +75,7 @@ const onDisplaySearch = (inputValue, path) => {
   };
 
   const handleOK = React.useCallback(()=>{
-    console.log("ZZZZ",data)
+
     if( data.GiaHan >6 || data.GiaHan<1 ){
       messageError("Vui lòng nhập đúng thời gian gia hạn");
     }else if (

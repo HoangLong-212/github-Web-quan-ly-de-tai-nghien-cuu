@@ -16,7 +16,6 @@ export default function CouncilList() {
   const project = useSelector(ProjectState$);
   const council = useSelector(CouncilsState$);
 
-  console.log("[council]", council);
   let new_projects = council.slice().reverse();
 
   const users = useSelector(LoginsState$);
@@ -53,7 +52,6 @@ export default function CouncilList() {
       new_projects = data.slice().reverse();
     }
 
-    console.log("new_projects",new_projects)
   return (
     <div className="List_Project">
       <List

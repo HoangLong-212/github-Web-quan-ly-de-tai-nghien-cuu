@@ -260,46 +260,6 @@ export default function CouncilModal() {
             </Form.Item>
           </Row>
         </Form.Item>
-        {/* <Form.Item label="Mã hội đồng" style={{ marginBottom: 0 }} required>
-          <Row>
-            <Form.Item
-              style={{ display: "inline-block", width: "calc(30% - 12px)" }}
-            >
-              <Input.Group compact>
-                <Input
-                  allowClear
-                  style={{ width: "calc(100% - 31px)" }}
-                  placeholder="Nhập mã hội đồng"
-                  value={data.MaHD}
-                  onChange={(e) => setData({ ...data, MaHD: e.target.value })}
-                />
-                <Button icon={<RetweetOutlined />} onClick={RandomMaDeTai} />
-              </Input.Group>
-            </Form.Item>
-            <Form.Item
-              required
-              style={{ width: "calc(50% - 12px)", marginLeft: 50 }}
-              rules={[{ required: true, message: "Vui lòng nhập ngày" }]}
-              label=" Ngày nghiệm thu"
-              value={data.NgayNghiemThu}
-              onChange={(e) =>
-                setData({ ...data, NgayNghiemThu: e.target.value })
-              }
-            >
-              <DatePicker
-                format={"DD/MM/YYYY"}
-                value={data.NgayNghiemThu}
-                onChange={(e) => {
-                  if (e)
-                    setData({
-                      ...data,
-                      NgayNghiemThu: e,
-                    });
-                }}
-              />
-            </Form.Item>
-          </Row>
-        </Form.Item> */}
 
         <Form.Item label="Đề tài" required>
           <Cascader

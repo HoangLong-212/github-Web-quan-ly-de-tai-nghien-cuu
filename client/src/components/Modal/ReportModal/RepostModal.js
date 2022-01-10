@@ -61,40 +61,7 @@ export default function ReportModal() {
     idCouncil: "",
   });
 
-  // const [dataProject, setDataProject] = React.useState({
-  //   _id: "",
-  //   Diem: 0,
-  //   XepLoai: "",
-  //   attachment: "",
-  //   TinhTrang: "Đã nghiệm thu",
-  // });
-  // const [dataCouncil, setDataCouncil] = React.useState({
-  //   _id: "",
-  //   status: "Đã nghiệm thu",
-  // });
-  // const check = countcils.find((e) => e._id === data.idCouncil.toString());
-  // React.useEffect(() => {
-  //   if (check) {
-  //     dataProject._id = check.idDeTai._id.toString();
-  //   }
-  //   if (dataProject.Diem >= 95) {
-  //     dataProject.XepLoai = "Xuất sắc";
-  //   } else {
-  //     if (dataProject.Diem >= 85) {
-  //       dataProject.XepLoai = "Giỏi";
-  //     } else {
-  //       if (dataProject.Diem >= 75) {
-  //         dataProject.XepLoai = "Khá";
-  //       } else {
-  //         if (dataProject.Diem >= 65) {
-  //           dataProject.XepLoai = "Trung bình";
-  //         } else {
-  //           dataProject.XepLoai = "Không đạt";
-  //         }
-  //       }
-  //     }
-  //   }
-  // }, [check, dataProject]);
+  
 
   const handleOk = React.useCallback(() => {
     if (data.Diem > 100) {
@@ -109,11 +76,9 @@ export default function ReportModal() {
       ) {
         messageError("Vui lòng nhập đầy đủ thông tin");
       } else {
-        //dataCouncil._id = data.idCouncil.toString();
-        //dataProject.attachment = data.attachment.toString();
+        
         dispatch(actions.createReports.createReportsRequest(data));
-        //dispatch(actions.updateProjects.updateProjectsRequest(dataProject));
-        //dispatch(actions.updateCouncils.updateCouncilsRequest(dataCouncil));
+       
         message.success("Báo cáo được tạo thành công");
         handleCancel();
       }
@@ -131,12 +96,7 @@ export default function ReportModal() {
       attachment: "",
       idCouncil: "",
     });
-    // setDataProject({
-    //   _id: "",
-    //   Diem: 0,
-    //   XepLoai: "",
-    //   TinhTrang: "Đã nghiệm thu",
-    // });
+    
   }, [dispatch]);
 
   const [form] = Form.useForm();
@@ -194,7 +154,7 @@ export default function ReportModal() {
       >
         <Form.Item label="Mã báo cáo" style={{ marginBottom: 0 }} required>
           <Form.Item
-          //   style={{ display: "inline-block", width: "calc(30% - 12px)" }}
+       
           >
             <Input.Group compact>
               <Input
@@ -261,7 +221,7 @@ export default function ReportModal() {
             value={data.Diem}
             onChange={(e) => {
               setData({ ...data, Diem: Number(e.target.value) });
-              // setDataProject({ ...dataProject, Diem: Number(e.target.value) });
+              
             }}
           />
         </Form.Item>
