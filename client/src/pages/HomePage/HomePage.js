@@ -110,7 +110,7 @@ export default function HomePage() {
             </Space>
           </div>
         </Sider>
-        <Content style={{ padding: "0px 70px 24px 80px" }}>
+        <Content style={{ padding: "0px 60px 24px 80px" }}>
           <PostList   setCurrentId={currentId.ThongBao} />
           <PostModal />
           {/* {user.role === "Giang Vien" ? null : (
