@@ -86,7 +86,7 @@ export default function SearchLecturerPage() {
         </Layout>
         <Layout
           style={{
-            padding: "24px 24px 0px 24px",
+            padding: "24px 24px 24px 24px",
             width: "80%",
             backgroundColor: "#57C0FB",
             borderRadius: "5px",
