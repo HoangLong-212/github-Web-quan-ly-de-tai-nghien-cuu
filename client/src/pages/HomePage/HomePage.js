@@ -44,6 +44,7 @@ export default function HomePage() {
     dispatch(actions.getInfo.getInfoRequest());
     dispatch(actions.getProjects.getProjectsRequest());
     dispatch(actions.getCouncils.getCouncilsRequest());
+    dispatch(actions.getReports.getReportsRequest());
   }, [dispatch]);
   return (
     <Layout>
@@ -92,26 +93,27 @@ export default function HomePage() {
                       Khoa
                     </Radio>
                     {user.role === "Giang Vien" ? null : (
-                    <Row justify="end">
-                <Space direction="horizontal">
-                  <Button
-                  style={{margin: "5px 5px 0px 1px", width: "120%"}}
-                    icon={<PlusOutlined />}
-                    type="primary"
-                    onClick={openPostModal}
-                  >
-                    Thêm thông báo
-                  </Button>
-                </Space>
-              </Row>)}
+                      <Row justify="end">
+                        <Space direction="horizontal">
+                          <Button
+                            style={{ margin: "5px 5px 0px 1px", width: "120%" }}
+                            icon={<PlusOutlined />}
+                            type="primary"
+                            onClick={openPostModal}
+                          >
+                            Thêm thông báo
+                          </Button>
+                        </Space>
+                      </Row>
+                    )}
                   </Space>
                 </Radio.Group>
               </Card>
             </Space>
           </div>
         </Sider>
-        <Content style={{ padding: "0px 60px 24px 80px" }}>
-          <PostList   setCurrentId={currentId.ThongBao} />
+        <Content style={{ padding: "0px 70px 24px 80px" }}>
+          <PostList setCurrentId={currentId.ThongBao} />
           <PostModal />
          
         </Content>

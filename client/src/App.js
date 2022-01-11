@@ -22,6 +22,7 @@ import SearchProjectPage from "./pages/SearchPage/SearchProjectPage/SearchProjec
 import CouncilPage from "./pages/CouncilPage/CouncilPage";
 import ReportPage from "./pages/ReportPage/ReportPage";
 import InfoReportPage from "./pages/ReportPage/InfoReportPage";
+import SearchReportPage from "./pages/SearchPage/SearchReportPage/SearchReportPage";
 
 function App() {
   return (
@@ -73,9 +74,13 @@ function App() {
             exact
             component={InfoProjectPage}
           />
+           <PrivateRoute path="/Search_Report_Page"  exact component={SearchReportPage} />
           <PrivateRoute path="/ExtendPage/:id" exact component={ExtendPage} />
           <PrivateRoute path="/CancelPage/:id" exact component={CancelPage} />
           <PrivateRoute path="/Home/:id" exact component={PostPage} />
+         
+         
+
           <Route>
             <Notfound />
           </Route>
