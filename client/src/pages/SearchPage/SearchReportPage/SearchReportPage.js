@@ -59,7 +59,7 @@ export default function SearchReportPage() {
           <Headerbar />
         </Header>
         <Layout>
-          <Content style={{ padding: "0px 0px 0px 126px" }}>
+          <Content style={{ padding: "0px 0px 0px 73px" }}>
             <PageHeader
               onBack={() => window.history.back()}
               className="site-page-header"

@@ -6,7 +6,12 @@ import moment from "moment";
 import Headerbar from "../../components/Header/HeaderBar/HeaderBar";
 import { Button, Popconfirm, message } from "antd";
 import * as actions from "../../redux/actions";
-import { CancelsState$, ExtendsState$, LoginsState$, ProjectState$ } from "../../redux/selectors";
+import {
+  CancelsState$,
+  ExtendsState$,
+  LoginsState$,
+  ProjectState$,
+} from "../../redux/selectors";
 import { useHistory } from "react-router-dom";
 
 const { Content, Header } = Layout;
@@ -28,14 +33,13 @@ export default function CancelPage() {
   const project = projects.find(function (project) {
     return project._id === cancels.idDeTai._id;
   });
-  
-  const [data, setData] = React.useState(cancels);
-  const [dataProject,setDataProject] = React.useState(project);
 
- 
+  const [data, setData] = React.useState(cancels);
+  const [dataProject, setDataProject] = React.useState(project);
+
   function confirmDuyet(e) {
-    data.status ="Thông qua"
-    dataProject.TinhTrang = "Đã hủy"
+    data.status = "Thông qua";
+    dataProject.TinhTrang = "Đã hủy";
     dispatch(actions.updateCancels.updateCancelsRequest(data));
     dispatch(actions.updateProjects.updateProjectsRequest(dataProject));
     message.success("Đề tài đã bị hủy");
@@ -44,8 +48,6 @@ export default function CancelPage() {
   function cancel(e) {
     message.error("Mời bạn xác nhận lại");
   }
-
-  
 
   const body = (
     <>
@@ -63,20 +65,20 @@ export default function CancelPage() {
     </>
   );
   return (
-    <Layout className="layout">
+    <Layout className="layout" style={{ background: "#f0f2f5" }} >
       <Header>
         <Headerbar />
       </Header>
       <Layout>
-          <Content>
-            <PageHeader
-              onBack={() => window.history.back()}
-              className="site-page-header"
-              title="Đơn hủy"
-            />
-          </Content>
-        </Layout>
-      <Content>
+        <Content>
+          <PageHeader
+            onBack={() => window.history.back()}
+            className="site-page-header"
+            title="Đơn hủy"
+          />
+        </Content>
+      </Layout>
+      <Content >
         <div className="InfoProject">
           <div className="TenDeTai">{data.title}</div>
           <div className="LinhVuc">
@@ -101,11 +103,7 @@ export default function CancelPage() {
           <h3 className="lydo">Lý do hủy:</h3>
           <div className="Mota">{data.content}</div>
 
-            {data.status === "Chờ duyệt" ? (
-              <div>{body}</div>
-            ) : (
-              <br />
-            )} 
+          {data.status === "Chờ duyệt" ? <div>{body}</div> : <br />}
         </div>
       </Content>
     </Layout>

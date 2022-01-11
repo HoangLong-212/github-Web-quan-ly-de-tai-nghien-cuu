@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Layout, Radio, Row, Space } from "antd";
+import { Button, Card, Layout, Radio, Row, Space, PageHeader } from "antd";
 import HeaderBar from "../../components/Header/HeaderBar/HeaderBar";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import CouncilList from "../../components/Lists/CouncilList/CouncilList";
 import CouncilModal from "../../components/Modal/CouncilModal/CouncilModal";
 import { PlusOutlined } from "@ant-design/icons";
 
+
 const { Content, Header, Sider } = Layout;
 export default function CouncilPage() {
   const dispatch = useDispatch();
@@ -16,12 +17,24 @@ export default function CouncilPage() {
   const openProjectModal = React.useCallback(() => {
     dispatch(actions.showModal());
   }, [dispatch]);
+  const [currentId, setCurrentId] = React.useState({
+    TinhTrang: "Tất cả",
+  });
 
   return (
     <Layout>
       <Header>
         <HeaderBar />
       </Header>
+      <Layout>
+        <Content style={{ padding: "0px 0px 0px 73px" }}>
+          <PageHeader
+            onBack={() => window.history.back()}
+            className="site-page-header"
+            title="Hội đồng nghiệm thu"
+          />
+        </Content>
+      </Layout>
       <Layout>
         <Sider
           width={300}
@@ -30,26 +43,32 @@ export default function CouncilPage() {
         >
           <div className="site-card-border-less-wrapper">
             <Space direction="vertical">
-              <Card title="Loại đơn" bordered={false} style={{ width: 250 }}>
+              <Card title="Tình trạng" bordered={false} style={{ width: 250 }}>
                 <Radio.Group defaultValue={1}>
                   <Space direction="vertical">
                     <Radio
-                    // value={1}
-                    // onClick={
-                    //   // () =>{check = "Đơn gia hạn"}
-                    //   () => setdata({...data,Don: "Đơn gia hạn"})
-                    // }
+                    value={1}
+                    onClick={() =>
+                      setCurrentId({ ...currentId, TinhTrang: "Tất cả" })
+                    }
                     >
-                      Đơn gia hạn
+                     Tất cả
                     </Radio>
                     <Radio
-                    // value={2}
-                    // onClick={
-                    //   // () =>{check = "Đơn hủy"}
-                    //   () => setdata({...data,Don: "Đơn hủy"})
-                    // }
+                    value={2}
+                    onClick={() =>
+                      setCurrentId({ ...currentId, TinhTrang: "Chờ nghiệm thu" })
+                    }
                     >
-                      Đơn hủy
+                      Chờ nghiệm thu
+                    </Radio>
+                    <Radio
+                    value={3}
+                    onClick={() =>
+                      setCurrentId({ ...currentId, TinhTrang: "Đã nghiệm thu" })
+                    }
+                    >
+                      Đã nghiệm thu
                     </Radio>
                     {user.role === "Giang Vien" ? null : (
                       <Row justify="end">
@@ -72,13 +91,9 @@ export default function CouncilPage() {
           </div>
         </Sider>
         <Content style={{ padding: "17px 80px 24px 80px"}} >
-          <CouncilList />
+          <CouncilList setCurrentId={currentId.TinhTrang} />
           <CouncilModal />
-          {/* {user.role === "Giang Vien" ? null : (
-           <Button type="primary" className="DangKy" onClick={openProjectModal}>
-           Tạo hội đồng mới
-         </Button>
-        )}  */}
+         
         </Content>
       </Layout>
     </Layout>
