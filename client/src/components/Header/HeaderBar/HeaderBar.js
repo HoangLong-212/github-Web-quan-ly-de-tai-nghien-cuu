@@ -112,6 +112,12 @@ function Headerbar() {
   const handleSearchProject = React.useCallback(() => {
     history.push("/Search_Project_Page");
   });
+
+  const handleSearchReport = React.useCallback(() => {
+    history.push("/Search_Report_Page");
+  });
+
+  
   return (
     <div className="Header">
       <Header>
@@ -156,6 +162,11 @@ function Headerbar() {
             <Menu.Item key="Detai" onClick={handleSearchProject}>
               Đề tài
             </Menu.Item>
+            {users.role === "Giang Vien" ? null : (
+              <Menu.Item key="Detai" onClick={handleSearchReport}>
+                Báo cáo
+              </Menu.Item>
+            )}
           </SubMenu>
           <SubMenu
             key="NghiemThu"

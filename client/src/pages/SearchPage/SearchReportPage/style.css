@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+  
+  body {
+    justify-content: center;
+    background-color: rgb(236, 236, 236);
+  }

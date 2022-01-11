@@ -21,10 +21,21 @@ export const getReport = async (req, res) => {
       })
       .populate({
         path: "idCouncil",
-        populate: {
-          path: "idThuKy",
-        },
+        populate:([
+          {path: 'idThuKy'},
+          {path: 'idChuTich'},
+          {path: 'idPhanBien1'},
+          {path: 'idPhanBien2'},
+          {path: 'UyVien'},
+          {path: 'NgayNghiemThu'},
+        ]),
       })
+      // .populate({
+      //   path: "idCouncil",
+      //   populate: {
+      //     path: "idChuTich",
+      //   },
+      // })
       .exec()
       .then((Report) => {
      
@@ -57,9 +68,14 @@ export const createReport = async (req, res) => {
         })
         .populate({
           path: "idCouncil",
-          populate: {
-            path: "idThuKy",
-          },
+          populate:([
+            {path: 'idThuKy'},
+            {path: 'idChuTich'},
+            {path: 'idPhanBien1'},
+            {path: 'idPhanBien2'},
+            {path: 'UyVien'},
+            {path: 'NgayNghiemThu'},
+          ]),
         })
         .exec()
         .then((Report) => {
@@ -97,9 +113,14 @@ export const updateReport = async (req, res, next) => {
     })
     .populate({
       path: "idCouncil",
-      populate: {
-        path: "idThuKy",
-      },
+      populate:([
+        {path: 'idThuKy'},
+        {path: 'idChuTich'},
+        {path: 'idPhanBien1'},
+        {path: 'idPhanBien2'},
+        {path: 'UyVien'},
+        {path: 'NgayNghiemThu'},
+      ]),
     })
     .exec()
     .then((Report) => {
