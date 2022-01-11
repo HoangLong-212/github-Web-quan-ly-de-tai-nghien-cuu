@@ -245,6 +245,7 @@ export default function UserModal({ currentId, setCurrentId }) {
             <Cascader
               options={Options}
               placeholder="Nhập tên khoa"
+              value={data.faculty}
               onChange={(e) => {
                 setData({ ...data, faculty: e });
               }}
