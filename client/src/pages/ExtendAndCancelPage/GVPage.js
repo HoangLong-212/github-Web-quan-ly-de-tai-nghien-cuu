@@ -49,7 +49,7 @@ export default function GVPage() {
       <Layout>
         <Sider
           width={300}
-          style={{ padding: "0px 0px 0px 24px", background: "#F0F2F5" }}
+          style={{ padding: "0px 0px 0px 100px", background: "#F0F2F5" }}
           className="site-layout-sider"
         >
           <div className="site-card-border-less-wrapper">
@@ -75,7 +75,7 @@ export default function GVPage() {
             </Space>
           </div>
         </Sider>
-        <Content>
+        <Content style={{ padding: "0px 70px 24px 80px" }}>
           {data.Don === "Đơn gia hạn" ? <ExtendForm /> : <CancelForm />}
         </Content>
       </Layout>

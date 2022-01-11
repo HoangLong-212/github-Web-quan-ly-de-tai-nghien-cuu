@@ -206,14 +206,14 @@ export default function CancelForm() {
           />
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 20 }}>
-          <Button key="back" onClick={handleReset} style={{ marginLeft: 19 }}>
+          <Button key="back" onClick={handleReset} style={{ marginLeft: 0}}>
             Làm mới
           </Button>
           <Button
             key="submit"
             type="primary"
             onClick={handleOK}
-            style={{ marginLeft: 15 }}
+            style={{ marginLeft: 7 }}
           >
             Gửi
           </Button>
