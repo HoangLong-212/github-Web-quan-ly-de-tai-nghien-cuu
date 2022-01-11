@@ -52,6 +52,15 @@ export default function HomePage() {
         <Headerbar />
       </Header>
       <Layout>
+        <Content style={{ padding: "0px 0px 0px 73px" }}>
+          <PageHeader
+            onBack={() => window.history.back()}
+            className="site-page-header"
+            title="Thông báo"
+          />
+        </Content>
+      </Layout>
+      <Layout>
         <Sider
           width={300}
           style={{ padding: "0px 0px 0px 100px", background: "#F0F2F5" }}
