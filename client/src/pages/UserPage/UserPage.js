@@ -271,15 +271,30 @@ export default function UserPage() {
                         Giảng viên
                       </Radio>
                       <Row justify="end">
-                        <Space direction="horizontal">
+                        <Space direction="vertical">
                           <Button
-                            style={{ margin: "5px 5px 0px 5px", width: "120%" }}
+                            style={{ margin: "10px 0px 0px 0px", width: "120%" }}
                             icon={<PlusOutlined />}
                             type="primary"
                             onClick={openUserModal}
                           >
                             Thêm tài khoản
                           </Button>
+                          <Button
+                              style={{
+                                margin: "0px 0px 0px 0px",
+                                width: "120%",
+                              }}
+                              icon={<EyeOutlined  />}
+                              type="primary"
+                              onClick={() => {
+                                check.TinhTrang === "Tắt"
+                                  ? setCheck({ ...check, TinhTrang: "Bật" })
+                                  : setCheck({ ...check, TinhTrang: "Tắt" });
+                              }}
+                            >
+                              Hiển thị mật khẩu
+                            </Button>
                         </Space>
                       </Row>
                     </Space>
@@ -290,7 +305,7 @@ export default function UserPage() {
           </Sider>
           <Content style={{ padding: "17px 100px 24px 80px" }}>
             <div className="site-layout-content">
-              <UserTable dataSource={dataSource} setCurrentId={setCurrentId} />
+              <UserTable dataSource={dataSource} setCurrentId={setCurrentId}  check={check.TinhTrang} />
               <UserModal currentId={currentId} setCurrentId={setCurrentId} />
             </div>
           </Content>
