@@ -6,7 +6,7 @@ import {
   LoginsState$,
 } from "../../redux/selectors";
 import moment from "moment";
-import { Form, Input, Select, DatePicker, Modal } from "antd";
+import { Form, Input, Select, DatePicker, Modal, Button } from "antd";
 // import "./style.css"
 
 import { messageError } from "../message";
@@ -63,7 +63,7 @@ export default function InfoModal() {
       <Form
         form={form}
         labelCol={{ span: 4 }}
-        wrapperCol={{ span: 16 }}
+        wrapperCol={{ span: 19 }}
         layout="horizontal"
       >
         <Form.Item label="Họ và tên" required>
@@ -134,6 +134,14 @@ export default function InfoModal() {
         onOk={onSubmit}
         onCancel={onClose}
         width={800}
+        footer={[
+          <Button key="back" onClick={onClose} style={{margin:"0px 12px 0px 0px"}}>
+            Hủy
+          </Button>,
+          <Button key="submit" type="primary" onClick={onSubmit} style={{margin:"0px 39px 0px 0px"}}>
+            Lưu
+          </Button>,
+        ]}
         open={isShow}
       >
         {body}

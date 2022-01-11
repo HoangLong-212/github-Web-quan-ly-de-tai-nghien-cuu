@@ -1,5 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Input, Modal, Form, Select, Cascader } from "antd";
+import { Input, Modal, Form, Select, Cascader, Button } from "antd";
 import Password from "antd/lib/input/Password";
 import { Option } from "antd/lib/mentions";
 import { getKeyThenIncreaseKey } from "antd/lib/message";
@@ -344,9 +344,16 @@ export default function UserModal({ currentId, setCurrentId }) {
         <Modal
           title={currentId ? "Chỉnh sửa tài khoản" : "Thêm tài khoản"}
           visible={isShow}
-          onOk={onSubmit}
           onCancel={onClose}
           width={800}
+          footer={[
+            <Button key="back" onClick={onClose} style={{margin:"0px 12px 0px 0px"}}>
+              Hủy
+            </Button>,
+            <Button key="submit" type="primary" onClick={onSubmit} style={{margin:"0px 7px 0px 0px"}}>
+              {currentId ? "Lưu" : "Tạo"}
+            </Button>,
+          ]}
         >
           {bodyAdmin}
         </Modal>
@@ -360,6 +367,14 @@ export default function UserModal({ currentId, setCurrentId }) {
           visible={isShow}
           onOk={onSubmit}
           onCancel={onClose}
+          footer={[
+            <Button key="back" onClick={onClose} style={{margin:"0px 12px 0px 0px"}}>
+              Hủy
+            </Button>,
+            <Button key="submit" type="primary" onClick={onSubmit} style={{margin:"0px 7px 0px 0px"}}>
+              {currentId ? "Lưu" : "Tạo"}
+            </Button>,
+          ]}
           width={800}
         >
           {bodyFaculty}
