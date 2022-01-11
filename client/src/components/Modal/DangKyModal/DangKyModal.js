@@ -384,10 +384,10 @@ export default function DangKyModal() {
         onCancel={handleCancel}
         footer={[
           <Button key="back" onClick={handleCancel}>
-            Cancel
+            Hủy
           </Button>,
           <Button key="submit" type="primary" onClick={handleOk}>
-            OK
+            Gửi
           </Button>,
         ]}
         width={800}

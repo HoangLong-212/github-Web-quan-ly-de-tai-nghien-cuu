@@ -243,11 +243,11 @@ export default function ReportModal() {
         visible={isShow}
         onCancel={handleCancel}
         footer={[
-          <Button key="back" onClick={handleCancel}>
-            Cancel
+          <Button key="back" onClick={handleCancel} style={{margin:"0px 12px 0px 0px"}}>
+            Hủy
           </Button>,
-          <Button key="submit" type="primary" onClick={handleOk}>
-            OK
+          <Button key="submit" type="primary" onClick={handleOk} style={{margin:"0px 7px 0px 0px"}}>
+            Tạo
           </Button>,
         ]}
         width={800}
