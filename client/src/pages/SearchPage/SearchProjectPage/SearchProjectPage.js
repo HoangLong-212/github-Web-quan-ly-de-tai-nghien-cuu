@@ -80,7 +80,7 @@ export default function SearchProjectPage() {
           <Headerbar />
         </Header>
         <Layout>
-          <Content>
+          <Content style={{ padding: "0px 0px 0px 73px" }}>
             <PageHeader
               onBack={() => window.history.back()}
               className="site-page-header"

@@ -65,7 +65,7 @@ export default function ExtendPage() {
     </>
   );
   return (
-    <Layout className="layout">
+    <Layout className="layout" style={{ background: "#f0f2f5" }}>
       <Header>
         <Headerbar />
       </Header>

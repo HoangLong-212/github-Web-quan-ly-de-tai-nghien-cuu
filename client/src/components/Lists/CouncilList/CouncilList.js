@@ -11,12 +11,13 @@ import moment from "moment";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 
-export default function CouncilList() {
+export default function CouncilList({ setCurrentId }) {
   const dispatch = useDispatch();
   const project = useSelector(ProjectState$);
   const council = useSelector(CouncilsState$);
 
-  let new_projects = council.slice().reverse();
+  let new_projects;
+  let new_posts;
 
   const users = useSelector(LoginsState$);
 
@@ -52,16 +53,30 @@ export default function CouncilList() {
       new_projects = data.slice().reverse();
     }
 
+    if (setCurrentId === "Tất cả") {
+      new_posts = new_projects;
+    } else if (setCurrentId === "Chờ nghiệm thu") {
+      const data = new_projects.filter(
+        (value) => value.status === "Chờ nghiệm thu"
+      );
+      new_posts = data;
+    } else {
+      const data = new_projects.filter(
+        (value) => value.status !== "Chờ nghiệm thu"
+      );
+      new_posts = data;
+    }
+
   return (
     <div className="List_Project">
       <List
         size="large"
         bordered
-        dataSource={new_projects}
+        dataSource={new_posts}
         renderItem={(item) => (
           <List.Item
             actions={
-              item.TinhTrang === "Nghiệm thu"
+              item.status === "Chờ nghiệm thu"
                 ? [
                     <p className="Status" style={{ color: "#000000" }}>
                       {item.status}

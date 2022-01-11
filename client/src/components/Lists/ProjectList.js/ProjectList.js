@@ -7,7 +7,7 @@ import moment from "moment";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 
-export default function ProjectList() {
+export default function ProjectList({ setCurrentId }) {
   const dispatch = useDispatch();
   const project = useSelector(ProjectState$);
 
@@ -18,6 +18,7 @@ export default function ProjectList() {
   }, [dispatch]);
   const history = useHistory();
   let new_projects;
+  let new_posts;
 
   if (users.role === "Khoa") {
     const data = project.filter(
@@ -40,12 +41,36 @@ export default function ProjectList() {
     new_projects = data.slice().reverse();
   }
 
+  if (setCurrentId === "Tất cả") {
+    new_posts = new_projects;
+  } else if (setCurrentId === "Chờ duyệt") {
+    const data = new_projects.filter(
+      (value) => value.TinhTrang ===  "Chờ Khoa duyệt"||value.TinhTrang ===  "Chờ Trường duyệt"
+    );
+    new_posts = data;
+  } else if (setCurrentId === "Đang tiến hành") {
+    const data = new_projects.filter(
+      (value) => value.TinhTrang ===  "Đang tiến hành"||value.TinhTrang ===  "Đang tiến hành (Đã gia hạn)"
+    );
+    new_posts = data;
+  } else if (setCurrentId === "Nghiệm  thu") {
+    const data = new_projects.filter(
+      (value) => value.TinhTrang ===  "Đang tiến hành (Chờ nghiệm thu)"||value.TinhTrang ===  "Đã nghiệm thu"
+    );
+    new_posts = data;
+  } else{
+    const data = new_projects.filter(
+      (value) => value.TinhTrang ===   "Đã hủy"||value.TinhTrang ===  "Không thông qua"
+    );
+    new_posts = data;
+  }
+
   return (
     <div className="List_Project">
       <List
         size="large"
         bordered
-        dataSource={new_projects}
+        dataSource={new_posts}
         renderItem={(item) => (
           <List.Item
             actions={

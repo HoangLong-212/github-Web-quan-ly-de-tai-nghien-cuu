@@ -54,9 +54,7 @@ export default function SearchLecturerPage() {
 
   const [dataSourceFaculty, setDataSourceFaculty] = useState(dataInfo);
 
-  console.log("DataSourceFaculty", dataSourceFaculty);
-
-  console.log("datasource", dataSource);
+ 
 
   useEffect(() => {
     dispatch(actions.getInfo.getInfoRequest());
@@ -68,7 +66,7 @@ export default function SearchLecturerPage() {
     if (info) setDataSource(info);
   }, [info]);
 
-  // console.log("dataSource", dataSource);
+
 
     return (
       <Layout>
@@ -76,7 +74,7 @@ export default function SearchLecturerPage() {
           <Headerbar />
         </Header>
         <Layout>
-          <Content>
+          <Content style={{ padding: "0px 0px 0px 73px" }}>
             <PageHeader
               onBack={() => window.history.back()}
               className="site-page-header"

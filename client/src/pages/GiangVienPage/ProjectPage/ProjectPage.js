@@ -16,6 +16,9 @@ export default function ProjectPage() {
   const openProjectModal = React.useCallback(() => {
     dispatch(showModal());
   }, [dispatch]);
+  const [currentId, setCurrentId] = React.useState({
+    TinhTrang: "Tất cả",
+  });
 
   return (
     <Layout>
@@ -42,7 +45,7 @@ export default function ProjectPage() {
           <div className="site-card-border-less-wrapper">
             <Space direction="vertical">
               <Card
-                title="Loại đề tài"
+                title="Tình trạng"
                 bordered={false}
                 style={{ width: 250 }}
               >
@@ -50,29 +53,43 @@ export default function ProjectPage() {
                   <Space direction="vertical">
                     <Radio
                       value={1}
-                      // onClick={() => setDataSource(User)}
+                      onClick={() =>
+                        setCurrentId({ ...currentId, TinhTrang: "Tất cả" })
+                      }
                     >
                       Tất cả
                     </Radio>
                     <Radio
-                    // value={2}
-                    // onClick={() =>
-                    //   setDataSource(
-                    //     User.filter((user) => user.role === "Khoa")
-                    //   )
-                    // }
+                    value={2}
+                    onClick={() =>
+                      setCurrentId({ ...currentId, TinhTrang: "Chờ duyệt" })
+                    }
                     >
-                      Khoa
+                      Chờ duyệt
                     </Radio>
                     <Radio
-                    // value={3}
-                    // onClick={() =>
-                    //   setDataSource(
-                    //     User.filter((user) => user.role === "Giang Vien")
-                    //   )
-                    // }
+                    value={3}
+                    onClick={() =>
+                      setCurrentId({ ...currentId, TinhTrang: "Đang tiến hành" })
+                    }
                     >
-                      Giảng viên
+                      Đang tiến hành
+                    </Radio>
+                    <Radio
+                    value={4}
+                    onClick={() =>
+                      setCurrentId({ ...currentId, TinhTrang: "Nghiệm  thu" })
+                    }
+                    >
+                      Nghiệm  thu
+                    </Radio>
+                    <Radio
+                    value={5}
+                    onClick={() =>
+                      setCurrentId({ ...currentId, TinhTrang: "Không thông qua/Hủy" })
+                    }
+                    >
+                      Không thông qua/Hủy
                     </Radio>
                     <Row justify="end">
                       <Space direction="horizontal">
@@ -96,16 +113,12 @@ export default function ProjectPage() {
           </div>
         </Sider>
         <Content style={{ padding: "17px 100px 24px 80px"}}
-        // className="content"
+      
         >
           <div className="site-layout-content">
-            <ProjectList />
+            <ProjectList  setCurrentId={currentId.TinhTrang} />
             <DangKyModal />
-            {/* {user.role !== "Giang Vien" ? null : (
-          <Button type="primary" className="DangKy" onClick={openProjectModal}>
-            Đăng ký đề tài mới
-          </Button>
-        )} */}
+           
           </div>
         </Content>
       </Layout>

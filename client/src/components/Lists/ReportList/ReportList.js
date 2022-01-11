@@ -11,7 +11,7 @@ import moment from "moment";
 import "./style.css";
 import { useHistory } from "react-router-dom";
 
-export default function ReportList() {
+export default function ReportList({ setCurrentId }) {
   const dispatch = useDispatch();
   const project = useSelector(ProjectState$);
   const users = useSelector(LoginsState$);
@@ -23,8 +23,8 @@ export default function ReportList() {
     dispatch(actions.getReports.getReportsRequest());
   }, [dispatch]);
 
-  //let new_projects;
   let new_projects;
+  let new_posts;
   if (users.role === "Admin") {
     const data = report.filter(
       (value) =>
@@ -49,12 +49,26 @@ export default function ReportList() {
     }
   }
 
+  if (setCurrentId === "Tất cả") {
+    new_posts = new_projects
+  } else if (setCurrentId === "Chờ duyệt") {
+    const data = new_projects.filter(
+      (value) => value.status === "Chờ duyệt"
+    );
+    new_posts = data;
+  } else {
+    const data = new_projects.filter(
+      (value) => value.status !== "Chờ duyệt"
+    );
+    new_posts = data;
+  }
+
   return (
     <div className="List_Project">
       <List
         size="large"
         bordered
-        dataSource={new_projects}
+        dataSource={new_posts}
         renderItem={(item) => (
           <List.Item
           actions={

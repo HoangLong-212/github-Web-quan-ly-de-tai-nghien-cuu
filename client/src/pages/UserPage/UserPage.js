@@ -16,6 +16,7 @@ import {
   DatabaseTwoTone,
   FrownTwoTone,
   PlusOutlined,
+  EyeOutlined ,
   SmileTwoTone,
 } from "@ant-design/icons";
 import {
@@ -57,6 +58,11 @@ export default function UserPage() {
     dispatch(actions.getFaculty.getFacultyRequest());
   }, [dispatch]);
 
+  const [check, setCheck] = React.useState({
+    TinhTrang: "Tắt",
+  });
+  console.log("checkcheck",check.TinhTrang)
+
   //#endregion
 
   //#region Data User
@@ -69,8 +75,6 @@ export default function UserPage() {
   const dataInfo = info.filter(
     (info) => info.facultyId.username === currentUser.username // username: KH001 CNPM
   );
-
-
 
   const [dataSourceFaculty, setDataSourceFaculty] = useState([]);
   useEffect(() => {
@@ -86,18 +90,13 @@ export default function UserPage() {
       });
       setDataSourceFaculty(dataUser);
     }
-  },[User, info]);
-
+  }, [User, info]);
 
   const [dataSource, setDataSource] = useState(User);
-
-
 
   useEffect(() => {
     if (User) setDataSource(User);
   }, [User]);
-
-
 
   if (currentUser.role != "Admin") {
     if (currentUser.role !== "Khoa") {
@@ -119,7 +118,6 @@ export default function UserPage() {
           </Header>
 
           <Layout>
-           
             <Content style={{ padding: "0px 0px 0px 73px" }}>
               <PageHeader
                 onBack={() => window.history.back()}
@@ -157,10 +155,10 @@ export default function UserPage() {
                           Giảng viên
                         </Radio>
                         <Row justify="end">
-                          <Space direction="horizontal">
+                          <Space direction="vertical">
                             <Button
                               style={{
-                                margin: "5px 5px 0px 5px",
+                                margin: "10px 0px 0px 0px",
                                 width: "120%",
                               }}
                               icon={<PlusOutlined />}
@@ -168,6 +166,21 @@ export default function UserPage() {
                               onClick={openUserModal}
                             >
                               Thêm tài khoản
+                            </Button>
+                            <Button
+                              style={{
+                                margin: "0px 0px 0px 0px",
+                                width: "120%",
+                              }}
+                              icon={<EyeOutlined  />}
+                              type="primary"
+                              onClick={() => {
+                                check.TinhTrang === "Tắt"
+                                  ? setCheck({ ...check, TinhTrang: "Bật" })
+                                  : setCheck({ ...check, TinhTrang: "Tắt" });
+                              }}
+                            >
+                              Hiển thị mật khẩu
                             </Button>
                           </Space>
                         </Row>
@@ -194,6 +207,7 @@ export default function UserPage() {
                 <UserTable
                   dataSource={dataSourceFaculty}
                   setCurrentId={setCurrentId}
+                  check={check.TinhTrang}
                 />
                 <UserModal currentId={currentId} setCurrentId={setCurrentId} />
               </div>
