@@ -13,11 +13,13 @@ import Extends from './routers/Extends.js'
 import Cancels from './routers/Cancels.js' 
 import Councils from './routers/Councils.js' 
 import Reports from './routers/Reports.js' 
+import dotenv from "dotenv"
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.port || 5000;
-const URI =
-  "mongodb+srv://admin:RyFdDUBNStbPjKAN@cluster0.1l1mg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const PORT = process.env.PORT || 5000;
+const URI = process.env.DATABASE_URL;
 
 app.use(cors());
 app.use(bodyParser.json({limit: "30mb"}));
