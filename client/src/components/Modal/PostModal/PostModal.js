@@ -56,7 +56,7 @@ export default function PostModal() {
             <TextField
               className={classes.title}
               required
-              label="Title"
+              label="Tiêu đề"
               value={data.title}
               onChange={(e) => setData({ ...data, title: e.target.value })}
             />
@@ -64,7 +64,7 @@ export default function PostModal() {
               className={classes.textarea}
               minRows={10}
               maxRows={15}
-              placeholder="Content.."
+              placeholder="Nội dung.."
               value={data.content}
               onChange={(e) => setData({ ...data, content: e.target.value })}
             />
@@ -82,7 +82,7 @@ export default function PostModal() {
                 fullWidth
                 onClick={onSubmit}
               >
-                Create
+                Tạo thông báo
               </Button>
             </div>
           </form>

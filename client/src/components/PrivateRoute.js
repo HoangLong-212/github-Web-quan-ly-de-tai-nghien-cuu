@@ -5,10 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 
 export function PrivateRoute({ component: Component, ...rest }){
     const isLoggedIn = Boolean(localStorage.getItem('access_token'));
-    // if(!isLoggedIn) return <Redirect to="/" />;
-
-    // return<Route{...rest}/>
-    //const isAuthenticated = useSelector(LoginsState_isAuthenticated$);
     return(
     <Route
     {...rest} render ={props=>{

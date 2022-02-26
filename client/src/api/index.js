@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000";
+const URL = "https://manager-project-hl.herokuapp.com";
 
 //Login
 export const login = (payload) => axios.post(`${URL}/Login`, payload);
