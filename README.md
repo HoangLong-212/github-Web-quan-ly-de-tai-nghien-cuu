@@ -36,23 +36,23 @@ npm start
 
 ## Preview
 
-![Homepage](https://drive.google.com/file/d/1mY019CALscKio1ur-wYtzW-GH3cTMnRm/view?usp=sharing)
+![Homepage](https://lh3.google.com/u/0/d/1mY019CALscKio1ur-wYtzW-GH3cTMnRm=w1920-h902-iv1)
 
-![PostModal](https://drive.google.com/file/d/1x5jJY_kCYvJK4eu76GPa8Entp7tKmCfT/view?usp=sharing)
+![PostModal](https://lh3.google.com/u/0/d/1x5jJY_kCYvJK4eu76GPa8Entp7tKmCfT=w1920-h902-iv1)
 
-![TopicPage](https://drive.google.com/file/d/1Hhwb8krnx7sV1twSsOrTPS7cCL0K0Mdt/view?usp=sharing)
+![TopicPage](https://lh3.google.com/u/0/d/1Hhwb8krnx7sV1twSsOrTPS7cCL0K0Mdt=w1920-h902-iv1)
 
-![TopicInfo](https://drive.google.com/file/d/1iXHXwZeCe0FOWwxeHg0eNqD5128dHePg/view?usp=sharing)
+![TopicInfo](https://lh3.google.com/u/0/d/1iXHXwZeCe0FOWwxeHg0eNqD5128dHePg=w1920-h902-iv1)
 
-![TopicModal](https://drive.google.com/file/d/1wfNF00NVdYmkhD4_KwapokRdcKhrM7VH/view?usp=sharing)
+![TopicModal](https://lh3.google.com/u/0/d/1wfNF00NVdYmkhD4_KwapokRdcKhrM7VH=w1193-h902-iv1)
 
-![SearchPage](https://drive.google.com/file/d/1wfNF00NVdYmkhD4_KwapokRdcKhrM7VH/view?usp=sharing)
+![SearchPage](https://lh3.google.com/u/0/d/1BPVFXdzlevKg4y2m6WoJ14YYwdxJmnR9=w1193-h902-iv1)
 
-![Council](https://drive.google.com/file/d/16rk-BzfmI9_Hcb_zOaJwTtHhdtkv3up4/view?usp=sharing)
+![Council](https://lh3.google.com/u/0/d/16rk-BzfmI9_Hcb_zOaJwTtHhdtkv3up4=w1920-h902-iv1)
 
-![AcountPage](https://drive.google.com/file/d/1yAlk0EpCEGRDuDXMo7OYGi9W3CwH81M6/view?usp=sharing)
+![AcountPage](https://lh3.google.com/u/0/d/1yAlk0EpCEGRDuDXMo7OYGi9W3CwH81M6=w1193-h902-iv1)
 
-![Form](https://drive.google.com/file/d/1DtPDIh0hxL2Vtj0jzhY0ISFNrK6OwyPw/view?usp=sharing) 
+![Form](https://lh3.google.com/u/0/d/1DtPDIh0hxL2Vtj0jzhY0ISFNrK6OwyPw=w1193-h902-iv1) 
 
 
 ## Contact
