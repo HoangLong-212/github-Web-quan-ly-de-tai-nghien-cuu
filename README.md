@@ -36,23 +36,23 @@ npm start
 
 ## Preview
 
-![Homepage](https://drive.google.com/uc?export=view&id=1mY019CALscKio1ur-wYtzW-GH3cTMnRm/)
+![Homepage](https://drive.google.com/uc?export=view&id=1mY019CALscKio1ur-wYtzW-GH3cTMnRm)
 
-![PostModal](https://drive.google.com/file/d/1x5jJY_kCYvJK4eu76GPa8Entp7tKmCfT/)
+![PostModal](https://drive.google.com/file/d/1x5jJY_kCYvJK4eu76GPa8Entp7tKmCfT)
 
-![TopicPage](https://drive.google.com/file/d/1Hhwb8krnx7sV1twSsOrTPS7cCL0K0Mdt/)
+![TopicPage](https://drive.google.com/file/d/1Hhwb8krnx7sV1twSsOrTPS7cCL0K0Mdt)
 
-![TopicInfo](https://drive.google.com/file/d/1iXHXwZeCe0FOWwxeHg0eNqD5128dHePg/)
+![TopicInfo](https://drive.google.com/file/d/1iXHXwZeCe0FOWwxeHg0eNqD5128dHePg)
 
-![TopicModal](https://drive.google.com/file/d/1wfNF00NVdYmkhD4_KwapokRdcKhrM7VH/)
+![TopicModal](https://drive.google.com/file/d/1wfNF00NVdYmkhD4_KwapokRdcKhrM7VH)
 
-![SearchPage](https://drive.google.com/file/d/1pr7CwIRcvxO_77ceqRrodjmHMaWaiPx4/)
+![SearchPage](https://drive.google.com/file/d/1pr7CwIRcvxO_77ceqRrodjmHMaWaiPx4)
 
-![Council](https://drive.google.com/file/d/16rk-BzfmI9_Hcb_zOaJwTtHhdtkv3up4/)
+![Council](https://drive.google.com/file/d/16rk-BzfmI9_Hcb_zOaJwTtHhdtkv3up4)
 
-![AcountPage](https://drive.google.com/file/d/1yAlk0EpCEGRDuDXMo7OYGi9W3CwH81M6/)
+![AcountPage](https://drive.google.com/file/d/1yAlk0EpCEGRDuDXMo7OYGi9W3CwH81M6)
 
-![Form](https://drive.google.com/file/d/1DtPDIh0hxL2Vtj0jzhY0ISFNrK6OwyPw/) 
+![Form](https://drive.google.com/file/d/1DtPDIh0hxL2Vtj0jzhY0ISFNrK6OwyPw) 
 
 
 ## Contact
