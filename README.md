@@ -36,7 +36,7 @@ npm start
 
 ## Preview
 
-![Homepage](https://drive.google.com/file/d/1mY019CALscKio1ur-wYtzW-GH3cTMnRm/)
+![Homepage](https://drive.google.com/uc?export=view&id=1mY019CALscKio1ur-wYtzW-GH3cTMnRm/)
 
 ![PostModal](https://drive.google.com/file/d/1x5jJY_kCYvJK4eu76GPa8Entp7tKmCfT/)
 
