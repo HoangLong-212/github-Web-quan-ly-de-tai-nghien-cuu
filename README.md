@@ -1,4 +1,4 @@
-# Website to manage scientific research topics
+# Scientific Research Projects Management Website 
 
 Description: The website to help universities manage scientific research projects
 
