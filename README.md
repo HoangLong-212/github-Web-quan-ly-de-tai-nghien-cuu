@@ -23,7 +23,7 @@ If you want to use special features, log in with any account you like.
 ### Installation
 
 ```sh
-git clone https://github.com/19520280/dynamic-website
+git clone https://github.com/HoangLong-212/github-Web-quan-ly-de-tai-nghien-cuu.git
 ```
 
 ```sh
